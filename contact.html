@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Initiate Mission — Contact AerialOps</title>
+    <meta name="description"
+        content="Coordinate a drone inspection mission or request a custom audit quote for industrial sites.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: { primary: '#0A0E17', secondary: '#E8EDF5', accent: '#00AEEF', status: '#F59E0B', darkBg: '#080C14', lightBg: '#F4F6FB' },
+                    fontFamily: { 'barlow-condensed': ['"Barlow Condensed"', 'sans-serif'], 'inter': ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body class="bg-lightBg text-primary dark:bg-darkBg dark:text-secondary">
+
+    <header
+        class="fixed top-0 left-0 w-full z-50 bg-white/80 dark:bg-darkBg/80 backdrop-blur-md border-b border-gray-200 dark:border-white/10">
+        <nav class="container mx-auto px-4 h-20 flex items-center justify-between">
+            <!-- LOGO -->
+            <a href="index.html" class="flex items-center gap-2 group">
+                <div class="relative w-10 h-10 flex items-center justify-center">
+                    <svg class="w-8 h-8 text-primary dark:text-secondary group-hover:text-accent transition-colors"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                    </svg>
+                    <div
+                        class="absolute inset-0 animate-propeller opacity-0 group-hover:opacity-20 pointer-events-none">
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-3 bg-accent rounded-full"></div>
+                        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-3 bg-accent rounded-full"></div>
+                    </div>
+                </div>
+                <span class="font-barlow-condensed text-2xl font-bold tracking-tight uppercase">AerialOps</span>
+            </a>
+
+            <!-- DESKTOP NAV -->
+            <div class="hidden xl:flex items-center gap-8">
+                <a href="index.html" class="nav-link font-medium hover:text-accent transition-colors">Home</a>
+                <a href="home-2.html" class="nav-link font-medium hover:text-accent transition-colors">Tech Home</a>
+                <a href="about.html" class="nav-link font-medium hover:text-accent transition-colors">About</a>
+                <a href="services.html" class="nav-link font-medium hover:text-accent transition-colors">Services</a>
+                <a href="blog.html" class="nav-link font-medium hover:text-accent transition-colors">Blog</a>
+                <a href="pricing.html" class="nav-link font-medium hover:text-accent transition-colors">Pricing</a>
+                <a href="contact.html" class="nav-link font-medium hover:text-accent transition-colors">Contact</a>
+                <a href="dashboard.html" class="nav-link font-medium hover:text-accent transition-colors">Dashboard</a>
+            </div>
+
+            <!-- CTAs & TOGGLES -->
+            <div class="flex items-center gap-4">
+                <a href="login.html"
+                    class="hidden sm:inline-block px-4 py-2 border-2 border-primary dark:border-secondary font-semibold rounded hover:bg-primary hover:text-white dark:hover:bg-secondary dark:hover:text-primary transition-all">Sign
+                    In</a>
+                <a href="signup.html"
+                    class="hidden sm:inline-block bg-accent text-white px-4 py-2 rounded font-bold hover:scale-105 transition-transform active:scale-95">Register</a>
+
+                <button onclick="toggleTheme()"
+                    class="theme-toggle w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 dark:bg-white/5 hover:bg-accent hover:text-white transition-colors">
+                    <i class="fas fa-moon"></i>
+                </button>
+
+                <button onclick="toggleRTL()"
+                    class="rtl-toggle w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 dark:bg-white/5 hover:bg-accent hover:text-white transition-colors">
+                    <span class="rtl-toggle-text font-bold text-sm">AR</span>
+                </button>
+
+                <button id="hamburger-btn"
+                    class="xl:hidden w-10 h-10 flex flex-col justify-center items-center gap-1.5 focus:outline-none"
+                    aria-label="Menu">
+                    <span class="w-6 h-0.5 bg-primary dark:bg-secondary rounded-full transition-transform"></span>
+                    <span class="w-6 h-0.5 bg-primary dark:bg-secondary rounded-full transition-opacity"></span>
+                    <span class="w-6 h-0.5 bg-primary dark:bg-secondary rounded-full transition-transform"></span>
+                </button>
+            </div>
+        </nav>
+        <div id="mobile-menu"
+            class="hidden fixed inset-0 z-[999] bg-primary dark:bg-darkBg flex flex-col items-center justify-between p-8 xl:hidden transition-all duration-300">
+
+            <!-- Header Row -->
+            <div class="w-full flex justify-between items-center pt-2">
+                <div class="flex items-center gap-2 group">
+                    <div class="relative w-10 h-10 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-white group-hover:text-accent transition-colors" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                        </svg>
+                        <div
+                            class="absolute inset-0 animate-propeller opacity-0 group-hover:opacity-20 pointer-events-none">
+                            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-3 bg-accent rounded-full"></div>
+                            <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-3 bg-accent rounded-full">
+                            </div>
+                        </div>
+                    </div>
+                    <span
+                        class="font-barlow-condensed text-2xl font-bold tracking-tight uppercase text-white">AerialOps</span>
+                </div>
+                <button id="close-menu-btn"
+                    class="w-12 h-12 flex items-center justify-center rounded-full bg-white/10 text-white hover:bg-accent transition-all">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </div>
+
+            <!-- Main Navigation Links -->
+            <div class="flex flex-col items-center gap-6 text-center">
+                <a href="index.html"
+                    class="font-barlow-condensed text-4xl font-bold uppercase text-white hover:text-accent tracking-tighter transition-all">Home</a>
+                <a href="home-2.html"
+                    class="font-barlow-condensed text-4xl font-bold uppercase text-white hover:text-accent tracking-tighter transition-all">Tech
+                    Home</a>
+                <a href="about.html"
+                    class="font-barlow-condensed text-4xl font-bold uppercase text-white hover:text-accent tracking-tighter transition-all">About</a>
+                <a href="services.html"
+                    class="font-barlow-condensed text-4xl font-bold uppercase text-white hover:text-accent tracking-tighter transition-all">Services</a>
+                <a href="blog.html"
+                    class="font-barlow-condensed text-4xl font-bold uppercase text-white hover:text-accent tracking-tighter transition-all">Blog</a>
+                <a href="pricing.html"
+                    class="font-barlow-condensed text-4xl font-bold uppercase text-white hover:text-accent tracking-tighter transition-all">Pricing</a>
+                <a href="contact.html"
+                    class="font-barlow-condensed text-4xl font-bold uppercase text-white hover:text-accent tracking-tighter transition-all">Contact</a>
+            </div>
+
+            <!-- Mission Action Deck -->
+            <div class="w-full">
+                <div class="grid grid-cols-4 gap-4 mb-6">
+                    <button onclick="toggleTheme()"
+                        class="aspect-square flex items-center justify-center rounded-2xl bg-white/5 text-white hover:bg-accent transition-all">
+                        <i class="fas fa-moon text-xl"></i>
+                    </button>
+                    <button onclick="toggleRTL()"
+                        class="aspect-square flex items-center justify-center rounded-2xl bg-white/5 text-white hover:bg-accent transition-all">
+                        <span class="font-bold text-xs uppercase">RTL</span>
+                    </button>
+                    <a href="login.html"
+                        class="aspect-square flex items-center justify-center rounded-2xl bg-white/5 text-white hover:bg-accent transition-all">
+                        <i class="fas fa-user text-xl"></i>
+                    </a>
+                    <a href="dashboard.html"
+                        class="aspect-square flex items-center justify-center rounded-2xl bg-white/5 text-white hover:bg-accent transition-all">
+                        <i class="fas fa-cog text-xl"></i>
+                    </a>
+                </div>
+                <a href="signup.html"
+                    class="w-full block text-center py-5 bg-accent text-white rounded-2xl font-black uppercase tracking-[0.2em] text-sm hover:scale-[1.02] transition-all active:scale-95 shadow-xl shadow-accent/20">OPERATIONS
+                    SIGNUP</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-20">
+        <!-- SECTION 1: CONTACT HERO -->
+        <section class="py-24 bg-primary text-white overflow-hidden relative">
+            <div class="absolute inset-0 grid-overlay opacity-10"></div>
+            <div class="container mx-auto px-4 relative z-10 text-center">
+                <div class="max-w-4xl mx-auto">
+                    <h1
+                        class="font-barlow-condensed text-6xl md:text-9xl font-black uppercase tracking-tighter stagger-reveal leading-none mb-12">
+                        Mission <br>Logistics.</h1>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mt-20 animate-hero-reveal">
+                        <div class="p-8 border border-white/5 bg-white/5 rounded-2xl">
+                            <i class="fas fa-satellite-dish text-accent text-3xl mb-6"></i>
+                            <h5 class="font-bold text-sm uppercase tracking-widest mb-2 font-barlow-condensed">Live Ops
+                                Hub</h5>
+                            <p class="text-xs opacity-50">+1 (800) AERIAL-OPS</p>
+                        </div>
+                        <div class="p-8 border border-white/5 bg-white/5 rounded-2xl">
+                            <i class="fas fa-paper-plane text-accent text-3xl mb-6"></i>
+                            <h5 class="font-bold text-sm uppercase tracking-widest mb-2 font-barlow-condensed">Direct
+                                Uplink</h5>
+                            <p class="text-xs opacity-50">missions@aerialops.io</p>
+                        </div>
+                        <div class="p-8 border border-white/5 bg-white/5 rounded-2xl">
+                            <i class="fas fa-radar text-accent text-3xl mb-6"></i>
+                            <h5 class="font-bold text-sm uppercase tracking-widest mb-2 font-barlow-condensed">Frequency
+                                Channel</h5>
+                            <p class="text-xs opacity-50">Discord: @AERIALOPS_AIR</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: MISSION LAUNCH FORM -->
+        <section class="py-24">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col lg:flex-row gap-20">
+                    <div class="lg:w-4/12 reveal-on-scroll">
+                        <h2 class="font-barlow-condensed text-5xl font-black uppercase mb-8 stagger-reveal">Authorize
+                            <br>Deployment.
+                        </h2>
+                        <p class="opacity-60 text-lg mb-12">Submit your coordinates and mission requirements. Our
+                            navigation team will compute a flight proposal and deliver it to your encrypted dashboard in
+                            12 hours.</p>
+                        <div class="space-y-8">
+                            <div
+                                class="bg-secondary dark:bg-white/5 p-8 rounded-2xl border border-gray-100 dark:border-white/10 group">
+                                <h4 class="font-bold text-sm uppercase tracking-widest text-accent mb-4">Operational
+                                    Status</h4>
+                                <div class="flex items-center gap-4 animate-pulse">
+                                    <span class="w-3 h-3 bg-green-500 rounded-full shadow-glow-green"></span>
+                                    <span class="font-black text-xs uppercase tracking-widest">Active Fleet — All Zones
+                                        Clear</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:w-8/12 bg-white dark:bg-darkBg p-12 lg:p-20 rounded-[3rem] shadow-2xl reveal-on-scroll"
+                        style="transition-delay: 0.2s">
+                        <form class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                            <div class="col-span-1">
+                                <label
+                                    class="block text-[10px] font-black uppercase tracking-widest opacity-40 mb-3">Operational
+                                    Identity</label>
+                                <input type="text" placeholder="Full Name"
+                                    class="w-full bg-secondary/50 dark:bg-white/5 border border-transparent focus:border-accent rounded-xl px-6 py-4 outline-none transition-all">
+                            </div>
+                            <div class="col-span-1">
+                                <label
+                                    class="block text-[10px] font-black uppercase tracking-widest opacity-40 mb-3">Direct
+                                    Communication</label>
+                                <input type="email" placeholder="Email@Corporate.com"
+                                    class="w-full bg-secondary/50 dark:bg-white/5 border border-transparent focus:border-accent rounded-xl px-6 py-4 outline-none transition-all">
+                            </div>
+                            <div class="col-span-1">
+                                <label
+                                    class="block text-[10px] font-black uppercase tracking-widest opacity-40 mb-3">Mission
+                                    Type</label>
+                                <select
+                                    class="w-full bg-secondary/50 dark:bg-white/5 border border-transparent focus:border-accent rounded-xl px-6 py-4 outline-none transition-all text-sm opacity-50">
+                                    <option>Cell Tower Structural Audit</option>
+                                    <option>Pipeline Thermal Survey</option>
+                                    <option>Renewable Grid Mapping</option>
+                                    <option>Digital Twin Construction</option>
+                                </select>
+                            </div>
+                            <div class="col-span-1">
+                                <label
+                                    class="block text-[10px] font-black uppercase tracking-widest opacity-40 mb-3">Priority
+                                    Level</label>
+                                <div class="flex gap-4">
+                                    <button type="button"
+                                        class="w-full py-4 rounded-xl border-2 border-accent bg-accent text-white font-bold text-xs">STANDARD</button>
+                                    <button type="button"
+                                        class="w-full py-4 rounded-xl border-2 border-gray-100 dark:border-white/10 hover:border-accent font-bold text-xs transition-all">EMERGENCY</button>
+                                </div>
+                            </div>
+                            <div class="col-span-2">
+                                <label
+                                    class="block text-[10px] font-black uppercase tracking-widest opacity-40 mb-3">Operational
+                                    Coordinates & Requirements</label>
+                                <textarea rows="5"
+                                    placeholder="Specify mission area (lat/long or address) and key data deliverables needed..."
+                                    class="w-full bg-secondary/50 dark:bg-white/5 border border-transparent focus:border-accent rounded-xl px-6 py-4 outline-none transition-all"></textarea>
+                            </div>
+                            <div class="col-span-2">
+                                <button
+                                    class="w-full py-6 bg-primary dark:bg-accent text-white rounded-2xl font-bold uppercase tracking-widest hover:scale-[1.02] active:scale-95 transition-all shadow-2xl flex items-center justify-center gap-4">Transmit
+                                    Operational Briefing <i class="fas fa-satellite"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: GLOBAL COMMAND HUBS -->
+        <section class="py-24 bg-secondary dark:bg-primary/50 relative">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16 reveal-on-scroll">
+                    <h2
+                        class="font-barlow-condensed text-4xl font-black uppercase tracking-widest stagger-reveal text-primary dark:text-secondary">
+                        Global Command Hubs</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                    <div
+                        class="p-10 bg-white dark:bg-darkBg rounded-3xl reveal-on-scroll shadow-lg group hover:bg-accent hover:text-white transition-all">
+                        <h4
+                            class="font-bold uppercase text-[10px] tracking-[0.4em] mb-4 opacity-40 group-hover:text-white">
+                            Head Office</h4>
+                        <h3 class="font-barlow-condensed text-2xl font-black uppercase mb-6">Los Angeles, CA</h3>
+                        <p class="text-sm opacity-60 group-hover:opacity-80 mb-8">449 Innovation Way, <br>Silicon Beach,
+                            90291</p>
+                        <a href="#" class="font-black text-xs uppercase tracking-widest flex items-center gap-2">View
+                            Sector <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                    <div class="p-10 bg-white dark:bg-darkBg rounded-3xl reveal-on-scroll shadow-lg group hover:bg-accent hover:text-white transition-all"
+                        style="transition-delay: 0.1s">
+                        <h4
+                            class="font-bold uppercase text-[10px] tracking-[0.4em] mb-4 opacity-40 group-hover:text-white">
+                            Flight Base Alpha</h4>
+                        <h3 class="font-barlow-condensed text-2xl font-black uppercase mb-6">Dallas, TX</h3>
+                        <p class="text-sm opacity-60 group-hover:opacity-80 mb-8">Energy Corridor Dr., <br>Technical
+                            Hangar 04B</p>
+                        <a href="#" class="font-black text-xs uppercase tracking-widest flex items-center gap-2">View
+                            Sector <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                    <div class="p-10 bg-white dark:bg-darkBg rounded-3xl reveal-on-scroll shadow-lg group hover:bg-accent hover:text-white transition-all"
+                        style="transition-delay: 0.2s">
+                        <h4
+                            class="font-bold uppercase text-[10px] tracking-[0.4em] mb-4 opacity-40 group-hover:text-white">
+                            Global Dispatch</h4>
+                        <h3 class="font-barlow-condensed text-2xl font-black uppercase mb-6">New York, NY</h3>
+                        <p class="text-sm opacity-60 group-hover:opacity-80 mb-8">Empire Operations,<br>Suite 4490</p>
+                        <a href="#" class="font-black text-xs uppercase tracking-widest flex items-center gap-2">View
+                            Sector <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- SECTION 4: LOCATION MAP -->
+            <section class="py-24 overflow-hidden reveal-on-scroll">
+                <div class="container mx-auto px-4">
+                    <div
+                        class="h-[500px] w-full bg-white/5 border border-white/10 rounded-[3rem] overflow-hidden group shadow-2xl relative">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d105844.73356611598!2d-118.52554707018318!3d34.00405230985223!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2a4ced456d3a9%3A0xc3911d354b3ee86b!2sSilicon%20Beach%2C%20Los%20Angeles%2C%20CA!5e0!3m2!1sen!2sus!4v1711812345678!5m2!1sen!2sus"
+                            class="w-full h-full grayscale opacity-60 contrast-125 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 pointer-events-auto"
+                            style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                        <div
+                            class="absolute inset-0 pointer-events-none border-[12px] border-white dark:border-darkBg rounded-[2.5rem] opacity-20">
+                        </div>
+                    </div>
+                </div>
+            </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-primary pt-20 pb-10 border-t border-white/5">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <!-- COL 1: ABOUT -->
+                <div class="flex flex-col gap-6">
+                    <a href="index.html" class="flex items-center gap-2 group">
+                        <div class="relative w-10 h-10 flex items-center justify-center">
+                            <svg class="w-8 h-8 text-accent group-hover:text-white transition-colors"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                            </svg>
+                            <div
+                                class="absolute inset-0 animate-propeller opacity-0 group-hover:opacity-20 pointer-events-none">
+                                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-3 bg-accent rounded-full">
+                                </div>
+                                <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-3 bg-accent rounded-full">
+                                </div>
+                            </div>
+                        </div>
+                        <span
+                            class="font-barlow-condensed text-2xl font-bold tracking-tight uppercase text-white">AerialOps</span>
+                    </a>
+                    <p class="text-secondary/60 leading-relaxed">
+                        Precision industrial inspection services led by Senior UAV Pilot Marcus Vane. Specializing in
+                        high-stakes aerial data acquisition for global infrastructure leaders.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#"
+                            class="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 text-white hover:bg-accent hover:text-white transition-colors"
+                            aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 text-white hover:bg-accent hover:text-white transition-colors"
+                            aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 text-white hover:bg-accent hover:text-white transition-colors"
+                            aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <!-- COL 2: SERVICES -->
+                <div>
+                    <h4 class="font-barlow-condensed text-xl font-bold uppercase text-white mb-6 tracking-wider">
+                        Services</h4>
+                    <ul class="flex flex-col gap-3">
+                        <li><a href="service-details.html"
+                                class="text-secondary/60 hover:text-accent transition-colors">Cell Tower Audits</a></li>
+                        <li><a href="service-details.html"
+                                class="text-secondary/60 hover:text-accent transition-colors">Pipeline Surveillance</a>
+                        </li>
+                        <li><a href="service-details.html"
+                                class="text-secondary/60 hover:text-accent transition-colors">Construction Tracking</a>
+                        </li>
+                        <li><a href="service-details.html"
+                                class="text-secondary/60 hover:text-accent transition-colors">Solar Farm Analysis</a>
+                        </li>
+                        <li><a href="service-details.html"
+                                class="text-secondary/60 hover:text-accent transition-colors">Thermal Leak Detection</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- COL 3: RESOURCES -->
+                <div>
+                    <h4 class="font-barlow-condensed text-xl font-bold uppercase text-white mb-6 tracking-wider">
+                        Resources</h4>
+                    <ul class="flex flex-col gap-3">
+                        <li><a href="portfolio.html"
+                                class="text-secondary/60 hover:text-accent transition-colors">Flight Records</a></li>
+                        <li><a href="blog.html" class="text-secondary/60 hover:text-accent transition-colors">Industrial
+                                Insights</a></li>
+                        <li><a href="how-it-works.html"
+                                class="text-secondary/60 hover:text-accent transition-colors">Operation Protocol</a>
+                        </li>
+                        <li><a href="faq.html" class="text-secondary/60 hover:text-accent transition-colors">Safety
+                                FAQ</a></li>
+                        <li><a href="pricing.html" class="text-secondary/60 hover:text-accent transition-colors">Rate
+                                Manual</a></li>
+                    </ul>
+                </div>
+
+                <!-- COL 4: CONTACT -->
+                <div>
+                    <h4 class="font-barlow-condensed text-xl font-bold uppercase text-white mb-6 tracking-wider">Contact
+                    </h4>
+                    <ul class="flex flex-col gap-4">
+                        <li class="flex items-center gap-3 text-secondary/60">
+                            <i class="fas fa-envelope text-accent"></i>
+                            ops@aerialops.io
+                        </li>
+                        <li class="flex items-center gap-3 text-secondary/60">
+                            <i class="fas fa-phone text-accent"></i>
+                            +1 (555) DRONE-PILOT
+                        </li>
+                        <li class="mt-4">
+                            <a href="contact.html"
+                                class="bg-white/5 border border-white/10 text-white block text-center py-3 rounded hover:bg-white hover:text-primary font-bold transition-all uppercase tracking-widest text-sm">Get
+                                a Quote</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- COPYRIGHT -->
+            <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-secondary/40 text-sm">
+                    &copy; <span id="current-year"></span> AerialOps UAS Operations. All rights reserved.
+                </p>
+                <div class="flex gap-6 text-sm text-secondary/40">
+                    <a href="#" class="hover:text-accent">FAA Compliance</a>
+                    <a href="#" class="hover:text-accent">Privacy Policy</a>
+                    <a href="#" class="hover:text-accent">Terms of Flight</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

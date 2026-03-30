@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>AerialOps — Industrial Drone Inspection Services</title>
+    <meta name="description"
+        content="Professional drone inspection services for cell towers, pipelines and construction sites. FAA certified. 200+ flights logged.">
+
+    <!-- TAILWIND CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0A0E17',
+                        secondary: '#E8EDF5',
+                        accent: '#00AEEF',
+                        status: '#F59E0B',
+                        darkBg: '#080C14',
+                        lightBg: '#F4F6FB',
+                    },
+                    fontFamily: {
+                        'barlow-condensed': ['"Barlow Condensed"', 'sans-serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- FONTS & ICONS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dark-mode.css">
+    <link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+
+<body class="bg-lightBg text-primary dark:bg-darkBg dark:text-secondary selection:bg-accent selection:text-white">
+
+    <!-- SKIP TO CONTENT -->
+    <a href="#main-content"
+        class="sr-only focus:not-sr-only fixed top-4 left-4 z-[100] bg-accent text-white px-4 py-2 rounded">Skip to
+        content</a>
+
+    <!-- HEADER -->
+    <header
+        class="fixed top-0 left-0 w-full z-50 bg-white/80 dark:bg-darkBg/80 backdrop-blur-md border-b border-gray-200 dark:border-white/10">
+        <nav class="container mx-auto px-4 h-20 flex items-center justify-between">
+            <!-- LOGO -->
+            <a href="index.html" class="flex items-center gap-2 group">
+                <div class="relative w-10 h-10 flex items-center justify-center">
+                    <svg class="w-8 h-8 text-primary dark:text-secondary group-hover:text-accent transition-colors"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                    </svg>
+                    <div
+                        class="absolute inset-0 animate-propeller opacity-0 group-hover:opacity-20 pointer-events-none">
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-3 bg-accent rounded-full"></div>
+                        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-3 bg-accent rounded-full"></div>
+                    </div>
+                </div>
+                <span class="font-barlow-condensed text-2xl font-bold tracking-tight uppercase">AerialOps</span>
+            </a>
+
+            <!-- DESKTOP NAV -->
+            <div class="hidden xl:flex items-center gap-8">
+                <a href="index.html" class="nav-link font-medium hover:text-accent transition-colors">Home</a>
+                <a href="home-2.html" class="nav-link font-medium hover:text-accent transition-colors">Tech Home</a>
+                <a href="about.html" class="nav-link font-medium hover:text-accent transition-colors">About</a>
+                <a href="services.html" class="nav-link font-medium hover:text-accent transition-colors">Services</a>
+                <a href="blog.html" class="nav-link font-medium hover:text-accent transition-colors">Blog</a>
+                <a href="pricing.html" class="nav-link font-medium hover:text-accent transition-colors">Pricing</a>
+                <a href="contact.html" class="nav-link font-medium hover:text-accent transition-colors">Contact</a>
+                <a href="dashboard.html" class="nav-link font-medium hover:text-accent transition-colors">Dashboard</a>
+            </div>
+
+            <!-- CTAs & TOGGLES -->
+            <div class="flex items-center gap-4">
+                <a href="login.html"
+                    class="hidden sm:inline-block px-4 py-2 border-2 border-primary dark:border-secondary font-semibold rounded hover:bg-primary hover:text-white dark:hover:bg-secondary dark:hover:text-primary transition-all">Sign
+                    In</a>
+                <a href="signup.html"
+                    class="hidden sm:inline-block bg-accent text-white px-4 py-2 rounded font-bold hover:scale-105 transition-transform active:scale-95">Register</a>
+
+                <button onclick="toggleTheme()"
+                    class="theme-toggle w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 dark:bg-white/5 hover:bg-accent hover:text-white transition-colors">
+                    <i class="fas fa-moon"></i>
+                </button>
+
+                <button onclick="toggleRTL()"
+                    class="rtl-toggle w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 dark:bg-white/5 hover:bg-accent hover:text-white transition-colors">
+                    <span class="rtl-toggle-text font-bold text-sm">AR</span>
+                </button>
+
+                <button id="hamburger-btn"
+                    class="xl:hidden w-10 h-10 flex flex-col justify-center items-center gap-1.5 focus:outline-none"
+                    aria-label="Menu">
+                    <span class="w-6 h-0.5 bg-primary dark:bg-secondary rounded-full transition-transform"></span>
+                    <span class="w-6 h-0.5 bg-primary dark:bg-secondary rounded-full transition-opacity"></span>
+                    <span class="w-6 h-0.5 bg-primary dark:bg-secondary rounded-full transition-transform"></span>
+                </button>
+            </div>
+            <div id="mobile-menu"
+                class="hidden fixed inset-0 z-[999] bg-primary dark:bg-darkBg flex flex-col items-center justify-between p-8 xl:hidden transition-all duration-300">
+
+                <!-- Header Row -->
+                <div class="w-full flex justify-between items-center pt-2">
+                    <div class="flex items-center gap-2 group">
+                        <div class="relative w-10 h-10 flex items-center justify-center">
+                            <svg class="w-8 h-8 text-white group-hover:text-accent transition-colors"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                            </svg>
+                            <div
+                                class="absolute inset-0 animate-propeller opacity-0 group-hover:opacity-20 pointer-events-none">
+                                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-3 bg-accent rounded-full">
+                                </div>
+                                <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-3 bg-accent rounded-full">
+                                </div>
+                            </div>
+                        </div>
+                        <span
+                            class="font-barlow-condensed text-2xl font-bold tracking-tight uppercase text-white">AerialOps</span>
+                    </div>
+                    <button id="close-menu-btn"
+                        class="w-12 h-12 flex items-center justify-center rounded-full bg-white/10 text-white hover:bg-accent transition-all">
+                        <i class="fas fa-times text-2xl"></i>
+                    </button>
+                </div>
+
+                <!-- Main Navigation Links -->
+                <div class="flex flex-col items-center gap-6 text-center">
+                    <a href="index.html"
+                        class="font-barlow-condensed text-4xl font-bold uppercase text-white hover:text-accent tracking-tighter transition-all">Home</a>
+                    <a href="home-2.html"
+                        class="font-barlow-condensed text-4xl font-bold uppercase text-white hover:text-accent tracking-tighter transition-all">Tech
+                        Home</a>
+                    <a href="about.html"
+                        class="font-barlow-condensed text-4xl font-bold uppercase text-white hover:text-accent tracking-tighter transition-all">About</a>
+                    <a href="services.html"
+                        class="font-barlow-condensed text-4xl font-bold uppercase text-white hover:text-accent tracking-tighter transition-all">Services</a>
+                    <a href="blog.html"
+                        class="font-barlow-condensed text-4xl font-bold uppercase text-white hover:text-accent tracking-tighter transition-all">Blog</a>
+                    <a href="pricing.html"
+                        class="font-barlow-condensed text-4xl font-bold uppercase text-white hover:text-accent tracking-tighter transition-all">Pricing</a>
+                    <a href="contact.html"
+                        class="font-barlow-condensed text-4xl font-bold uppercase text-white hover:text-accent tracking-tighter transition-all">Contact</a>
+                </div>
+
+                <!-- Mission Action Deck -->
+                <div class="w-full">
+                    <div class="grid grid-cols-4 gap-4 mb-6">
+                        <button onclick="toggleTheme()"
+                            class="aspect-square flex items-center justify-center rounded-2xl bg-white/5 text-white hover:bg-accent transition-all">
+                            <i class="fas fa-moon text-xl"></i>
+                        </button>
+                        <button onclick="toggleRTL()"
+                            class="aspect-square flex items-center justify-center rounded-2xl bg-white/5 text-white hover:bg-accent transition-all">
+                            <span class="font-bold text-xs uppercase">RTL</span>
+                        </button>
+                        <a href="login.html"
+                            class="aspect-square flex items-center justify-center rounded-2xl bg-white/5 text-white hover:bg-accent transition-all">
+                            <i class="fas fa-user text-xl"></i>
+                        </a>
+                        <a href="dashboard.html"
+                            class="aspect-square flex items-center justify-center rounded-2xl bg-white/5 text-white hover:bg-accent transition-all">
+                            <i class="fas fa-cog text-xl"></i>
+                        </a>
+                    </div>
+                    <a href="signup.html"
+                        class="w-full block text-center py-5 bg-accent text-white rounded-2xl font-black uppercase tracking-[0.2em] text-sm hover:scale-[1.02] transition-all active:scale-95 shadow-xl shadow-accent/20">OPERATIONS
+                        SIGNUP</a>
+                </div>
+            </div>
+    </header>
+
+    <main id="main-content" class="pt-20">
+
+        <!-- HERO SECTION -->
+        <section class="h-screen min-h-[700px] relative overflow-hidden bg-primary grid-overlay">
+            <div class="container mx-auto px-4 h-full flex flex-col lg:flex-row items-center justify-between gap-12">
+                <!-- HERO TEXT -->
+                <div class="lg:w-7/12 flex flex-col gap-6 z-10 hero-content text-start">
+                    <h1 class="font-barlow-condensed text-5xl md:text-7xl font-extrabold uppercase text-secondary leading-tight tracking-tight reveal-on-scroll"
+                        style="transition-delay: 0.1s">
+                        Industrial Inspection, <br> <span class="text-accent">Elevated.</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl text-secondary/80 max-w-xl font-light leading-relaxed reveal-on-scroll"
+                        style="transition-delay: 0.3s">
+                        Precision aerial surveys for cell towers, pipelines, and construction sites. Delivering
+                        high-accuracy data from extreme altitudes.
+                    </p>
+                    <div class="flex flex-wrap gap-4 mt-6 reveal-on-scroll" style="transition-delay: 0.5s">
+                        <a href="pricing.html"
+                            class="bg-accent hover:bg-accent/80 text-white px-8 py-4 rounded-md font-bold text-lg transition-all animate-glow-pulse">Schedule
+                            Inspection</a>
+                        <a href="portfolio.html"
+                            class="border-2 border-secondary text-secondary hover:bg-secondary hover:text-primary px-8 py-4 rounded-md font-bold text-lg transition-all">View
+                            Portfolio</a>
+                    </div>
+                </div>
+
+                <!-- HERO VISUAL -->
+                <div class="lg:w-5/12 relative z-10 flex justify-center items-center">
+                    <div class="relative animate-float-orbit">
+                        <img src="https://images.unsplash.com/photo-1508614589041-895b88991e3e?w=800&q=80"
+                            alt="Industrial Drone Inspection"
+                            class="w-full max-w-[500px] rounded-3xl shadow-2xl shadow-accent/20 border-4 border-white/10 object-cover aspect-[4/3]"
+                            loading="priority">
+
+
+
+                    </div>
+                    <!-- SCANNING LINE ANIMATION -->
+                    <div
+                        class="absolute inset-x-0 h-0.5 bg-accent/30 shadow-[0_0_15px_rgba(0,174,239,0.5)] z-20 animate-scan">
+                    </div>
+                </div>
+            </div>
+
+            <!-- CSS DOT PARTICLES -->
+            <div class="absolute inset-0 z-0 pointer-events-none opacity-30">
+                <div class="p-dot absolute top-[10%] left-[5%] w-2 h-2 bg-accent rounded-full animate-float"></div>
+                <div
+                    class="p-dot absolute top-[40%] left-[15%] w-3 h-3 bg-secondary rounded-full animate-float delay-75">
+                </div>
+                <div class="p-dot absolute top-[80%] left-[10%] w-1 h-1 bg-accent rounded-full animate-float delay-150">
+                </div>
+                <div
+                    class="p-dot absolute top-[20%] right-[10%] w-2 h-2 bg-accent rounded-full animate-float delay-300">
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 1: TRUST BAR (Marquee) -->
+        <section class="py-12 bg-primary border-y border-white/10 overflow-hidden relative z-20">
+            <div class="flex whitespace-nowrap animate-marquee">
+                <div class="flex items-center gap-12 px-12">
+                    <span class="font-barlow-condensed text-3xl text-secondary font-bold uppercase tracking-widest">50+
+                        Industrial Clients</span>
+                    <span class="w-2 h-2 bg-accent rounded-full"></span>
+                    <span class="font-barlow-condensed text-3xl text-secondary font-bold uppercase tracking-widest">200+
+                        Flights Logged</span>
+                    <span class="w-2 h-2 bg-accent rounded-full"></span>
+                    <span class="font-barlow-condensed text-3xl text-secondary font-bold uppercase tracking-widest">FAA
+                        Part 107 Certified</span>
+                    <span class="w-2 h-2 bg-accent rounded-full"></span>
+                    <span class="font-barlow-condensed text-3xl text-secondary font-bold uppercase tracking-widest">4K +
+                        Thermal Imaging</span>
+                    <span class="w-2 h-2 bg-accent rounded-full"></span>
+                    <span class="font-barlow-condensed text-3xl text-secondary font-bold uppercase tracking-widest">0
+                        Incident Record</span>
+                    <span class="w-2 h-2 bg-accent rounded-full"></span>
+                </div>
+                <!-- Duplicate for seamless loop -->
+                <div class="flex items-center gap-12 px-12">
+                    <span class="font-barlow-condensed text-3xl text-secondary font-bold uppercase tracking-widest">50+
+                        Industrial Clients</span>
+                    <span class="w-2 h-2 bg-accent rounded-full"></span>
+                    <span class="font-barlow-condensed text-3xl text-secondary font-bold uppercase tracking-widest">200+
+                        Flights Logged</span>
+                    <span class="w-2 h-2 bg-accent rounded-full"></span>
+                    <span class="font-barlow-condensed text-3xl text-secondary font-bold uppercase tracking-widest">FAA
+                        Part 107 Certified</span>
+                    <span class="w-2 h-2 bg-accent rounded-full"></span>
+                    <span class="font-barlow-condensed text-3xl text-secondary font-bold uppercase tracking-widest">4K +
+                        Thermal Imaging</span>
+                    <span class="w-2 h-2 bg-accent rounded-full"></span>
+                    <span class="font-barlow-condensed text-3xl text-secondary font-bold uppercase tracking-widest">0
+                        Incident Record</span>
+                    <span class="w-2 h-2 bg-accent rounded-full"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: SERVICES OVERVIEW (Angled Cards) -->
+        <section class="py-20 bg-lightBg dark:bg-darkBg overflow-hidden">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16 reveal-on-scroll">
+                    <h2 class="font-barlow-condensed text-4xl md:text-5xl font-bold uppercase tracking-wide">Core
+                        Inspection Services</h2>
+                    <p class="text-lg mt-3 max-w-2xl mx-auto opacity-70">Mission-ready aerial data acquisition for
+                        critical infrastructure.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- CARD 1 -->
+                    <div class="group relative h-[450px] rounded-3xl overflow-hidden transition-all duration-500 lg:rotate-[-1deg] hover:rotate-0 reveal-on-scroll shadow-xl"
+                        style="transition-delay: 0.1s">
+                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80"
+                            alt="Cell Tower Inspection"
+                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/30 to-transparent">
+                        </div>
+                        <div class="absolute inset-0 p-8 flex flex-col justify-end">
+                            <h3 class="font-barlow-condensed text-3xl font-bold text-white mb-2 uppercase">Cell Tower
+                                <br>Audits
+                            </h3>
+                            <p class="text-white/80 mb-6">High-resolution structural assessment and visual inspections.
+                            </p>
+                            <a href="service-details.html"
+                                class="inline-flex items-center text-accent font-bold group-hover:gap-2 transition-all">Explore
+                                Service <i class="fas fa-arrow-right ml-2 group-hover:ml-4 transition-all"></i></a>
+                        </div>
+                    </div>
+                    <!-- CARD 2 -->
+                    <div class="group relative h-[450px] rounded-3xl overflow-hidden transition-all duration-500 lg:rotate-0 reveal-on-scroll shadow-xl"
+                        style="transition-delay: 0.2s">
+                        <img src="https://images.unsplash.com/photo-1563906267088-b029e7101114?w=800&q=80"
+                            alt="Pipeline Survey"
+                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/30 to-transparent">
+                        </div>
+                        <div class="absolute inset-0 p-8 flex flex-col justify-end">
+                            <h3 class="font-barlow-condensed text-3xl font-bold text-white mb-2 uppercase">Pipeline
+                                <br>Corridor Survey
+                            </h3>
+                            <p class="text-white/80 mb-6">Thermal leak detection and vegetation management surveys.</p>
+                            <a href="service-details.html"
+                                class="inline-flex items-center text-accent font-bold group-hover:gap-2 transition-all">Explore
+                                Service <i class="fas fa-arrow-right ml-2 group-hover:ml-4 transition-all"></i></a>
+                        </div>
+                        <div class="absolute top-6 right-6 px-4 py-1 bg-accent/20 border border-accent/50 rounded-full">
+                            <span class="text-accent text-xs font-bold uppercase tracking-widest">Popular</span>
+                        </div>
+                    </div>
+                    <!-- CARD 3 -->
+                    <div class="group relative h-[450px] rounded-3xl overflow-hidden transition-all duration-500 lg:rotate-[1deg] hover:rotate-0 reveal-on-scroll shadow-xl"
+                        style="transition-delay: 0.3s">
+                        <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80"
+                            alt="Construction Monitoring"
+                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/30 to-transparent">
+                        </div>
+                        <div class="absolute inset-0 p-8 flex flex-col justify-end">
+                            <h3 class="font-barlow-condensed text-3xl font-bold text-white mb-2 uppercase">Construction
+                                <br>Monitoring
+                            </h3>
+                            <p class="text-white/80 mb-6">Real-time progress tracking and volumetric reporting.</p>
+                            <a href="service-details.html"
+                                class="inline-flex items-center text-accent font-bold group-hover:gap-2 transition-all">Explore
+                                Service <i class="fas fa-arrow-right ml-2 group-hover:ml-4 transition-all"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: HOW IT WORKS (Flight Path Timeline) -->
+        <section class="py-20 bg-secondary dark:bg-primary/30 relative">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16 reveal-on-scroll">
+                    <h2 class="font-barlow-condensed text-4xl md:text-5xl font-bold uppercase tracking-wide">Flight
+                        Operations Protocol</h2>
+                    <p class="text-lg mt-3 max-w-2xl mx-auto opacity-70">A systematic approach to every mission, from
+                        takeoff to report delivery.</p>
+                </div>
+
+                <div class="relative max-w-5xl mx-auto">
+                    <!-- SVG DASHED PATH (Desktop only) -->
+                    <svg class="absolute top-1/2 left-0 w-full h-12 -translate-y-1/2 hidden lg:block pointer-events-none"
+                        viewBox="0 0 1000 100" fill="none">
+                        <path d="M0 50 Q 250 0 500 50 T 1000 50" stroke="#00AEEF" stroke-width="2"
+                            stroke-dasharray="10 10" class="draw-path" />
+                    </svg>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 relative z-10">
+                        <!-- STEP 1 -->
+                        <div class="flex flex-col items-center text-center reveal-on-scroll"
+                            style="transition-delay: 0.1s">
+                            <div
+                                class="w-32 h-32 rounded-full overflow-hidden border-4 border-accent shadow-lg mb-6 relative">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=80"
+                                    alt="Planning" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-accent/20 flex items-center justify-center">
+                                    <span
+                                        class="text-accent font-barlow-condensed text-4xl font-extrabold drop-shadow-lg">01</span>
+                                </div>
+                            </div>
+                            <h3 class="font-barlow-condensed text-2xl font-bold uppercase mb-2">Submit Request</h3>
+                            <p class="opacity-70">Define your scope, site location, and specific data requirements.</p>
+                        </div>
+                        <!-- STEP 2 -->
+                        <div class="flex flex-col items-center text-center reveal-on-scroll"
+                            style="transition-delay: 0.3s">
+                            <div
+                                class="w-32 h-32 rounded-full overflow-hidden border-4 border-accent shadow-lg mb-6 relative animate-altitude-drift">
+                                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=400&q=80"
+                                    alt="Flight" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-accent/20 flex items-center justify-center">
+                                    <span
+                                        class="text-accent font-barlow-condensed text-4xl font-extrabold drop-shadow-lg">02</span>
+                                </div>
+                            </div>
+                            <h3 class="font-barlow-condensed text-2xl font-bold uppercase mb-2">Flight Execution</h3>
+                            <p class="opacity-70">Autonomous flight path execution with real-time sensor feedback.</p>
+                        </div>
+                        <!-- STEP 3 -->
+                        <div class="flex flex-col items-center text-center reveal-on-scroll"
+                            style="transition-delay: 0.5s">
+                            <div
+                                class="w-32 h-32 rounded-full overflow-hidden border-4 border-accent shadow-lg mb-6 relative">
+                                <img src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=400&q=80"
+                                    alt="Delivery" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-accent/20 flex items-center justify-center">
+                                    <span
+                                        class="text-accent font-barlow-condensed text-4xl font-extrabold drop-shadow-lg">03</span>
+                                </div>
+                            </div>
+                            <h3 class="font-barlow-condensed text-2xl font-bold uppercase mb-2">Data Delivery</h3>
+                            <p class="opacity-70">Receive high-definition imagery and technical findings within 24
+                                hours.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: PORTFOLIO PREVIEW (Cinematic Hover Gallery) -->
+        <section class="py-20 bg-white dark:bg-darkBg">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16 reveal-on-scroll">
+                    <h2 class="font-barlow-condensed text-4xl md:text-5xl font-bold uppercase tracking-wide">Mission
+                        Records</h2>
+                    <p class="text-lg mt-3 max-w-2xl mx-auto opacity-70">Archived results from our recent industrial
+                        aerial operations.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 h-[900px]">
+                    <!-- PROJECT 1 (Large) -->
+                    <div
+                        class="md:col-span-2 md:row-span-2 relative group overflow-hidden rounded-2xl reveal-on-scroll shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1200&q=80"
+                            alt="TowerGrid Project"
+                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-primary/40 group-hover:bg-primary/20 transition-all"></div>
+                        <div class="absolute top-6 left-6 flex gap-2">
+                            <span
+                                class="px-3 py-1 bg-accent/80 text-white text-xs font-bold uppercase rounded">Infrastructure</span>
+                            <span class="px-3 py-1 bg-primary/80 text-white text-xs font-bold uppercase rounded">Sector
+                                7</span>
+                        </div>
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 bg-primary/60 backdrop-blur-sm -translate-y-full group-hover:translate-y-0"
+                            style="clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);">
+                            <div class="text-center p-8">
+                                <h3 class="font-barlow-condensed text-4xl font-bold text-white mb-4 uppercase">TowerGrid
+                                    Solutions</h3>
+                                <p class="text-white/80 max-w-sm mb-6 mx-auto">Full structural audit of 12 wireless
+                                    towers across the meridian corridor.</p>
+                                <a href="service-details.html"
+                                    class="bg-accent text-white px-6 py-3 rounded-md font-bold hover:scale-105 transition-all inline-block">View
+                                    Full Report</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PROJECT 2 -->
+                    <div class="md:col-span-2 md:row-span-1 relative group overflow-hidden rounded-2xl reveal-on-scroll shadow-lg"
+                        style="transition-delay: 0.2s">
+                        <img src="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=800&q=80"
+                            alt="BuildSite Pro" class="absolute inset-0 w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-primary/40 group-hover:bg-primary/20 transition-all"></div>
+                        <div class="absolute bottom-6 left-6">
+                            <h4 class="text-white font-barlow-condensed text-xl font-bold uppercase">Apex Renewables
+                            </h4>
+                            <p class="text-white/60 text-sm italic">Industrial Inspection</p>
+                        </div>
+                    </div>
+
+                    <!-- PROJECT 3 -->
+                    <div class="md:col-span-1 md:row-span-1 relative group overflow-hidden rounded-2xl reveal-on-scroll shadow-lg"
+                        style="transition-delay: 0.3s">
+                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=80" alt="Sector Log"
+                            class="absolute inset-0 w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-primary/40"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-play text-white/50 text-4xl"></i>
+                        </div>
+                    </div>
+
+                    <!-- PROJECT 4 -->
+                    <div class="md:col-span-1 md:row-span-1 relative group overflow-hidden rounded-2xl reveal-on-scroll shadow-lg"
+                        style="transition-delay: 0.4s">
+                        <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600&q=80"
+                            alt="Pipeline Audit" class="absolute inset-0 w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-primary/40"></div>
+                        <div class="absolute bottom-4 right-4">
+                            <span class="text-accent text-[10px] font-bold uppercase tracking-[0.2em]">Live Data
+                                Feed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: STATS COUNTER (Radar Dashboard) -->
+        <section class="py-24 bg-primary text-secondary relative overflow-hidden">
+            <div class="absolute inset-0 grid-overlay opacity-10"></div>
+
+            <!-- RADAR ANIMATION -->
+            <div
+                class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none opacity-20">
+                <div class="absolute inset-0 border border-accent/20 rounded-full"></div>
+                <div class="absolute inset-[15%] border border-accent/20 rounded-full"></div>
+                <div class="absolute inset-[30%] border border-accent/20 rounded-full"></div>
+                <div class="absolute inset-[45%] border border-accent/20 rounded-full"></div>
+                <div
+                    class="absolute top-1/2 left-1/2 w-[1px] h-[300px] bg-accent origin-bottom -translate-x-1/2 -translate-y-full animate-radar-scan">
+                </div>
+            </div>
+
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- STAT 1 -->
+                    <div class="text-center group">
+                        <div class="relative inline-block mb-4">
+                            <div
+                                class="absolute inset-0 bg-accent/20 rounded-full blur-xl group-hover:animate-glow-pulse">
+                            </div>
+                            <span
+                                class="relative font-barlow-condensed text-6xl md:text-7xl font-bold tracking-tighter text-accent stats-counter"
+                                data-count-end="200" data-suffix="+">0+</span>
+                        </div>
+                        <p
+                            class="font-barlow-condensed text-xl font-semibold uppercase tracking-widest text-secondary/60">
+                            Flights Logged</p>
+                    </div>
+                    <!-- STAT 2 -->
+                    <div class="text-center group">
+                        <div class="relative inline-block mb-4">
+                            <div
+                                class="absolute inset-0 bg-accent/20 rounded-full blur-xl group-hover:animate-glow-pulse">
+                            </div>
+                            <span
+                                class="relative font-barlow-condensed text-6xl md:text-7xl font-bold tracking-tighter text-accent stats-counter"
+                                data-count-end="50" data-suffix="+">0+</span>
+                        </div>
+                        <p
+                            class="font-barlow-condensed text-xl font-semibold uppercase tracking-widest text-secondary/60">
+                            Industrial Clients</p>
+                    </div>
+                    <!-- STAT 3 -->
+                    <div class="text-center group">
+                        <div class="relative inline-block mb-4">
+                            <div
+                                class="absolute inset-0 bg-accent/20 rounded-full blur-xl group-hover:animate-glow-pulse">
+                            </div>
+                            <span
+                                class="relative font-barlow-condensed text-6xl md:text-7xl font-bold tracking-tighter text-accent stats-counter"
+                                data-count-end="0" data-suffix="">0</span>
+                        </div>
+                        <p
+                            class="font-barlow-condensed text-xl font-semibold uppercase tracking-widest text-secondary/60">
+                            Incident Rate</p>
+                    </div>
+                    <!-- STAT 4 -->
+                    <div class="text-center group">
+                        <div class="relative inline-block mb-4">
+                            <div
+                                class="absolute inset-0 bg-accent/20 rounded-full blur-xl group-hover:animate-glow-pulse">
+                            </div>
+                            <span
+                                class="relative font-barlow-condensed text-6xl md:text-7xl font-bold tracking-tighter text-accent stats-counter"
+                                data-count-end="5" data-suffix="★">0★</span>
+                        </div>
+                        <p
+                            class="font-barlow-condensed text-xl font-semibold uppercase tracking-widest text-secondary/60">
+                            Avg. Rating</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: TESTIMONIALS (Split Layout) -->
+        <section class="py-0">
+            <!-- TOP HALF: Testimonials -->
+            <div class="py-20 bg-secondary dark:bg-primary/50">
+                <div class="container mx-auto px-4">
+                    <div class="text-center mb-16 reveal-on-scroll">
+                        <h2 class="font-barlow-condensed text-4xl md:text-5xl font-bold uppercase tracking-wide">Command
+                            Center Feedback</h2>
+                        <p class="text-lg mt-3 max-w-2xl mx-auto opacity-70">Client endorsements from the field.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <!-- TESTIMONIAL 1 -->
+                        <div
+                            class="bg-white dark:bg-darkBg p-8 rounded-2xl shadow-lg reveal-on-scroll border border-gray-100 dark:border-white/5">
+                            <div class="flex items-center gap-4 mb-6">
+                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150&q=80"
+                                    alt="Marcus" class="w-16 h-16 rounded-full object-cover">
+                                <div>
+                                    <h4 class="font-bold">Thomas Wright</h4>
+                                    <p class="text-sm opacity-60">Director, Meridian Energy</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-1 mb-4 text-accent">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <p class="italic opacity-80 leading-relaxed">"The thermal resolution from AerialOps saved us
+                                weeks of manual line inspections. Their reports are boardroom-ready."</p>
+                        </div>
+                        <!-- TESTIMONIAL 2 -->
+                        <div class="bg-white dark:bg-darkBg p-8 rounded-2xl shadow-lg reveal-on-scroll border border-gray-100 dark:border-white/5"
+                            style="transition-delay: 0.2s">
+                            <div class="flex items-center gap-4 mb-6">
+                                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&q=80"
+                                    alt="Sara" class="w-16 h-16 rounded-full object-cover">
+                                <div>
+                                    <h4 class="font-bold">Sara Jenkins</h4>
+                                    <p class="text-sm opacity-60">Project Lead, BuildSite Pro</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-1 mb-4 text-accent">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <p class="italic opacity-80 leading-relaxed">"Critical progress monitoring delivered with
+                                military precision. Marcus is the best drone pilot we've contracted."</p>
+                        </div>
+                        <!-- TESTIMONIAL 3 -->
+                        <div class="bg-white dark:bg-darkBg p-8 rounded-2xl shadow-lg reveal-on-scroll border border-gray-100 dark:border-white/5"
+                            style="transition-delay: 0.4s">
+                            <div class="flex items-center gap-4 mb-6">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&q=80"
+                                    alt="David" class="w-16 h-16 rounded-full object-cover">
+                                <div>
+                                    <h4 class="font-bold">David Chen</h4>
+                                    <p class="text-sm opacity-60">Operations, TowerGrid</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-1 mb-4 text-accent">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <p class="italic opacity-80 leading-relaxed">"Flawless execution on a very complex cell
+                                tower survey. FAA compliance and safety were top-tier throughout."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BOTTOM HALF: CTA Banner -->
+            <div class="relative bg-accent py-20 overflow-hidden">
+                <div class="absolute inset-0 grid-overlay opacity-20"></div>
+                <!-- Diagonal clip path divider -->
+                <div class="absolute -top-1 left-0 w-full h-12 bg-secondary dark:bg-primary/50"
+                    style="clip-path: polygon(0 0, 100% 0, 100% 10%, 0 100%);"></div>
+
+                <div class="container mx-auto px-4 relative z-10 text-center">
+                    <h2 class="font-barlow-condensed text-5xl md:text-7xl font-black text-white uppercase mb-8">Ready
+                        for takeoff?</h2>
+                    <p class="text-xl text-white/90 mb-10 max-w-xl mx-auto font-medium">Book your industrial inspection
+                        today and get data-driven insights delivered to your dashboard.</p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="contact.html"
+                            class="bg-primary text-white px-10 py-5 rounded-md font-bold text-xl hover:scale-105 transition-all shadow-xl">Launch
+                            Mission</a>
+                        <a href="pricing.html"
+                            class="bg-white/10 backdrop-blur-md border-2 border-white text-white px-10 py-5 rounded-md font-bold text-xl hover:bg-white hover:text-accent transition-all">Pricing
+                            Plans</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-primary pt-20 pb-10 border-t border-white/5">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <!-- COL 1: ABOUT -->
+                <div class="flex flex-col gap-6">
+                    <a href="index.html" class="flex items-center gap-2 group">
+                        <div class="relative w-10 h-10 flex items-center justify-center">
+                            <svg class="w-8 h-8 text-accent group-hover:text-white transition-colors"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                            </svg>
+                            <div
+                                class="absolute inset-0 animate-propeller opacity-0 group-hover:opacity-20 pointer-events-none">
+                                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-3 bg-accent rounded-full">
+                                </div>
+                                <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-3 bg-accent rounded-full">
+                                </div>
+                            </div>
+                        </div>
+                        <span
+                            class="font-barlow-condensed text-2xl font-bold tracking-tight uppercase text-white">AerialOps</span>
+                    </a>
+                    <p class="text-secondary/60 leading-relaxed">
+                        Precision industrial inspection services led by Senior UAV Pilot Marcus Vane. Specializing in
+                        high-stakes aerial data acquisition for global infrastructure leaders.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#"
+                            class="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 text-white hover:bg-accent hover:text-white transition-colors"
+                            aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 text-white hover:bg-accent hover:text-white transition-colors"
+                            aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 text-white hover:bg-accent hover:text-white transition-colors"
+                            aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <!-- COL 2: SERVICES -->
+                <div>
+                    <h4 class="font-barlow-condensed text-xl font-bold uppercase text-white mb-6 tracking-wider">
+                        Services</h4>
+                    <ul class="flex flex-col gap-3">
+                        <li><a href="service-details.html"
+                                class="text-secondary/60 hover:text-accent transition-colors">Cell Tower Audits</a></li>
+                        <li><a href="service-details.html"
+                                class="text-secondary/60 hover:text-accent transition-colors">Pipeline Surveillance</a>
+                        </li>
+                        <li><a href="service-details.html"
+                                class="text-secondary/60 hover:text-accent transition-colors">Construction Tracking</a>
+                        </li>
+                        <li><a href="service-details.html"
+                                class="text-secondary/60 hover:text-accent transition-colors">Solar Farm Analysis</a>
+                        </li>
+                        <li><a href="service-details.html"
+                                class="text-secondary/60 hover:text-accent transition-colors">Thermal Leak Detection</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- COL 3: RESOURCES -->
+                <div>
+                    <h4 class="font-barlow-condensed text-xl font-bold uppercase text-white mb-6 tracking-wider">
+                        Resources</h4>
+                    <ul class="flex flex-col gap-3">
+                        <li><a href="portfolio.html"
+                                class="text-secondary/60 hover:text-accent transition-colors">Flight Records</a></li>
+                        <li><a href="blog.html" class="text-secondary/60 hover:text-accent transition-colors">Industrial
+                                Insights</a></li>
+                        <li><a href="how-it-works.html"
+                                class="text-secondary/60 hover:text-accent transition-colors">Operation Protocol</a>
+                        </li>
+                        <li><a href="faq.html" class="text-secondary/60 hover:text-accent transition-colors">Safety
+                                FAQ</a></li>
+                        <li><a href="pricing.html" class="text-secondary/60 hover:text-accent transition-colors">Rate
+                                Manual</a></li>
+                    </ul>
+                </div>
+
+                <!-- COL 4: CONTACT -->
+                <div>
+                    <h4 class="font-barlow-condensed text-xl font-bold uppercase text-white mb-6 tracking-wider">Contact
+                    </h4>
+                    <ul class="flex flex-col gap-4">
+                        <li class="flex items-center gap-3 text-secondary/60">
+                            <i class="fas fa-envelope text-accent"></i>
+                            ops@aerialops.io
+                        </li>
+                        <li class="flex items-center gap-3 text-secondary/60">
+                            <i class="fas fa-phone text-accent"></i>
+                            +1 (555) DRONE-PILOT
+                        </li>
+                        <li class="mt-4">
+                            <a href="contact.html"
+                                class="bg-white/5 border border-white/10 text-white block text-center py-3 rounded hover:bg-white hover:text-primary font-bold transition-all uppercase tracking-widest text-sm">Get
+                                a Quote</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- COPYRIGHT -->
+            <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-secondary/40 text-sm">
+                    &copy; <span id="current-year"></span> AerialOps UAS Operations. All rights reserved.
+                </p>
+                <div class="flex gap-6 text-sm text-secondary/40">
+                    <a href="#" class="hover:text-accent">FAA Compliance</a>
+                    <a href="#" class="hover:text-accent">Privacy Policy</a>
+                    <a href="#" class="hover:text-accent">Terms of Flight</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="assets/js/main.js"></script>
+    <style>
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .animate-marquee {
+            animation: marquee 30s linear infinite;
+        }
+
+        @keyframes scan {
+
+            0%,
+            100% {
+                top: 0;
+            }
+
+            50% {
+                top: 100%;
+            }
+        }
+
+        .animate-scan {
+            animation: scan 4s ease-in-out infinite;
+        }
+
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Custom clip-path reveal */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .reveal-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</body>
+
+</html>

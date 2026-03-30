@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Signal Lost — 404 AerialOps</title>
+    <meta name="description" content="Operational error: The requested coordinates are out of range or do not exist.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: { primary: '#0A0E17', secondary: '#E8EDF5', accent: '#00AEEF', status: '#F59E0B' },
+                    fontFamily: { 'barlow-condensed': ['"Barlow Condensed"', 'sans-serif'], 'inter': ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body class="bg-[#080C14] text-[#E8EDF5] h-screen overflow-hidden flex items-center justify-center">
+    <!-- LOGO (Top Left) -->
+    <div class="fixed top-8 left-8 z-50">
+        <a href="index.html" class="flex items-center gap-2 group">
+            <div class="relative w-10 h-10 flex items-center justify-center">
+                <svg class="w-8 h-8 text-white group-hover:text-accent transition-colors" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                </svg>
+                <div class="absolute inset-0 animate-propeller opacity-0 group-hover:opacity-20 pointer-events-none">
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-3 bg-accent rounded-full"></div>
+                    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-3 bg-accent rounded-full"></div>
+                </div>
+            </div>
+            <span class="font-barlow-condensed text-2xl font-bold tracking-tight uppercase text-white">AerialOps</span>
+        </a>
+    </div>
+
+    <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <div class="absolute inset-0 bg-primary opacity-50"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] h-[200%] rotate-45">
+            <div class="w-full h-full animate-radar-scan opacity-10">
+                <div class="w-full h-[1px] bg-accent/20 absolute top-1/2"></div>
+            </div>
+        </div>
+        <!-- SCANLINES EFFECT -->
+        <div
+            class="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] z-10 pointer-events-none bg-[length:100%_2px,3px_100%]">
+        </div>
+    </div>
+
+    <main class="text-center relative z-20 px-4">
+        <div class="reveal-on-scroll">
+            <div class="relative inline-block mb-12">
+                <span
+                    class="font-barlow-condensed text-[15rem] md:text-[25rem] font-black uppercase text-white/5 opacity-20 pointer-events-none select-none glitch"
+                    data-text="404">404</span>
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="flex flex-col items-center">
+                        <i class="fas fa-satellite-dish text-6xl text-accent mb-8 animate-float-orbit"></i>
+                        <h1
+                            class="font-barlow-condensed text-4xl lg:text-7xl font-black uppercase tracking-widest text-white leading-tight">
+                            Signal <br>Lost.</h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="max-w-xl mx-auto mb-16">
+                <p class="text-xs uppercase tracking-[0.5em] font-black text-accent mb-4">Operational Error: Sector
+                    Invalid</p>
+                <p class="text-lg opacity-40 font-light leading-relaxed">The coordinates you’ve requested are out of
+                    broadcast range or have been classified. Mission control recommends returning to base immediately.
+                </p>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-6 justify-center max-w-lg mx-auto">
+                <a href="index.html"
+                    class="flex-grow py-5 bg-accent text-white rounded-2xl font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-xl shadow-accent/20">Return
+                    To Base</a>
+                <a href="contact.html"
+                    class="flex-grow py-5 bg-white/5 border border-white/10 rounded-2xl font-black uppercase tracking-widest hover:bg-white/10 transition-all">Support
+                    Uplink</a>
+            </div>
+
+            <p class="mt-20 text-[10px] font-mono opacity-20 uppercase tracking-[0.6em] animate-pulse">NO_SIGNAL_FOUND
+                // RETRYING_HANDSHAKE...</p>
+        </div>
+    </main>
+
+    <script src="assets/js/main.js"></script>
+    <style>
+        .glitch {
+            position: relative;
+        }
+
+        .glitch:after {
+            content: attr(data-text);
+            position: absolute;
+            left: 2px;
+            text-shadow: -1px 0 #00AEEF;
+            top: 0;
+            color: transparent;
+            overflow: hidden;
+            clip: rect(0, 900px, 0, 0);
+            animation: glitch-anim 2s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim {
+            0% {
+                clip: rect(44px, 9999px, 56px, 0);
+            }
+
+            100% {
+                clip: rect(12px, 9999px, 99px, 0);
+            }
+        }
+    </style>
+</body>
+
+</html>

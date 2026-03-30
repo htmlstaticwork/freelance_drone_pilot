@@ -1,0 +1,61 @@
+/* RTL Logical Property Overrides (Mandatory) */
+
+/* The prompt mentions: 
+   margin-inline-start, padding-inline-end, inset-inline-start, text-align: start
+   Never use margin-left, margin-right, padding-left, padding-right, left, right.
+*/
+
+[dir="rtl"] {
+    direction: rtl;
+    text-align: start;
+}
+
+[dir="ltr"] {
+    direction: ltr;
+    text-align: start;
+}
+
+/* RTL ANIMATION INVERSION */
+[dir="ltr"] .slide-reveal {
+    transform: translateX(-30px);
+    opacity: 0;
+}
+
+[dir="ltr"] .slide-reveal.visible {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+[dir="rtl"] .slide-reveal {
+    transform: translateX(30px);
+    opacity: 0;
+}
+
+[dir="rtl"] .slide-reveal.visible {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* OFFCANVAS DRAWER RTL INVERSION */
+[dir="ltr"] #mobile-menu-drawer {
+    right: 0;
+    transform: translateX(100%);
+}
+
+[dir="ltr"] #mobile-menu-drawer.open {
+    transform: translateX(0);
+}
+
+[dir="rtl"] #mobile-menu-drawer {
+    left: 0;
+    transform: translateX(-100%);
+}
+
+[dir="rtl"] #mobile-menu-drawer.open {
+    transform: translateX(0);
+}
+
+/* ARROW ICON INVERSION */
+[dir="rtl"] .arrow-icon {
+    transform: rotate(180deg);
+}

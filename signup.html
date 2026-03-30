@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Authorize Profile — AerialOps Registration</title>
+    <meta name="description" content="Request operational access to the AerialOps mission dashboard and data portal.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: { primary: '#0A0E17', secondary: '#E8EDF5', accent: '#00AEEF', status: '#F59E0B', darkBg: '#080C14', lightBg: '#F4F6FB' },
+                    fontFamily: { 'barlow-condensed': ['"Barlow Condensed"', 'sans-serif'], 'inter': ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body
+    class="bg-lightBg text-primary dark:bg-darkBg dark:text-secondary min-h-screen py-10 flex justify-center items-start lg:items-center">
+
+    <div class="fixed top-0 left-0 w-full h-full pointer-events-none z-0">
+        <div class="absolute inset-0 grid-overlay opacity-20"></div>
+    </div>
+
+    <main class="w-full max-w-2xl mx-auto px-4 relative z-10">
+        <div
+            class="bg-primary/80 backdrop-blur-3xl border border-white/5 rounded-[4rem] overflow-hidden shadow-[0_0_100px_rgba(0,174,239,0.1)] flex flex-col p-8 lg:p-16 animate-hero-reveal">
+
+            <!-- LOGO -->
+            <a href="index.html" class="flex items-center gap-2 mb-12 justify-center group">
+                <div class="relative w-10 h-10 flex items-center justify-center">
+                    <svg class="w-8 h-8 text-accent transition-colors" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                    </svg>
+                    <div
+                        class="absolute inset-0 animate-propeller opacity-0 group-hover:opacity-40 pointer-events-none">
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-3 bg-accent rounded-full"></div>
+                        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-3 bg-accent rounded-full"></div>
+                    </div>
+                </div>
+                <span
+                    class="font-barlow-condensed text-2xl font-bold tracking-tight uppercase text-white">AerialOps</span>
+            </a>
+
+            <div class="mb-8 text-center">
+                <h1
+                    class="font-barlow-condensed text-4xl lg:text-5xl font-black uppercase mb-4 text-white stagger-reveal">
+                    Authorize Profile</h1>
+                <p class="opacity-40 text-sm">Industrial infrastructure access request.</p>
+            </div>
+
+            <form class="space-y-6 stagger-reveal">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label
+                            class="block text-[10px] font-black uppercase tracking-[0.3em] opacity-40 ml-1">Identity</label>
+                        <input type="text" placeholder="Full Name"
+                            class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white outline-none focus:border-accent transition-all">
+                    </div>
+                    <div class="space-y-2">
+                        <label
+                            class="block text-[10px] font-black uppercase tracking-[0.3em] opacity-40 ml-1">Organization</label>
+                        <input type="text" placeholder="Company"
+                            class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white outline-none focus:border-accent transition-all">
+                    </div>
+                </div>
+
+                <div class="space-y-2">
+                    <label class="block text-[10px] font-black uppercase tracking-[0.3em] opacity-40 ml-1">Uplink
+                        Address</label>
+                    <input type="email" placeholder="Corporate Domain Only"
+                        class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white outline-none focus:border-accent transition-all">
+                </div>
+
+                <div class="space-y-2">
+                    <label class="block text-[10px] font-black uppercase tracking-[0.3em] opacity-40 ml-1">Operational
+                        Sector</label>
+                    <select
+                        class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white/50 outline-none focus:border-accent transition-all text-sm">
+                        <option>Infrastructure Auditing</option>
+                        <option>Energy Site Management</option>
+                        <option>Construction Oversight</option>
+                    </select>
+                </div>
+
+                <div class="space-y-2">
+                    <label class="block text-[10px] font-black uppercase tracking-[0.3em] opacity-40 ml-1">Access
+                        Logic</label>
+                    <textarea rows="3" placeholder="Briefly state mission objectives for this profile..."
+                        class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white outline-none focus:border-accent transition-all"></textarea>
+                </div>
+
+                <button
+                    class="w-full py-6 bg-accent text-white rounded-2xl font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-xl shadow-accent/20">Init
+                    Request Validation</button>
+
+                <p class="text-center text-[10px] opacity-20 uppercase font-black tracking-widest mt-8">Already
+                    authorized? <a href="login.html" class="text-accent hover:underline decoration-2">Access
+                        Portal</a></p>
+            </form>
+        </div>
+    </main>
+
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

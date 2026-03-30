@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Mission-Grade Aerial Intelligence — AerialOps</title>
+    <meta name="description"
+        content="Technical drone inspection services with advanced sensor fusion and mission-ready deployment. Thermal, LiDAR, 4K.">
+
+    <!-- TAILWIND CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0A0E17',
+                        secondary: '#E8EDF5',
+                        accent: '#00AEEF',
+                        status: '#F59E0B',
+                        darkBg: '#080C14',
+                        lightBg: '#F4F6FB',
+                    },
+                    fontFamily: {
+                        'barlow-condensed': ['"Barlow Condensed"', 'sans-serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- FONTS & ICONS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dark-mode.css">
+    <link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+
+<body class="bg-lightBg text-primary dark:bg-darkBg dark:text-secondary selection:bg-accent selection:text-white">
+
+    <!-- HEADER (Shared Structure) -->
+    <header
+        class="fixed top-0 left-0 w-full z-50 bg-white/80 dark:bg-darkBg/80 backdrop-blur-md border-b border-gray-200 dark:border-white/10 text-primary dark:text-secondary">
+        <nav class="container mx-auto px-4 h-20 flex items-center justify-between">
+            <!-- LOGO -->
+            <a href="index.html" class="flex items-center gap-2 group">
+                <div class="relative w-10 h-10 flex items-center justify-center">
+                    <svg class="w-8 h-8 text-primary dark:text-secondary group-hover:text-accent transition-colors"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                    </svg>
+                    <div
+                        class="absolute inset-0 animate-propeller opacity-0 group-hover:opacity-20 pointer-events-none">
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-3 bg-accent rounded-full"></div>
+                        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-3 bg-accent rounded-full"></div>
+                    </div>
+                </div>
+                <span class="font-barlow-condensed text-2xl font-bold tracking-tight uppercase">AerialOps</span>
+            </a>
+
+            <!-- DESKTOP NAV -->
+            <div class="hidden xl:flex items-center gap-8">
+                <a href="index.html" class="nav-link font-medium hover:text-accent transition-colors">Home</a>
+                <a href="home-2.html" class="nav-link font-medium hover:text-accent transition-colors">Tech Home</a>
+                <a href="about.html" class="nav-link font-medium hover:text-accent transition-colors">About</a>
+                <a href="services.html" class="nav-link font-medium hover:text-accent transition-colors">Services</a>
+                <a href="blog.html" class="nav-link font-medium hover:text-accent transition-colors">Blog</a>
+                <a href="pricing.html" class="nav-link font-medium hover:text-accent transition-colors">Pricing</a>
+                <a href="contact.html" class="nav-link font-medium hover:text-accent transition-colors">Contact</a>
+                <a href="dashboard.html" class="nav-link font-medium hover:text-accent transition-colors">Dashboard</a>
+            </div>
+
+            <!-- CTAs & TOGGLES -->
+            <div class="flex items-center gap-4">
+                <a href="login.html"
+                    class="hidden sm:inline-block px-4 py-2 border-2 border-primary dark:border-secondary font-semibold rounded hover:bg-primary hover:text-white dark:hover:bg-secondary dark:hover:text-primary transition-all">Sign
+                    In</a>
+                <a href="signup.html"
+                    class="hidden sm:inline-block bg-accent text-white px-4 py-2 rounded font-bold hover:scale-105 transition-transform active:scale-95">Register</a>
+
+                <button onclick="toggleTheme()"
+                    class="theme-toggle w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 dark:bg-white/5 hover:bg-accent hover:text-white transition-colors">
+                    <i class="fas fa-moon"></i>
+                </button>
+
+                <button onclick="toggleRTL()"
+                    class="rtl-toggle w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 dark:bg-white/5 hover:bg-accent hover:text-white transition-colors">
+                    <span class="rtl-toggle-text font-bold text-sm">AR</span>
+                </button>
+
+                <button id="hamburger-btn"
+                    class="xl:hidden w-10 h-10 flex flex-col justify-center items-center gap-1.5 focus:outline-none"
+                    aria-label="Menu">
+                    <span class="w-6 h-0.5 bg-primary dark:bg-secondary rounded-full transition-transform"></span>
+                    <span class="w-6 h-0.5 bg-primary dark:bg-secondary rounded-full transition-opacity"></span>
+                    <span class="w-6 h-0.5 bg-primary dark:bg-secondary rounded-full transition-transform"></span>
+                </button>
+            </div>
+        </nav>
+
+        <div id="mobile-menu"
+            class="hidden fixed inset-0 z-[999] bg-primary dark:bg-darkBg flex flex-col items-center justify-between p-8 xl:hidden transition-all duration-300">
+
+            <!-- Header Row -->
+            <div class="w-full flex justify-between items-center pt-2">
+                <div class="flex items-center gap-2 group">
+                    <div class="relative w-10 h-10 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-white group-hover:text-accent transition-colors" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                        </svg>
+                        <div
+                            class="absolute inset-0 animate-propeller opacity-0 group-hover:opacity-20 pointer-events-none">
+                            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-3 bg-accent rounded-full"></div>
+                            <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-3 bg-accent rounded-full">
+                            </div>
+                        </div>
+                    </div>
+                    <span
+                        class="font-barlow-condensed text-2xl font-bold tracking-tight uppercase text-white">AerialOps</span>
+                </div>
+                <button id="close-menu-btn"
+                    class="w-12 h-12 flex items-center justify-center rounded-full bg-white/10 text-white hover:bg-accent transition-all">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </div>
+
+            <!-- Main Navigation Links -->
+            <div class="flex flex-col items-center gap-6 text-center">
+                <a href="index.html"
+                    class="font-barlow-condensed text-4xl font-bold uppercase text-white hover:text-accent tracking-tighter transition-all">Home</a>
+                <a href="home-2.html"
+                    class="font-barlow-condensed text-4xl font-bold uppercase text-white hover:text-accent tracking-tighter transition-all">Tech
+                    Home</a>
+                <a href="about.html"
+                    class="font-barlow-condensed text-4xl font-bold uppercase text-white hover:text-accent tracking-tighter transition-all">About</a>
+                <a href="services.html"
+                    class="font-barlow-condensed text-4xl font-bold uppercase text-white hover:text-accent tracking-tighter transition-all">Services</a>
+                <a href="blog.html"
+                    class="font-barlow-condensed text-4xl font-bold uppercase text-white hover:text-accent tracking-tighter transition-all">Blog</a>
+                <a href="pricing.html"
+                    class="font-barlow-condensed text-4xl font-bold uppercase text-white hover:text-accent tracking-tighter transition-all">Pricing</a>
+                <a href="contact.html"
+                    class="font-barlow-condensed text-4xl font-bold uppercase text-white hover:text-accent tracking-tighter transition-all">Contact</a>
+            </div>
+
+            <!-- Mission Action Deck -->
+            <div class="w-full">
+                <div class="grid grid-cols-4 gap-4 mb-6">
+                    <button onclick="toggleTheme()"
+                        class="aspect-square flex items-center justify-center rounded-2xl bg-white/5 text-white hover:bg-accent transition-all">
+                        <i class="fas fa-moon text-xl"></i>
+                    </button>
+                    <button onclick="toggleRTL()"
+                        class="aspect-square flex items-center justify-center rounded-2xl bg-white/5 text-white hover:bg-accent transition-all">
+                        <span class="font-bold text-xs uppercase">RTL</span>
+                    </button>
+                    <a href="login.html"
+                        class="aspect-square flex items-center justify-center rounded-2xl bg-white/5 text-white hover:bg-accent transition-all">
+                        <i class="fas fa-user text-xl"></i>
+                    </a>
+                    <a href="dashboard.html"
+                        class="aspect-square flex items-center justify-center rounded-2xl bg-white/5 text-white hover:bg-accent transition-all">
+                        <i class="fas fa-cog text-xl"></i>
+                    </a>
+                </div>
+                <a href="signup.html"
+                    class="w-full block text-center py-5 bg-accent text-white rounded-2xl font-black uppercase tracking-[0.2em] text-sm hover:scale-[1.02] transition-all active:scale-95 shadow-xl shadow-accent/20">OPERATIONS
+                    SIGNUP</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-0">
+        <!-- HERO SECTION (Cinematic Fullscreen) -->
+        <section class="h-screen relative flex items-center justify-center overflow-hidden">
+            <!-- BG IMAGE -->
+            <div class="absolute inset-0 z-0">
+                <img src="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=1600&q=80"
+                    alt="Aerial Industrial" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-primary/70 backdrop-blur-[2px]"></div>
+            </div>
+
+            <!-- GRID OVERLAY -->
+            <div class="absolute inset-0 grid-overlay opacity-30 z-10"
+                style="background-image: repeating-linear-gradient(45deg, rgba(0,174,239,0.1) 0px, rgba(0,174,239,0.1) 1px, transparent 1px, transparent 100px);">
+            </div>
+
+            <!-- HERO CONTENT -->
+            <div class="container mx-auto px-4 relative z-20 text-center">
+                <h1
+                    class="font-barlow-condensed text-6xl md:text-9xl font-black uppercase text-white mb-6 tracking-tighter stagger-reveal">
+                    Mission-Grade <br>Intelligence
+                </h1>
+                <p id="typewriter"
+                    class="text-xl md:text-2xl font-mono text-accent uppercase tracking-widest mb-10 h-8 line-reveal">
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-6 justify-center mt-12 btn-reveal">
+                    <a href="#operational-data"
+                        class="bg-white text-primary px-10 py-5 rounded-md font-bold text-xl hover:bg-accent hover:text-white transition-all transform hover:-translate-y-1">Initialize
+                        Sensor Array</a>
+                    <a href="services.html"
+                        class="border-2 border-white/50 text-white px-10 py-5 rounded-md font-bold text-xl hover:border-accent hover:text-accent transition-all">System
+                        Specs</a>
+                </div>
+            </div>
+
+            <!-- HUD ELEMENTS (Fixed corners) -->
+            <div class="absolute top-32 right-12 text-end hidden xl:block">
+                <span class="text-xs text-accent font-bold uppercase tracking-widest block mb-2 opacity-50">Operational
+                    Altitude</span>
+                <span class="font-barlow-condensed text-4xl font-bold text-white tracking-widest"
+                    id="alt-counter">0</span><span class="text-accent font-bold ml-1">FT</span>
+            </div>
+            <div class="absolute bottom-12 left-12 hidden xl:block">
+                <div
+                    class="w-24 h-24 border border-accent/30 rounded-full flex items-center justify-center animate-radar-scan">
+                    <div class="w-1 h-12 bg-accent origin-bottom -translate-y-6"></div>
+                    <div class="absolute inset-0 border-t-4 border-accent rounded-full opacity-20"></div>
+                </div>
+                <span class="text-[10px] text-accent font-bold uppercase tracking-widest block text-center mt-4">Compass
+                    Rose V1.0</span>
+            </div>
+
+            <!-- CROSSHAIR TARGETING -->
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-none z-15">
+                <div class="w-64 h-64 border border-accent/20 rounded-full relative animate-pulse">
+                    <div class="absolute top-1/2 left-0 w-8 h-0.5 bg-accent"></div>
+                    <div class="absolute top-1/2 right-0 w-8 h-0.5 bg-accent"></div>
+                    <div class="absolute top-0 left-1/2 w-0.5 h-8 bg-accent"></div>
+                    <div class="absolute bottom-0 left-1/2 w-0.5 h-8 bg-accent"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 1: SERVICE CHIPS (Horizontal Scroll) -->
+        <section class="py-12 bg-gray-50 dark:bg-primary border-y border-gray-200 dark:border-white/10"
+            id="operational-data">
+            <div class="container mx-auto px-4 overflow-x-auto scrollbar-hide">
+                <div class="flex gap-4 min-w-max pb-4">
+                    <button
+                        class="flex items-center gap-4 bg-gray-200/50 dark:bg-white/5 hover:bg-accent transition-all p-2 pr-6 rounded-full border border-gray-200 dark:border-white/10 group active">
+                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=100&q=80"
+                            class="w-12 h-12 rounded-full object-cover" alt="Cell Tower">
+                        <span class="font-barlow-condensed text-lg font-bold uppercase">Cell Towers</span>
+                    </button>
+                    <button
+                        class="flex items-center gap-4 bg-gray-200/50 dark:bg-white/5 hover:bg-accent transition-all p-2 pr-6 rounded-full border border-gray-200 dark:border-white/10 group">
+                        <img src="https://images.unsplash.com/photo-1563906267088-b029e7101114?w=100&q=80"
+                            class="w-12 h-12 rounded-full object-cover" alt="Pipeline">
+                        <span class="font-barlow-condensed text-lg font-bold uppercase">Pipelines</span>
+                    </button>
+                    <button
+                        class="flex items-center gap-4 bg-gray-200/50 dark:bg-white/5 hover:bg-accent transition-all p-2 pr-6 rounded-full border border-gray-200 dark:border-white/10 group">
+                        <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=100&q=80"
+                            class="w-12 h-12 rounded-full object-cover" alt="Construction">
+                        <span class="font-barlow-condensed text-lg font-bold uppercase">Construction Site</span>
+                    </button>
+                    <button
+                        class="flex items-center gap-4 bg-gray-200/50 dark:bg-white/5 hover:bg-accent transition-all p-2 pr-6 rounded-full border border-gray-200 dark:border-white/10 group">
+                        <img src="https://images.unsplash.com/photo-1509391366360-fe5bb60583d0?w=100&q=80"
+                            class="w-12 h-12 rounded-full object-cover" alt="Solar">
+                        <span class="font-barlow-condensed text-lg font-bold uppercase">Solar Farms</span>
+                    </button>
+                    <button
+                        class="flex items-center gap-4 bg-gray-200/50 dark:bg-white/5 hover:bg-accent transition-all p-2 pr-6 rounded-full border border-gray-200 dark:border-white/10 group">
+                        <img src="https://images.unsplash.com/photo-1466611653911-954554ca2a70?w=100&q=80"
+                            class="w-12 h-12 rounded-full object-cover" alt="Wind">
+                        <span class="font-barlow-condensed text-lg font-bold uppercase">Wind Turbines</span>
+                    </button>
+                    <button
+                        class="flex items-center gap-4 bg-gray-200/50 dark:bg-white/5 hover:bg-accent transition-all p-2 pr-6 rounded-full border border-gray-200 dark:border-white/10 group">
+                        <img src="https://images.unsplash.com/photo-1620216518903-888989f666b6?w=100&q=80"
+                            class="w-12 h-12 rounded-full object-cover" alt="Thermal">
+                        <span class="font-barlow-condensed text-lg font-bold uppercase">Thermal Audit</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: BENTO GRID FEATURES -->
+        <section class="py-20 bg-white dark:bg-darkBg">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16 reveal-on-scroll">
+                    <h2
+                        class="font-barlow-condensed text-4xl md:text-5xl font-bold uppercase tracking-wide text-primary dark:text-secondary">
+                        Payload
+                        Capabilities</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[250px]">
+                    <!-- Feature 1 (Large) -->
+                    <div
+                        class="md:col-span-2 md:row-span-2 relative group overflow-hidden rounded-3xl reveal-on-scroll">
+                        <img src="https://images.unsplash.com/photo-1508614589041-895b88991e3e?w=800&q=80"
+                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            alt="4K Video">
+                        <div class="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent">
+                        </div>
+                        <div class="absolute bottom-8 left-8">
+                            <h3 class="font-barlow-condensed text-3xl font-bold uppercase text-white mb-2">ULTRA-HD 4K
+                                DATA</h3>
+                            <p class="text-white/60">Cinematic clarity for detailed visual inspections.</p>
+                        </div>
+                        <div class="absolute inset-0 bg-accent/20 opacity-0 group-hover:opacity-100 transition-opacity">
+                        </div>
+                    </div>
+                    <!-- Feature 2 -->
+                    <div class="md:col-span-2 md:row-span-1 relative group overflow-hidden rounded-3xl reveal-on-scroll"
+                        style="transition-delay: 0.2s">
+                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80"
+                            class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                            alt="Thermal">
+                        <div class="absolute inset-0 bg-primary/40 group-hover:bg-accent/40 transition-colors"></div>
+                        <div class="absolute inset-0 p-8 flex flex-col justify-end">
+                            <h3 class="font-barlow-condensed text-2xl font-bold uppercase text-white">Thermal Scanning
+                            </h3>
+                        </div>
+                    </div>
+                    <!-- Feature 3 -->
+                    <div class="md:col-span-1 md:row-span-1 relative group overflow-hidden rounded-3xl reveal-on-scroll"
+                        style="transition-delay: 0.3s">
+                        <img src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=600&q=80"
+                            class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                            alt="LiDAR">
+                        <div class="absolute inset-0 bg-primary/60"></div>
+                        <div class="absolute inset-0 p-6 flex items-center justify-center text-center">
+                            <h3 class="font-barlow-condensed text-xl font-bold uppercase text-white">LiDAR <br>Point
+                                Cloud</h3>
+                        </div>
+                    </div>
+                    <!-- Feature 4 -->
+                    <div class="md:col-span-1 md:row-span-1 relative group overflow-hidden rounded-3xl reveal-on-scroll"
+                        style="transition-delay: 0.4s">
+                        <img src="https://images.unsplash.com/photo-1563906267088-b029e7101114?w=600&q=80"
+                            class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                            alt="Reporting">
+                        <div class="absolute inset-0 bg-primary/60"></div>
+                        <div class="absolute inset-0 p-6 flex items-center justify-center text-center">
+                            <h3 class="font-barlow-condensed text-xl font-bold uppercase text-white">Same-Day
+                                <br>Reports
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: SPLIT STATS PANEL -->
+        <section class="flex flex-col lg:flex-row min-h-[600px]">
+            <div
+                class="lg:w-1/2 bg-gray-50 dark:bg-primary p-12 lg:p-24 flex flex-col justify-center relative overflow-hidden">
+                <div class="absolute inset-0 grid-overlay opacity-5"></div>
+                <div class="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-12">
+                    <div class="reveal-on-scroll">
+                        <span class="text-accent font-barlow-condensed text-6xl font-black block stats-counter"
+                            data-count-end="2300" data-suffix="+">0</span>
+                        <span
+                            class="text-primary/60 dark:text-secondary/60 uppercase tracking-widest text-sm font-bold">Data
+                            Points
+                            Captured</span>
+                    </div>
+                    <div class="reveal-on-scroll" style="transition-delay: 0.2s">
+                        <span class="text-accent font-barlow-condensed text-6xl font-black block stats-counter"
+                            data-count-end="99" data-suffix="%">0%</span>
+                        <span
+                            class="text-primary/60 dark:text-secondary/60 uppercase tracking-widest text-sm font-bold">Accuracy
+                            Metric</span>
+                    </div>
+                    <div class="reveal-on-scroll" style="transition-delay: 0.4s">
+                        <span class="text-accent font-barlow-condensed text-6xl font-black block stats-counter"
+                            data-count-end="12" data-suffix="ms">0ms</span>
+                        <span
+                            class="text-primary/60 dark:text-secondary/60 uppercase tracking-widest text-sm font-bold">Latency
+                            Response</span>
+                    </div>
+                    <div class="reveal-on-scroll" style="transition-delay: 0.6s">
+                        <span class="text-accent font-barlow-condensed text-6xl font-black block stats-counter"
+                            data-count-end="450" data-suffix="TB">0TB</span>
+                        <span
+                            class="text-primary/60 dark:text-secondary/60 uppercase tracking-widest text-sm font-bold">Processed
+                            Data</span>
+                    </div>
+                </div>
+            </div>
+            <div class="lg:w-1/2 bg-white relative overflow-hidden group">
+                <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1200&q=80"
+                    class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                    alt="Industrial Data">
+                <div class="absolute inset-0 bg-accent/20 mix-blend-overlay"></div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: VIDEO CTA SECTION -->
+        <section class="py-24 bg-white dark:bg-darkBg text-center overflow-hidden relative">
+            <div class="container mx-auto px-4 z-10 relative">
+                <h2
+                    class="font-barlow-condensed text-5xl md:text-7xl font-bold uppercase text-primary dark:text-white mb-10">
+                    See the
+                    Technology <br>in Action</h2>
+                <div class="relative group max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-2xl reveal-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1508614589041-895b88991e3e?w=1200&q=80"
+                        alt="Drone Video Thumbnail" class="w-full aspect-video object-cover">
+                    <div class="absolute inset-0 bg-primary/40 flex items-center justify-center">
+                        <button
+                            class="w-24 h-24 bg-accent text-white rounded-full flex items-center justify-center animate-glow-pulse group-hover:scale-110 transition-transform">
+                            <i class="fas fa-play text-2xl ml-2"></i>
+                        </button>
+                    </div>
+                    <div
+                        class="absolute bottom-6 left-6 text-start p-4 bg-primary/60 backdrop-blur-md border border-white/5 rounded-xl">
+                        <span class="text-accent text-[10px] font-bold uppercase tracking-widest mb-1 block">Live Stream
+                            Preview</span>
+                        <span class="text-white text-sm font-mono">CHANNEL_01: SECTOR_7_FLIGHT_LOG</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: CERTIFICATIONS & EQUIPMENT GRID -->
+        <section class="py-20 bg-gray-50 dark:bg-primary border-y border-gray-200 dark:border-white/5">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16 reveal-on-scroll">
+                    <h2
+                        class="font-barlow-condensed text-4xl font-bold uppercase tracking-widest text-primary dark:text-white">
+                        Certified Arsenal
+                    </h2>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                    <!-- Equipment 1 -->
+                    <div
+                        class="bg-white/5 border border-white/10 p-6 rounded-2xl text-center group hover:border-accent transition-all reveal-on-scroll">
+                        <img src="https://images.unsplash.com/photo-1524143986875-3b098d78b363?w=200&q=80"
+                            class="w-full h-32 object-contain mb-4 grayscale group-hover:grayscale-0 transition-transform duration-500 animate-altitude-drift"
+                            alt="DJI Matrice">
+                        <h4 class="font-bold text-sm text-primary dark:text-secondary uppercase tracking-tighter">
+                            Matrice 350 RTK</h4>
+                    </div>
+                    <!-- Equipment 2 -->
+                    <div class="bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 p-6 rounded-2xl text-center group hover:border-accent transition-all reveal-on-scroll"
+                        style="transition-delay: 0.1s">
+                        <img src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=200&q=80"
+                            class="w-full h-32 object-contain mb-4 grayscale group-hover:grayscale-0 transition-transform duration-500"
+                            alt="LiDAR">
+                        <h4 class="font-bold text-sm text-primary dark:text-secondary uppercase tracking-tighter">
+                            Zenmuse L2 LiDAR</h4>
+                    </div>
+                    <!-- Equipment 3 -->
+                    <div class="bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 p-6 rounded-2xl text-center group hover:border-accent transition-all reveal-on-scroll"
+                        style="transition-delay: 0.2s">
+                        <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=200&q=80"
+                            class="w-full h-32 object-contain mb-4 grayscale group-hover:grayscale-0 transition-transform duration-500 animate-altitude-drift"
+                            alt="FLIR">
+                        <h4 class="font-bold text-sm text-primary dark:text-secondary uppercase tracking-tighter">FLIR
+                            Vue Pro R</h4>
+                    </div>
+                    <!-- Equipment 4 -->
+                    <div class="bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 p-6 rounded-2xl text-center group hover:border-accent transition-all reveal-on-scroll"
+                        style="transition-delay: 0.3s">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=200&q=80"
+                            class="w-full h-32 object-contain mb-4 grayscale group-hover:grayscale-0 transition-transform duration-500"
+                            alt="FAA">
+                        <h4 class="font-bold text-sm text-primary dark:text-secondary uppercase tracking-tighter">FAA
+                            Part 107</h4>
+                    </div>
+                    <!-- Equipment 5 -->
+                    <div class="bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 p-6 rounded-2xl text-center group hover:border-accent transition-all reveal-on-scroll"
+                        style="transition-delay: 0.4s">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=200&q=80"
+                            class="w-full h-32 object-contain mb-4 grayscale group-hover:grayscale-0 transition-transform duration-500 animate-altitude-drift"
+                            alt="Software">
+                        <h4 class="font-bold text-sm text-primary dark:text-secondary uppercase tracking-tighter">
+                            Propeller Data</h4>
+                    </div>
+                    <!-- Equipment 6 -->
+                    <div class="bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 p-6 rounded-2xl text-center group hover:border-accent transition-all reveal-on-scroll"
+                        style="transition-delay: 0.5s">
+                        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=200&q=80"
+                            class="w-full h-32 object-contain mb-4 grayscale group-hover:grayscale-0 transition-transform duration-500"
+                            alt="Insurance">
+                        <h4 class="font-bold text-sm text-primary dark:text-secondary uppercase tracking-tighter">Global
+                            Liability</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: TESTIMONIALS MASONRY + NEWSLETTER -->
+        <section class="flex flex-col lg:flex-row border-t border-white/5">
+            <div class="lg:w-7/12 p-12 lg:p-24 bg-white dark:bg-darkBg border-e border-gray-100 dark:border-white/5">
+                <h3
+                    class="font-barlow-condensed text-4xl font-bold uppercase mb-12 tracking-wide text-primary dark:text-white">
+                    Field Intelligence
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div
+                        class="bg-gray-50 dark:bg-primary/50 border border-gray-100 dark:border-white/5 p-8 rounded-2xl reveal-on-scroll">
+                        <div class="flex gap-1 text-accent mb-4"><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i></div>
+                        <p class="text-primary/80 dark:text-secondary/80 italic mb-6">"Precision was our #1 requirement
+                            for the sector 7
+                            pipeline survey. AerialOps delivered orthomosaics with sub-centimeter accuracy."</p>
+                        <div class="flex items-center gap-3">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80"
+                                class="w-10 h-10 rounded-full object-cover">
+                            <span class="text-sm font-bold">Robert Miller <span
+                                    class="block text-xs font-normal opacity-50">Chief Ops, Pipeline Corp</span></span>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-gray-50 dark:bg-primary/50 border border-gray-100 dark:border-white/5 p-8 rounded-2xl reveal-on-scroll">
+                        <div class="flex gap-1 text-accent mb-4"><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i></div>
+                        <p class="text-primary/80 dark:text-secondary/80 italic mb-6">"The thermal leak detection report
+                            was so clear we
+                            could dispatch repair crews immediately. Remarkable turnaround time."</p>
+                        <div class="flex items-center gap-3">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80"
+                                class="w-10 h-10 rounded-full object-cover">
+                            <span class="text-sm font-bold">Amanda Stark <span
+                                    class="block text-xs font-normal opacity-50">Eng Director, Apex</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="lg:w-5/12 p-12 lg:p-24 flex flex-col justify-center bg-gray-50 dark:bg-primary">
+                <h3 class="font-barlow-condensed text-4xl font-bold uppercase mb-4 text-primary dark:text-white">Get
+                    Technical Intel</h3>
+                <p class="text-primary/60 dark:text-secondary/60 mb-8">Join the operational list for advanced case
+                    studies and regulatory
+                    updates.</p>
+                <form class="flex flex-col gap-4">
+                    <input type="email" placeholder="Your Operational Email"
+                        class="bg-white dark:bg-darkBg border border-gray-200 dark:border-white/10 rounded-md p-4 text-primary dark:text-white focus:border-accent outline-none">
+                    <button
+                        class="bg-accent text-white font-bold py-4 rounded-md uppercase tracking-widest hover:bg-accent/80 transition-all">Request
+                        Access</button>
+                    <p class="text-[10px] text-primary/40 dark:text-white/40 italic">By subscribing, you agree to our
+                        Flight Data Privacy
+                        Policy.</p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER (Condensed for Home-2) -->
+    <!-- FOOTER -->
+    <footer class="bg-primary pt-20 pb-10 border-t border-white/5">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <!-- COL 1: ABOUT -->
+                <div class="flex flex-col gap-6">
+                    <a href="index.html" class="flex items-center gap-2 group">
+                        <div class="relative w-10 h-10 flex items-center justify-center">
+                            <svg class="w-8 h-8 text-accent group-hover:text-white transition-colors"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                            </svg>
+                            <div
+                                class="absolute inset-0 animate-propeller opacity-0 group-hover:opacity-20 pointer-events-none">
+                                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-3 bg-accent rounded-full">
+                                </div>
+                                <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-3 bg-accent rounded-full">
+                                </div>
+                            </div>
+                        </div>
+                        <span
+                            class="font-barlow-condensed text-2xl font-bold tracking-tight uppercase text-white">AerialOps</span>
+                    </a>
+                    <p class="text-secondary/60 leading-relaxed">
+                        Precision industrial inspection services led by Senior UAV Pilot Marcus Vane. Specializing in
+                        high-stakes aerial data acquisition for global infrastructure leaders.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#"
+                            class="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 text-white hover:bg-accent hover:text-white transition-colors"
+                            aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 text-white hover:bg-accent hover:text-white transition-colors"
+                            aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 text-white hover:bg-accent hover:text-white transition-colors"
+                            aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <!-- COL 2: SERVICES -->
+                <div>
+                    <h4 class="font-barlow-condensed text-xl font-bold uppercase text-white mb-6 tracking-wider">
+                        Services</h4>
+                    <ul class="flex flex-col gap-3">
+                        <li><a href="service-details.html"
+                                class="text-secondary/60 hover:text-accent transition-colors">Cell Tower Audits</a></li>
+                        <li><a href="service-details.html"
+                                class="text-secondary/60 hover:text-accent transition-colors">Pipeline Surveillance</a>
+                        </li>
+                        <li><a href="service-details.html"
+                                class="text-secondary/60 hover:text-accent transition-colors">Construction Tracking</a>
+                        </li>
+                        <li><a href="service-details.html"
+                                class="text-secondary/60 hover:text-accent transition-colors">Solar Farm Analysis</a>
+                        </li>
+                        <li><a href="service-details.html"
+                                class="text-secondary/60 hover:text-accent transition-colors">Thermal Leak Detection</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- COL 3: RESOURCES -->
+                <div>
+                    <h4 class="font-barlow-condensed text-xl font-bold uppercase text-white mb-6 tracking-wider">
+                        Resources</h4>
+                    <ul class="flex flex-col gap-3">
+                        <li><a href="portfolio.html"
+                                class="text-secondary/60 hover:text-accent transition-colors">Flight Records</a></li>
+                        <li><a href="blog.html" class="text-secondary/60 hover:text-accent transition-colors">Industrial
+                                Insights</a></li>
+                        <li><a href="how-it-works.html"
+                                class="text-secondary/60 hover:text-accent transition-colors">Operation Protocol</a>
+                        </li>
+                        <li><a href="faq.html" class="text-secondary/60 hover:text-accent transition-colors">Safety
+                                FAQ</a></li>
+                        <li><a href="pricing.html" class="text-secondary/60 hover:text-accent transition-colors">Rate
+                                Manual</a></li>
+                    </ul>
+                </div>
+
+                <!-- COL 4: CONTACT -->
+                <div>
+                    <h4 class="font-barlow-condensed text-xl font-bold uppercase text-white mb-6 tracking-wider">Contact
+                    </h4>
+                    <ul class="flex flex-col gap-4">
+                        <li class="flex items-center gap-3 text-secondary/60">
+                            <i class="fas fa-envelope text-accent"></i>
+                            ops@aerialops.io
+                        </li>
+                        <li class="flex items-center gap-3 text-secondary/60">
+                            <i class="fas fa-phone text-accent"></i>
+                            +1 (555) DRONE-PILOT
+                        </li>
+                        <li class="mt-4">
+                            <a href="contact.html"
+                                class="bg-white/5 border border-white/10 text-white block text-center py-3 rounded hover:bg-white hover:text-primary font-bold transition-all uppercase tracking-widest text-sm">Get
+                                a Quote</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- COPYRIGHT -->
+            <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-secondary/40 text-sm">
+                    &copy; <span id="current-year"></span> AerialOps UAS Operations. All rights reserved.
+                </p>
+                <div class="flex gap-6 text-sm text-secondary/40">
+                    <a href="#" class="hover:text-accent">FAA Compliance</a>
+                    <a href="#" class="hover:text-accent">Privacy Policy</a>
+                    <a href="#" class="hover:text-accent">Terms of Flight</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="assets/js/main.js"></script>
+    <script>
+        // TYPEWRITER EFFECT
+        const textArea = document.getElementById('typewriter');
+        const phrases = ["Eyes in the Sky. Data on the Ground.", "Mission-Ready Aerial Data Acquisition.", "Industrial-Grade Sensor Fusion."];
+        let i = 0;
+        let j = 0;
+        let currentPhrase = "";
+        let isDeleting = false;
+
+        function type() {
+            currentPhrase = phrases[i];
+
+            if (isDeleting) {
+                textArea.innerText = currentPhrase.substring(0, j - 1);
+                j--;
+            } else {
+                textArea.innerText = currentPhrase.substring(0, j + 1);
+                j++;
+            }
+
+            let typeSpeed = 100;
+            if (isDeleting) typeSpeed /= 2;
+
+            if (!isDeleting && j === currentPhrase.length) {
+                isDeleting = true;
+                typeSpeed = 2000;
+            } else if (isDeleting && j === 0) {
+                isDeleting = false;
+                i = (i + 1) % phrases.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+
+        type();
+
+        // ALTITUDE COUNTER
+        const altEl = document.getElementById('alt-counter');
+        let altValue = 0;
+        setInterval(() => {
+            if (altValue < 420) {
+                altValue += Math.floor(Math.random() * 5);
+                if (altValue > 420) altValue = 420;
+                altEl.innerText = altValue;
+            }
+        }, 50);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,349 @@
+/* GLOBAL OVERRIDES */
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary: #0A0E17;
+  --secondary: #E8EDF5;
+  --accent: #00AEEF;
+  --status: #F59E0B;
+  --bg-light: #F4F6FB;
+  --bg-dark: #080C14;
+  --text-light: #0A0E17;
+  --text-dark: #E8EDF5;
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  font-family: 'Inter', sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.font-barlow-condensed {
+  font-family: 'Barlow Condensed', sans-serif;
+}
+
+/* ANIMATIONS */
+@keyframes altitudeDrift {
+
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  30% {
+    transform: translateY(-10px) rotate(0.3deg);
+  }
+
+  70% {
+    transform: translateY(-5px) rotate(-0.3deg);
+  }
+}
+
+@keyframes radarScan {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dataReveal {
+  from {
+    clip-path: inset(0 100% 0 0);
+    opacity: 0;
+  }
+
+  to {
+    clip-path: inset(0 0% 0 0);
+    opacity: 1;
+  }
+}
+
+@keyframes propellerSpin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes floatOrbit {
+  0% {
+    transform: translateY(0) translateX(0) scale(1);
+  }
+
+  25% {
+    transform: translateY(-15px) translateX(8px) scale(1.02);
+  }
+
+  50% {
+    transform: translateY(-8px) translateX(-5px) scale(0.99);
+  }
+
+  75% {
+    transform: translateY(-20px) translateX(3px) scale(1.01);
+  }
+
+  100% {
+    transform: translateY(0) translateX(0) scale(1);
+  }
+}
+
+@keyframes glowPulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 174, 239, 0);
+  }
+
+  50% {
+    box-shadow: 0 0 30px 8px rgba(0, 174, 239, 0.25);
+  }
+}
+
+@keyframes gridLineScan {
+  0% {
+    opacity: 0.03;
+  }
+
+  50% {
+    opacity: 0.08;
+  }
+
+  100% {
+    opacity: 0.03;
+  }
+}
+
+@keyframes counterUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroReveal {
+  0% {
+    opacity: 0;
+    filter: blur(12px);
+    transform: translateY(40px);
+  }
+
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes splitReveal {
+  from {
+    clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+    opacity: 0;
+  }
+
+  to {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    opacity: 1;
+  }
+}
+
+@keyframes magneticPull {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.04);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* UTILITY CLASSES */
+.animate-altitude-drift {
+  animation: altitudeDrift 4s ease-in-out infinite;
+}
+
+.animate-radar-scan {
+  animation: radarScan 10s linear infinite;
+}
+
+.animate-float-orbit {
+  animation: floatOrbit 6s ease-in-out infinite;
+}
+
+.animate-glow-pulse {
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+.animate-propeller {
+  animation: propellerSpin 1s linear infinite;
+}
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-out;
+}
+
+.reveal-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* MOBILE NAV HORIZONTAL SCROLL */
+#mobile-nav-row {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  gap: 1.5rem;
+  padding: 1rem;
+  white-space: nowrap;
+  background: var(--bg-light);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+[data-theme="dark"] #mobile-nav-row {
+  background: var(--bg-dark);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#mobile-nav-row::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari, Opera */
+}
+
+/* THEME AWARE ICON FILTER */
+.theme-icon {
+  filter: var(--toggler-filter);
+  transition: filter 0.3s ease;
+}
+
+/* SECTION HEADINGS - CENTERED */
+.section-heading {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-heading h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* REDUCED MOTION */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* GRID OVERLAY */
+.grid-overlay {
+  background-image: repeating-linear-gradient(rgba(0, 174, 239, 0.05) 0px, rgba(0, 174, 239, 0.05) 1px, transparent 1px, transparent 40px),
+    repeating-linear-gradient(90deg, rgba(0, 174, 239, 0.05) 0px, rgba(0, 174, 239, 0.05) 1px, transparent 1px, transparent 40px);
+}
+
+/* CUSTOM BUTTONS */
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--secondary);
+  border-radius: 0.375rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  font-weight: 500;
+  transition: transform 0.2s;
+}
+
+.btn-primary:active {
+  animation: magneticPull 0.3s ease;
+}
+
+.btn-outline {
+  border: 2px solid var(--primary);
+  background-color: transparent;
+  color: var(--primary);
+  border-radius: 0.375rem;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+[data-theme="dark"] .btn-outline {
+  border-color: var(--text-dark);
+  color: var(--text-dark);
+}
+
+.btn-outline:hover {
+  background-color: var(--primary);
+  color: var(--secondary);
+}
+
+[data-theme="dark"] .btn-outline:hover {
+  background-color: var(--secondary);
+  color: var(--primary);
+}
+
+/* CARDS */
+.aerial-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  border-radius: 0.75rem;
+}
+
+.aerial-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* MOBILE NAVIGATION SOLID BACKGROUND */
+#mobile-menu {
+  background-color: #0A0E17 !important;
+  /* Force solid background */
+  opacity: 1 !important;
+  z-index: 1000 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+}
+
+[data-theme="dark"] #mobile-menu {
+  background-color: #080C14 !important;
+}
+
+/* Ensure contrast and visibility */
+#mobile-menu .font-barlow-condensed,
+#mobile-menu a,
+#mobile-menu span {
+  color: #FFFFFF !important;
+}
+
+#mobile-menu a:hover {
+  background-color: var(--accent) !important;
+}

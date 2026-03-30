@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Global Command Center — AerialOps Dashboard</title>
+    <meta name="description" content="Secure mission control and data management for industrial aerial operations.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: { primary: '#0A0E17', secondary: '#E8EDF5', accent: '#00AEEF', status: '#F59E0B', darkBg: '#080C14', lightBg: '#F4F6FB' },
+                    fontFamily: { 'barlow-condensed': ['"Barlow Condensed"', 'sans-serif'], 'inter': ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body class="bg-lightBg text-primary dark:bg-darkBg dark:text-secondary h-screen overflow-hidden font-inter">
+
+    <div class="flex h-full w-full relative">
+        <!-- SIDEBAR NAVIGATION (Desktop Only) -->
+        <aside
+            class="hidden xl:flex w-72 bg-primary border-r border-white/5 flex-col h-full z-20 transition-all duration-300">
+            <div class="h-20 flex items-center px-8 border-b border-white/5 mb-8">
+                <a href="index.html" class="flex items-center gap-2 group">
+                    <div class="relative w-10 h-10 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-white group-hover:text-accent transition-colors" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                        </svg>
+                        <div
+                            class="absolute inset-0 animate-propeller opacity-0 group-hover:opacity-40 pointer-events-none">
+                            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-3 bg-accent rounded-full"></div>
+                            <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-3 bg-accent rounded-full">
+                            </div>
+                        </div>
+                    </div>
+                    <span
+                        class="font-barlow-condensed text-2xl font-bold tracking-tight uppercase text-white">AerialOps</span>
+                </a>
+            </div>
+
+            <nav class="flex-grow space-y-2 px-4 text-start">
+                <button
+                    class="w-full flex items-center justify-start gap-4 p-4 rounded-xl bg-accent text-white font-bold text-xs uppercase tracking-widest dashboard-nav-btn active"
+                    data-view="overview">
+                    <i class="fas fa-th-large text-lg"></i>
+                    <span>Overview</span>
+                </button>
+                <button
+                    class="w-full flex items-center justify-start gap-4 p-4 rounded-xl hover:bg-white/5 text-white/40 font-bold text-xs uppercase tracking-widest transition-all dashboard-nav-btn"
+                    data-view="missions">
+                    <i class="fas fa-plane-departure text-lg"></i>
+                    <span>Missions</span>
+                </button>
+                <button
+                    class="w-full flex items-center justify-start gap-4 p-4 rounded-xl hover:bg-white/5 text-white/40 font-bold text-xs uppercase tracking-widest transition-all dashboard-nav-btn"
+                    data-view="vault">
+                    <i class="fas fa-database text-lg"></i>
+                    <span>Data Vault</span>
+                </button>
+                <button
+                    class="w-full flex items-center justify-start gap-4 p-4 rounded-xl hover:bg-white/5 text-white/40 font-bold text-xs uppercase tracking-widest transition-all dashboard-nav-btn"
+                    data-view="analytics">
+                    <i class="fas fa-chart-area text-lg"></i>
+                    <span>Analytics</span>
+                </button>
+                <div class="py-10 border-t border-white/5 mt-auto"></div>
+                <button
+                    class="w-full flex items-center justify-start gap-4 p-4 rounded-xl hover:bg-white/5 text-white/40 font-bold text-xs uppercase tracking-widest transition-all dashboard-nav-btn"
+                    data-view="settings">
+                    <i class="fas fa-cog text-lg"></i>
+                    <span>Settings</span>
+                </button>
+            </nav>
+
+            <div class="h-24 bg-white/5 border-t border-white/5 flex items-center px-8 gap-4 text-start">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80"
+                    class="w-10 h-10 rounded-full grayscale border border-accent/40" alt="Avatar">
+                <div>
+                    <h6 class="text-xs font-black uppercase tracking-widest text-white">Marcus Vane</h6>
+                    <p class="text-[8px] opacity-40 uppercase tracking-widest">Global Admin</p>
+                </div>
+                <a href="index.html" class="flex ml-auto text-white/20 hover:text-red-500 transition-colors">
+                    <i class="fas fa-power-off"></i>
+                </a>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT AREA -->
+        <main class="flex-grow overflow-y-auto bg-lightBg dark:bg-[#080C14] relative transition-all duration-300">
+
+            <!-- MOBILE HEADER (Sticky) -->
+            <div
+                class="xl:hidden sticky top-0 w-full h-20 bg-primary/95 backdrop-blur-md border-b border-white/5 px-6 flex items-center justify-between z-40">
+                <a href="index.html" class="flex items-center gap-2 group">
+                    <div class="relative w-10 h-10 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-white group-hover:text-accent transition-colors" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                        </svg>
+                        <div
+                            class="absolute inset-0 animate-propeller opacity-0 group-hover:opacity-40 pointer-events-none">
+                            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-3 bg-accent rounded-full"></div>
+                            <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-3 bg-accent rounded-full">
+                            </div>
+                        </div>
+                    </div>
+                    <span
+                        class="font-barlow-condensed text-2xl font-bold tracking-tight uppercase text-white">AerialOps</span>
+                </a>
+                <div class="flex items-center gap-4">
+                    <button
+                        class="dashboard-theme-toggle w-10 h-10 flex items-center justify-center rounded-full bg-white/5 text-white hover:bg-accent transition-colors">
+                        <i class="fas fa-moon text-lg"></i>
+                    </button>
+                    <button id="hamburger-btn"
+                        class="w-10 h-10 flex flex-col justify-center items-center gap-1.5 focus:outline-none">
+                        <span class="w-6 h-0.5 bg-secondary rounded-full"></span>
+                        <span class="w-6 h-0.5 bg-secondary rounded-full"></span>
+                        <span class="w-6 h-0.5 bg-secondary rounded-full"></span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="p-8 xl:p-12 relative h-full">
+                <div class="absolute inset-0 pointer-events-none z-0">
+                    <div class="absolute inset-0 grid-overlay opacity-5 animate-pulse"></div>
+                </div>
+
+                <!-- VIEW: OVERVIEW -->
+                <div id="view-overview" class="dashboard-view space-y-12 block relative z-10">
+                    <header class="flex justify-between items-end mb-16 animate-hero-reveal">
+                        <div>
+                            <span
+                                class="text-accent font-bold uppercase text-[10px] tracking-[0.5em] mb-4 block">Command_Center_V4.2</span>
+                            <h1 class="font-barlow-condensed text-4xl lg:text-7xl font-black uppercase leading-none">
+                                Global
+                                <br>Overview.
+                            </h1>
+                        </div>
+                        <div class="flex items-center gap-6">
+                            <button
+                                class="dashboard-theme-toggle w-12 h-12 flex items-center justify-center rounded-2xl bg-white/5 text-white hover:bg-accent transition-all border border-white/10">
+                                <i class="fas fa-moon text-xl"></i>
+                            </button>
+                            <div class="text-right">
+                                <span class="block text-[8px] font-black uppercase opacity-20 tracking-widest">Local
+                                    Signal</span>
+                                <span class="text-green-500 font-mono text-sm">ENCRYPTED_99%</span>
+                            </div>
+                        </div>
+                    </header>
+
+                    <!-- STATS GRID -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 stagger-reveal text-start">
+                        <div
+                            class="p-8 bg-secondary dark:bg-white/5 border border-primary/5 dark:border-white/10 rounded-3xl hover:border-accent transition-all animate-altitude-drift">
+                            <div class="flex justify-between items-start mb-6">
+                                <i class="fas fa-plane text-accent text-2xl"></i>
+                                <span class="text-accent bg-accent/20 px-2 py-1 rounded text-[8px] font-bold">LIVE
+                                    MISSION</span>
+                            </div>
+                            <h4 class="text-3xl font-barlow-condensed font-black mb-2">SECTOR 7A</h4>
+                            <p class="text-[10px] opacity-40 uppercase font-black tracking-widest">Mission Active — TX
+                            </p>
+                        </div>
+                        <div
+                            class="p-8 bg-secondary dark:bg-white/5 border border-primary/5 dark:border-white/10 rounded-3xl hover:border-accent transition-all text-start">
+                            <div class="flex justify-between items-start mb-6">
+                                <i class="fas fa-file-invoice text-accent text-2xl"></i>
+                            </div>
+                            <h4 class="text-3xl font-barlow-condensed font-black mb-2">14 REPORTS</h4>
+                            <p class="text-[10px] opacity-40 uppercase font-black tracking-widest">Pending Review</p>
+                        </div>
+                        <div class="p-8 bg-secondary dark:bg-white/5 border border-primary/5 dark:border-white/10 rounded-3xl hover:border-accent transition-all animate-altitude-drift text-start"
+                            style="animation-delay: 0.2s">
+                            <div class="flex justify-between items-start mb-6">
+                                <i class="fas fa-satellite text-status text-2xl"></i>
+                                <span
+                                    class="text-status bg-status/20 px-2 py-1 rounded text-[8px] font-bold">STANDBY</span>
+                            </div>
+                            <h4 class="text-3xl font-barlow-condensed font-black mb-2">GRID BETA</h4>
+                            <p class="text-[10px] opacity-40 uppercase font-black tracking-widest">Awaiting Uplink — CA
+                            </p>
+                        </div>
+                        <div
+                            class="p-8 bg-secondary dark:bg-white/5 border border-primary/5 dark:border-white/10 rounded-3xl hover:border-accent transition-all text-start">
+                            <div class="flex justify-between items-start mb-6">
+                                <i class="fas fa-database text-accent text-2xl"></i>
+                            </div>
+                            <h4 class="text-3xl font-barlow-condensed font-black mb-2 text-primary dark:text-white">2.4
+                                TB</h4>
+                            <p class="text-[10px] opacity-40 uppercase font-black tracking-widest">Storage Utilized</p>
+                        </div>
+                    </div>
+
+                    <!-- MAIN DISPLAY -->
+                    <div class="flex flex-col lg:flex-row gap-8 stagger-reveal text-start">
+                        <div
+                            class="lg:w-8/12 bg-white/5 border border-white/10 rounded-[3rem] h-[500px] relative overflow-hidden group shadow-2xl">
+                            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1200&q=80"
+                                class="w-full h-full object-cover grayscale opacity-20" alt="Map Overlay">
+                            <div class="absolute inset-0 grid-overlay opacity-30 animate-radar-scan"></div>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div
+                                    class="text-center p-6 md:p-12 bg-black/60 backdrop-blur-3xl rounded-[2rem] border border-white/10">
+                                    <i class="fas fa-crosshairs text-accent text-4xl mb-6"></i>
+                                    <h4 class="font-barlow-condensed text-2xl font-black uppercase mb-2">Satellite
+                                        Uplink
+                                        Offline</h4>
+                                    <p class="text-xs opacity-50 uppercase tracking-widest">Select mission sector to
+                                        initiate live visual</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lg:w-4/12 flex flex-col gap-8">
+                            <div
+                                class="bg-accent p-10 rounded-[2.5rem] text-white flex-grow relative overflow-hidden group text-start">
+                                <div class="absolute inset-0 grid-overlay opacity-20"></div>
+                                <h4
+                                    class="font-barlow-condensed text-3xl font-black uppercase mb-6 leading-tight relative z-10">
+                                    New Feature: <br>BIM Data <br>Sync Engine</h4>
+                                <button
+                                    class="bg-primary text-white p-4 px-8 rounded-xl font-bold uppercase text-[10px] tracking-widest relative z-10 group-hover:bg-black transition-all">Initiate
+                                    Update</button>
+                            </div>
+                            <div
+                                class="bg-secondary dark:bg-white/5 border border-primary/5 dark:border-white/10 p-10 rounded-[2.5rem] flex-grow text-start">
+                                <h4
+                                    class="font-barlow-condensed text-2xl font-black uppercase mb-6 border-b border-white/10 pb-4">
+                                    Recent Logs</h4>
+                                <ul class="space-y-4">
+                                    <li
+                                        class="flex items-center gap-4 text-xs font-bold opacity-40 hover:opacity-100 transition-all cursor-pointer">
+                                        <span class="w-2 h-2 bg-accent rounded-full"></span>
+                                        TX_SITE_AUDIT_COMPLETE.PDF
+                                    </li>
+                                    <li
+                                        class="flex items-center gap-4 text-xs font-bold opacity-40 hover:opacity-100 transition-all cursor-pointer">
+                                        <span class="w-2 h-2 bg-accent rounded-full"></span>
+                                        CA_THERMAL_ALERT_FIXED
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VIEW: MISSIONS (HIDDEN) -->
+                <div id="view-missions" class="dashboard-view space-y-12 hidden relative z-10 text-start">
+                    <h1 class="font-barlow-condensed text-4xl lg:text-7xl font-black uppercase leading-none">Mission
+                        <br>Logistics.
+                    </h1>
+                    <div class="bg-white/5 border border-white/10 rounded-[2rem] overflow-x-auto">
+                        <table class="w-full text-start text-xs font-bold uppercase tracking-widest min-w-[600px]">
+                            <thead class="bg-white/5 border-b border-white/10 text-accent">
+                                <tr class="h-16">
+                                    <th class="px-8 text-start">Mission ID</th>
+                                    <th class="px-8 text-start">Sector</th>
+                                    <th class="px-8 text-start">Date</th>
+                                    <th class="px-8 text-start">Payload</th>
+                                    <th class="px-8 text-start">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody class="opacity-80">
+                                <tr
+                                    class="h-20 border-b border-primary/5 dark:border-white/5 hover:bg-white/5 transition-all text-primary dark:text-white">
+                                    <td class="px-8 font-mono">#TX-L2-449</td>
+                                    <td class="px-8">AUSTIN_ENERGY_GRID</td>
+                                    <td class="px-8">2026.03.15</td>
+                                    <td class="px-8">LIDAR_POINT_CLOUD</td>
+                                    <td class="px-8"><span
+                                            class="px-3 py-1 bg-green-500/20 text-green-500 rounded">COMPLETE</span>
+                                    </td>
+                                </tr>
+                                <tr
+                                    class="h-20 border-b border-primary/5 dark:border-white/5 hover:bg-white/5 transition-all text-primary dark:text-white">
+                                    <td class="px-8 font-mono">#CA-TP-012</td>
+                                    <td class="px-8">APEX_SOLAR_CORRIDOR</td>
+                                    <td class="px-8">2026.03.20</td>
+                                    <td class="px-8">THERMAL_RADIOMETRIC</td>
+                                    <td class="px-8"><span
+                                            class="px-3 py-1 bg-accent/20 text-accent rounded">SCHEDULED</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- OTHER VIEWS -->
+                <div id="view-vault" class="dashboard-view hidden text-start">
+                    <h1 class="font-barlow-condensed text-4xl lg:text-7xl font-black uppercase leading-none">Data Vault.
+                    </h1>
+                    <p class="opacity-40 uppercase tracking-[0.5em] mt-12">Search_Archive_Initializing...</p>
+                </div>
+                <div id="view-analytics" class="dashboard-view hidden text-start">
+                    <h1 class="font-barlow-condensed text-4xl lg:text-7xl font-black uppercase leading-none">Defect
+                        Analytics.</h1>
+                    <p class="opacity-40 uppercase tracking-[0.5em] mt-12">Processing_Visual_Fidelity_Sync...</p>
+                </div>
+                <div id="view-settings" class="dashboard-view hidden text-start">
+                    <h1 class="font-barlow-condensed text-4xl lg:text-7xl font-black uppercase leading-none">Site
+                        Settings.</h1>
+                    <p class="opacity-40 uppercase tracking-[0.5em] mt-12">Authentication_Validation_Protocol...</p>
+                </div>
+            </div>
+        </main>
+
+        <!-- MOBILE MENU DRAWER (Drawer from Right) -->
+        <div id="mobile-menu"
+            class="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm hidden transition-all duration-300">
+            <div id="mobile-menu-content"
+                class="absolute right-0 top-0 h-full w-4/5 max-w-sm bg-primary border-l border-white/5 flex flex-col p-8 translate-x-full transition-transform duration-300">
+                <div class="flex justify-between items-center mb-12">
+                    <span
+                        class="font-barlow-condensed text-2xl font-black uppercase tracking-tight text-white">Menu</span>
+                    <button id="close-menu-btn" class="text-white opacity-40 hover:opacity-100">
+                        <i class="fas fa-times text-2xl"></i>
+                    </button>
+                </div>
+
+                <nav class="flex flex-col gap-6 text-start">
+                    <button
+                        class="flex items-center gap-4 text-white hover:text-accent font-barlow-condensed text-2xl font-bold uppercase tracking-tight dashboard-nav-btn"
+                        data-view="overview">
+                        <i class="fas fa-th-large w-8"></i> Overview
+                    </button>
+                    <button
+                        class="flex items-center gap-4 text-white hover:text-accent font-barlow-condensed text-2xl font-bold uppercase tracking-tight dashboard-nav-btn"
+                        data-view="missions">
+                        <i class="fas fa-plane-departure w-8"></i> Missions
+                    </button>
+                    <button
+                        class="flex items-center gap-4 text-white hover:text-accent font-barlow-condensed text-2xl font-bold uppercase tracking-tight dashboard-nav-btn"
+                        data-view="vault">
+                        <i class="fas fa-database w-8"></i> Data Vault
+                    </button>
+                    <button
+                        class="flex items-center gap-4 text-white hover:text-accent font-barlow-condensed text-2xl font-bold uppercase tracking-tight dashboard-nav-btn"
+                        data-view="analytics">
+                        <i class="fas fa-chart-area w-8"></i> Analytics
+                    </button>
+                    <button
+                        class="flex items-center gap-4 text-white hover:text-accent font-barlow-condensed text-2xl font-bold uppercase tracking-tight dashboard-nav-btn"
+                        data-view="settings">
+                        <i class="fas fa-cog w-8"></i> Settings
+                    </button>
+                </nav>
+
+                <div class="mt-auto border-t border-white/5 pt-8 flex items-center gap-4 text-start">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80"
+                        class="w-12 h-12 rounded-full grayscale border border-accent/40" alt="Avatar">
+                    <div>
+                        <h6 class="text-sm font-black uppercase tracking-widest text-white">Marcus Vane</h6>
+                        <p class="text-[10px] opacity-40 uppercase tracking-widest">Global Admin</p>
+                    </div>
+                    <a href="index.html" class="flex ml-auto text-white/20 hover:text-red-500">
+                        <i class="fas fa-power-off text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/dashboard.js"></script>
+</body>
+
+</html>
