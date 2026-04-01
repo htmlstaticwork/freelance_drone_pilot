@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
     <title>Operational Access — AerialOps Login</title>
     <meta name="description" content="Access your mission dashboard, flight data, and technical reports securely.">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -23,7 +24,7 @@
 </head>
 
 <body
-    class="bg-lightBg text-primary dark:bg-darkBg dark:text-secondary min-h-screen py-10 flex justify-center items-start lg:items-center">
+    class="bg-lightBg text-primary dark:bg-darkBg dark:text-secondary min-h-screen pt-24 pb-10 sm:py-10 flex justify-center items-start lg:items-center">
 
     <div class="fixed top-0 left-0 w-full h-full pointer-events-none z-0">
         <div class="absolute inset-0 grid-overlay opacity-20"></div>
@@ -31,9 +32,20 @@
         <div class="absolute top-0 left-1/2 w-[1px] h-full bg-accent/10 -translate-x-1/2"></div>
     </div>
 
+    <div class="fixed top-4 right-4 sm:top-6 sm:right-6 z-20 flex items-center gap-3">
+        <button onclick="toggleTheme()"
+            class="theme-toggle w-10 h-10 flex items-center justify-center rounded-full bg-white border border-gray-200 text-primary hover:bg-accent hover:text-white dark:bg-white/5 dark:border-white/10 dark:text-white transition-colors">
+            <i class="fas fa-moon"></i>
+        </button>
+        <button onclick="toggleRTL()"
+            class="rtl-toggle w-10 h-10 flex items-center justify-center rounded-full bg-white border border-gray-200 text-primary hover:bg-accent hover:text-white dark:bg-white/5 dark:border-white/10 dark:text-white transition-colors">
+            <span class="rtl-toggle-text font-bold text-sm">AR</span>
+        </button>
+    </div>
+
     <main class="w-full max-w-xl mx-auto px-4 relative z-10">
         <div
-            class="bg-primary/80 backdrop-blur-3xl border border-white/5 rounded-[4rem] overflow-hidden shadow-[0_0_100px_rgba(0,174,239,0.1)] flex flex-col p-8 lg:p-16 animate-hero-reveal">
+            class="bg-white dark:bg-primary/80 backdrop-blur-3xl border border-gray-200 dark:border-white/5 rounded-[4rem] overflow-hidden shadow-[0_0_100px_rgba(0,174,239,0.1)] flex flex-col p-8 lg:p-16 animate-hero-reveal">
 
             <!-- LOGO -->
             <a href="index.html" class="flex items-center gap-2 mb-12 justify-center group">
@@ -49,43 +61,43 @@
                     </div>
                 </div>
                 <span
-                    class="font-barlow-condensed text-2xl font-bold tracking-tight uppercase text-white">AerialOps</span>
+                    class="font-barlow-condensed text-[1.75rem] sm:text-2xl font-bold tracking-tight uppercase text-primary dark:text-white">AerialOps</span>
             </a>
 
             <div class="mb-8 text-center">
                 <h1
-                    class="font-barlow-condensed text-4xl lg:text-5xl font-black uppercase mb-4 text-white stagger-reveal">
+                    class="font-barlow-condensed text-4xl lg:text-5xl font-black uppercase mb-4 text-primary dark:text-white stagger-reveal">
                     Operational Login</h1>
-                <p class="opacity-40 text-sm">Enter your mission-assigned credentials below.</p>
+                <p class="text-sm text-primary/50 dark:text-secondary/40">Enter your mission-assigned credentials below.</p>
             </div>
 
             <form class="space-y-8 stagger-reveal" action="dashboard.html">
                 <div class="space-y-3">
-                    <label class="block text-[10px] font-black uppercase tracking-[0.3em] opacity-40 ml-1">Uplink
+                    <label class="block text-[10px] font-black uppercase tracking-[0.3em] text-primary/40 dark:text-secondary/40 ml-1">Uplink
                         Address</label>
                     <div class="relative group">
                         <input type="email" placeholder="ops@company.com"
-                            class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 text-white outline-none focus:border-accent transition-all pl-14">
+                            class="w-full bg-secondary/70 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl px-6 py-5 text-primary dark:text-white outline-none focus:border-accent transition-all pl-14">
                         <i
-                            class="fas fa-envelope absolute left-6 top-1/2 -translate-y-1/2 opacity-20 text-lg group-hover:text-accent transition-all"></i>
+                            class="fas fa-envelope absolute left-6 top-1/2 -translate-y-1/2 text-primary/20 dark:text-white/20 text-lg group-hover:text-accent transition-all"></i>
                     </div>
                 </div>
 
                 <div class="space-y-3">
-                    <label class="block text-[10px] font-black uppercase tracking-[0.3em] opacity-40 ml-1">Access
+                    <label class="block text-[10px] font-black uppercase tracking-[0.3em] text-primary/40 dark:text-secondary/40 ml-1">Access
                         Key</label>
                     <div class="relative group">
                         <input type="password" placeholder="••••••••••••"
-                            class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 text-white outline-none focus:border-accent transition-all pl-14">
+                            class="w-full bg-secondary/70 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl px-6 py-5 text-primary dark:text-white outline-none focus:border-accent transition-all pl-14">
                         <i
-                            class="fas fa-lock absolute left-6 top-1/2 -translate-y-1/2 opacity-20 text-lg group-hover:text-accent transition-all"></i>
+                            class="fas fa-lock absolute left-6 top-1/2 -translate-y-1/2 text-primary/20 dark:text-white/20 text-lg group-hover:text-accent transition-all"></i>
                     </div>
                     <div class="flex justify-between items-center px-1">
                         <label class="flex items-center gap-2 cursor-pointer group">
                             <input type="checkbox"
-                                class="w-4 h-4 bg-white/5 border border-white/10 rounded focus:ring-accent accent-accent">
+                                class="w-4 h-4 bg-white dark:bg-white/5 border border-gray-300 dark:border-white/10 rounded focus:ring-accent accent-accent">
                             <span
-                                class="text-[10px] opacity-40 uppercase font-bold tracking-widest group-hover:opacity-100 transition-all">Persistent
+                                class="text-[10px] text-primary/40 dark:text-secondary/40 uppercase font-bold tracking-widest group-hover:opacity-100 transition-all">Persistent
                                 Link</span>
                         </label>
                         <a href="#"
@@ -99,22 +111,22 @@
                     Secure Connection</button>
 
                 <div class="relative py-4 text-center">
-                    <div class="absolute top-1/2 border-t border-white/5 w-full"></div>
+                    <div class="absolute top-1/2 border-t border-gray-200 dark:border-white/5 w-full"></div>
                     <span
-                        class="relative bg-primary px-4 text-[10px] font-bold uppercase tracking-[0.4em] opacity-20">Uplink
+                        class="relative z-10 inline-block bg-white dark:bg-primary px-4 text-[10px] font-bold uppercase tracking-[0.4em] text-primary/20 dark:text-secondary/20">Uplink
                         via SSO</span>
                 </div>
 
                 <div class="grid grid-cols-2 gap-4">
                     <button
-                        class="flex items-center justify-center gap-3 py-4 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 transition-all text-xs font-bold uppercase tracking-widest"><i
+                        class="flex items-center justify-center gap-3 py-4 bg-secondary/70 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl hover:bg-secondary dark:hover:bg-white/10 transition-all text-xs font-bold uppercase tracking-widest text-primary dark:text-white"><i
                             class="fab fa-microsoft"></i> Active Dir</button>
                     <button
-                        class="flex items-center justify-center gap-3 py-4 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 transition-all text-xs font-bold uppercase tracking-widest"><i
+                        class="flex items-center justify-center gap-3 py-4 bg-secondary/70 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl hover:bg-secondary dark:hover:bg-white/10 transition-all text-xs font-bold uppercase tracking-widest text-primary dark:text-white"><i
                             class="fab fa-google"></i> Cloud Gov</button>
                 </div>
 
-                <p class="text-center text-[10px] opacity-20 uppercase font-black tracking-widest mt-12">No active
+                <p class="text-center text-[10px] text-primary/20 dark:text-secondary/20 uppercase font-black tracking-widest mt-12">No active
                     profile? <a href="signup.html" class="text-accent hover:underline decoration-2">Request
                         Authorization</a></p>
             </form>

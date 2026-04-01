@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
     <title>Initiate Mission — Contact AerialOps</title>
     <meta name="description"
         content="Coordinate a drone inspection mission or request a custom audit quote for industrial sites.">
@@ -31,7 +32,7 @@
             <!-- LOGO -->
             <a href="index.html" class="flex items-center gap-2 group">
                 <div class="relative w-10 h-10 flex items-center justify-center">
-                    <svg class="w-8 h-8 text-primary dark:text-secondary group-hover:text-accent transition-colors"
+                    <svg class="w-8 h-8 text-accent transition-colors"
                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
                     </svg>
@@ -41,7 +42,7 @@
                         <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-3 bg-accent rounded-full"></div>
                     </div>
                 </div>
-                <span class="font-barlow-condensed text-2xl font-bold tracking-tight uppercase">AerialOps</span>
+                <span class="font-barlow-condensed text-2xl font-bold tracking-tight uppercase text-primary dark:text-white">AerialOps</span>
             </a>
 
             <!-- DESKTOP NAV -->
@@ -59,10 +60,10 @@
             <!-- CTAs & TOGGLES -->
             <div class="flex items-center gap-4">
                 <a href="login.html"
-                    class="hidden sm:inline-block px-4 py-2 border-2 border-primary dark:border-secondary font-semibold rounded hover:bg-primary hover:text-white dark:hover:bg-secondary dark:hover:text-primary transition-all">Sign
+                    class="hidden xl:inline-block px-4 py-2 border-2 border-primary dark:border-secondary font-semibold rounded hover:bg-primary hover:text-white dark:hover:bg-secondary dark:hover:text-primary transition-all">Sign
                     In</a>
                 <a href="signup.html"
-                    class="hidden sm:inline-block bg-accent text-white px-4 py-2 rounded font-bold hover:scale-105 transition-transform active:scale-95">Register</a>
+                    class="hidden xl:inline-block bg-accent text-white px-4 py-2 rounded font-bold hover:scale-105 transition-transform active:scale-95">Register</a>
 
                 <button onclick="toggleTheme()"
                     class="theme-toggle w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 dark:bg-white/5 hover:bg-accent hover:text-white transition-colors">
@@ -125,35 +126,28 @@
                     class="font-barlow-condensed text-4xl font-bold uppercase text-white hover:text-accent tracking-tighter transition-all">Blog</a>
                 <a href="pricing.html"
                     class="font-barlow-condensed text-4xl font-bold uppercase text-white hover:text-accent tracking-tighter transition-all">Pricing</a>
-                <a href="contact.html"
-                    class="font-barlow-condensed text-4xl font-bold uppercase text-white hover:text-accent tracking-tighter transition-all">Contact</a>
-            </div>
+                    <a href="contact.html"
+                        class="font-barlow-condensed text-4xl font-bold uppercase text-white hover:text-accent tracking-tighter transition-all">Contact</a>
+                    <a href="dashboard.html"
+                        class="font-barlow-condensed text-4xl font-bold uppercase text-white hover:text-accent tracking-tighter transition-all">Dashboard</a>
+                </div>
 
             <!-- Mission Action Deck -->
             <div class="w-full">
-                <div class="grid grid-cols-4 gap-4 mb-6">
-                    <button onclick="toggleTheme()"
-                        class="aspect-square flex items-center justify-center rounded-2xl bg-white/5 text-white hover:bg-accent transition-all">
-                        <i class="fas fa-moon text-xl"></i>
-                    </button>
-                    <button onclick="toggleRTL()"
-                        class="aspect-square flex items-center justify-center rounded-2xl bg-white/5 text-white hover:bg-accent transition-all">
-                        <span class="font-bold text-xs uppercase">RTL</span>
-                    </button>
-                    <a href="login.html"
-                        class="aspect-square flex items-center justify-center rounded-2xl bg-white/5 text-white hover:bg-accent transition-all">
-                        <i class="fas fa-user text-xl"></i>
-                    </a>
-                    <a href="dashboard.html"
-                        class="aspect-square flex items-center justify-center rounded-2xl bg-white/5 text-white hover:bg-accent transition-all">
-                        <i class="fas fa-cog text-xl"></i>
-                    </a>
+                    <div class="grid grid-cols-2 gap-4 mb-4">
+                        <a href="login.html"
+                            class="flex items-center justify-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-white font-bold uppercase tracking-[0.2em] text-xs hover:bg-accent transition-all">
+                            <i class="fas fa-user text-sm"></i>
+                            <span>Sign In</span>
+                        </a>
+                        <a href="signup.html"
+                            class="flex items-center justify-center gap-3 rounded-2xl bg-accent px-4 py-4 text-white font-black uppercase tracking-[0.2em] text-xs hover:scale-[1.02] transition-all shadow-xl shadow-accent/20">
+                            <i class="fas fa-user-plus text-sm"></i>
+                            <span>Register</span>
+                        </a>
+                    </div>
                 </div>
-                <a href="signup.html"
-                    class="w-full block text-center py-5 bg-accent text-white rounded-2xl font-black uppercase tracking-[0.2em] text-sm hover:scale-[1.02] transition-all active:scale-95 shadow-xl shadow-accent/20">OPERATIONS
-                    SIGNUP</a>
             </div>
-        </div>
     </header>
 
     <main class="pt-20">
@@ -194,7 +188,7 @@
             <div class="container mx-auto px-4">
                 <div class="flex flex-col lg:flex-row gap-20">
                     <div class="lg:w-4/12 reveal-on-scroll">
-                        <h2 class="font-barlow-condensed text-5xl font-black uppercase mb-8 stagger-reveal">Authorize
+                        <h2 class="font-barlow-condensed text-5xl font-black uppercase mb-8 stagger-reveal text-center">Authorize
                             <br>Deployment.
                         </h2>
                         <p class="opacity-60 text-lg mb-12">Submit your coordinates and mission requirements. Our
@@ -254,7 +248,7 @@
                                         class="w-full py-4 rounded-xl border-2 border-gray-100 dark:border-white/10 hover:border-accent font-bold text-xs transition-all">EMERGENCY</button>
                                 </div>
                             </div>
-                            <div class="col-span-2">
+                            <div class="col-span-1 md:col-span-2">
                                 <label
                                     class="block text-[10px] font-black uppercase tracking-widest opacity-40 mb-3">Operational
                                     Coordinates & Requirements</label>
@@ -262,7 +256,7 @@
                                     placeholder="Specify mission area (lat/long or address) and key data deliverables needed..."
                                     class="w-full bg-secondary/50 dark:bg-white/5 border border-transparent focus:border-accent rounded-xl px-6 py-4 outline-none transition-all"></textarea>
                             </div>
-                            <div class="col-span-2">
+                            <div class="col-span-1 md:col-span-2">
                                 <button
                                     class="w-full py-6 bg-primary dark:bg-accent text-white rounded-2xl font-bold uppercase tracking-widest hover:scale-[1.02] active:scale-95 transition-all shadow-2xl flex items-center justify-center gap-4">Transmit
                                     Operational Briefing <i class="fas fa-satellite"></i></button>
@@ -283,17 +277,17 @@
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
                     <div
-                        class="p-10 bg-white dark:bg-darkBg rounded-3xl reveal-on-scroll shadow-lg group hover:bg-accent hover:text-white transition-all">
+                        class="p-10 bg-white dark:bg-darkBg rounded-3xl reveal-on-scroll shadow-lg group hover:bg-accent hover:text-white transition-all flex flex-col">
                         <h4
                             class="font-bold uppercase text-[10px] tracking-[0.4em] mb-4 opacity-40 group-hover:text-white">
                             Head Office</h4>
                         <h3 class="font-barlow-condensed text-2xl font-black uppercase mb-6">Los Angeles, CA</h3>
                         <p class="text-sm opacity-60 group-hover:opacity-80 mb-8">449 Innovation Way, <br>Silicon Beach,
                             90291</p>
-                        <a href="#" class="font-black text-xs uppercase tracking-widest flex items-center gap-2">View
+                        <a href="#" class="mt-auto font-black text-xs uppercase tracking-widest flex items-center gap-2">View
                             Sector <i class="fas fa-external-link-alt"></i></a>
                     </div>
-                    <div class="p-10 bg-white dark:bg-darkBg rounded-3xl reveal-on-scroll shadow-lg group hover:bg-accent hover:text-white transition-all"
+                    <div class="p-10 bg-white dark:bg-darkBg rounded-3xl reveal-on-scroll shadow-lg group hover:bg-accent hover:text-white transition-all flex flex-col"
                         style="transition-delay: 0.1s">
                         <h4
                             class="font-bold uppercase text-[10px] tracking-[0.4em] mb-4 opacity-40 group-hover:text-white">
@@ -301,17 +295,17 @@
                         <h3 class="font-barlow-condensed text-2xl font-black uppercase mb-6">Dallas, TX</h3>
                         <p class="text-sm opacity-60 group-hover:opacity-80 mb-8">Energy Corridor Dr., <br>Technical
                             Hangar 04B</p>
-                        <a href="#" class="font-black text-xs uppercase tracking-widest flex items-center gap-2">View
+                        <a href="#" class="mt-auto font-black text-xs uppercase tracking-widest flex items-center gap-2">View
                             Sector <i class="fas fa-external-link-alt"></i></a>
                     </div>
-                    <div class="p-10 bg-white dark:bg-darkBg rounded-3xl reveal-on-scroll shadow-lg group hover:bg-accent hover:text-white transition-all"
+                    <div class="p-10 bg-white dark:bg-darkBg rounded-3xl reveal-on-scroll shadow-lg group hover:bg-accent hover:text-white transition-all flex flex-col"
                         style="transition-delay: 0.2s">
                         <h4
                             class="font-bold uppercase text-[10px] tracking-[0.4em] mb-4 opacity-40 group-hover:text-white">
                             Global Dispatch</h4>
                         <h3 class="font-barlow-condensed text-2xl font-black uppercase mb-6">New York, NY</h3>
                         <p class="text-sm opacity-60 group-hover:opacity-80 mb-8">Empire Operations,<br>Suite 4490</p>
-                        <a href="#" class="font-black text-xs uppercase tracking-widest flex items-center gap-2">View
+                        <a href="#" class="mt-auto font-black text-xs uppercase tracking-widest flex items-center gap-2">View
                             Sector <i class="fas fa-external-link-alt"></i></a>
                     </div>
                 </div>
@@ -356,7 +350,7 @@
                             </div>
                         </div>
                         <span
-                            class="font-barlow-condensed text-2xl font-bold tracking-tight uppercase text-white">AerialOps</span>
+                            class="font-barlow-condensed text-2xl font-bold tracking-tight uppercase text-primary dark:text-white">AerialOps</span>
                     </a>
                     <p class="text-secondary/60 leading-relaxed">
                         Precision industrial inspection services led by Senior UAV Pilot Marcus Vane. Specializing in

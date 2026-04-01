@@ -238,6 +238,73 @@ body {
   transition: filter 0.3s ease;
 }
 
+.nav-link {
+  position: relative;
+}
+
+.nav-link[aria-current="page"] {
+  color: var(--accent);
+}
+
+.nav-link[aria-current="page"]::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.45rem;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 999px;
+}
+
+/* LIGHT MODE FOOTER */
+html[data-theme="light"] footer {
+  background-color: var(--bg-light) !important;
+  border-top-color: rgba(10, 14, 23, 0.08) !important;
+  color: var(--text-light);
+}
+
+html[data-theme="light"] footer .border-t {
+  border-top-color: rgba(10, 14, 23, 0.08) !important;
+}
+
+html[data-theme="light"] footer .font-barlow-condensed.text-2xl.font-bold.tracking-tight.uppercase.text-white,
+html[data-theme="light"] footer .font-barlow-condensed.text-xl.font-bold.uppercase.text-white {
+  color: var(--text-light) !important;
+}
+
+html[data-theme="light"] footer p,
+html[data-theme="light"] footer li,
+html[data-theme="light"] footer a {
+  color: rgba(10, 14, 23, 0.72);
+}
+
+html[data-theme="light"] footer a:hover {
+  color: var(--accent) !important;
+}
+
+html[data-theme="light"] footer [aria-label] {
+  background-color: #ffffff;
+  color: var(--text-light) !important;
+  border: 1px solid rgba(10, 14, 23, 0.08);
+}
+
+html[data-theme="light"] footer [aria-label]:hover {
+  background-color: var(--accent);
+  color: #ffffff !important;
+}
+
+html[data-theme="light"] footer .block.text-center.py-3.rounded {
+  background-color: #ffffff;
+  border-color: rgba(10, 14, 23, 0.12) !important;
+  color: var(--text-light) !important;
+}
+
+html[data-theme="light"] footer .block.text-center.py-3.rounded:hover {
+  background-color: var(--accent);
+  color: #ffffff !important;
+}
+
 /* SECTION HEADINGS - CENTERED */
 .section-heading {
   text-align: center;

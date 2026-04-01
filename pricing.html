@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
     <title>Operational Rate Deck — AerialOps</title>
     <meta name="description"
         content="Commercial drone inspection pricing for cell towers, solar farms, and construction sites.">
@@ -31,7 +32,7 @@
             <!-- LOGO -->
             <a href="index.html" class="flex items-center gap-2 group">
                 <div class="relative w-10 h-10 flex items-center justify-center">
-                    <svg class="w-8 h-8 text-primary dark:text-secondary group-hover:text-accent transition-colors"
+                    <svg class="w-8 h-8 text-accent transition-colors"
                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
                     </svg>
@@ -41,7 +42,7 @@
                         <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-3 bg-accent rounded-full"></div>
                     </div>
                 </div>
-                <span class="font-barlow-condensed text-2xl font-bold tracking-tight uppercase">AerialOps</span>
+                <span class="font-barlow-condensed text-2xl font-bold tracking-tight uppercase text-primary dark:text-white">AerialOps</span>
             </a>
 
             <!-- DESKTOP NAV -->
@@ -59,10 +60,10 @@
             <!-- CTAs & TOGGLES -->
             <div class="flex items-center gap-4">
                 <a href="login.html"
-                    class="hidden sm:inline-block px-4 py-2 border-2 border-primary dark:border-secondary font-semibold rounded hover:bg-primary hover:text-white dark:hover:bg-secondary dark:hover:text-primary transition-all">Sign
+                    class="hidden xl:inline-block px-4 py-2 border-2 border-primary dark:border-secondary font-semibold rounded hover:bg-primary hover:text-white dark:hover:bg-secondary dark:hover:text-primary transition-all">Sign
                     In</a>
                 <a href="signup.html"
-                    class="hidden sm:inline-block bg-accent text-white px-4 py-2 rounded font-bold hover:scale-105 transition-transform active:scale-95">Register</a>
+                    class="hidden xl:inline-block bg-accent text-white px-4 py-2 rounded font-bold hover:scale-105 transition-transform active:scale-95">Register</a>
 
                 <button onclick="toggleTheme()"
                     class="theme-toggle w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 dark:bg-white/5 hover:bg-accent hover:text-white transition-colors">
@@ -84,7 +85,7 @@
             </div>
         </nav>
         <div id="mobile-menu"
-            class="hidden fixed inset-0 z-[999] bg-primary dark:bg-darkBg flex flex-col items-center justify-between p-8 lg:hidden transition-all duration-300">
+            class="hidden fixed inset-0 z-[999] bg-primary dark:bg-darkBg flex flex-col items-center justify-between p-8 xl:hidden transition-all duration-300">
 
             <!-- Header Row -->
             <div class="w-full flex justify-between items-center pt-2">
@@ -127,31 +128,24 @@
                     class="font-barlow-condensed text-4xl font-bold uppercase text-white hover:text-accent tracking-tighter transition-all">Pricing</a>
                 <a href="contact.html"
                     class="font-barlow-condensed text-4xl font-bold uppercase text-white hover:text-accent tracking-tighter transition-all">Contact</a>
+                <a href="dashboard.html"
+                    class="font-barlow-condensed text-4xl font-bold uppercase text-white hover:text-accent tracking-tighter transition-all">Dashboard</a>
             </div>
 
             <!-- Mission Action Deck -->
             <div class="w-full">
-                <div class="grid grid-cols-4 gap-4 mb-6">
-                    <button onclick="toggleTheme()"
-                        class="aspect-square flex items-center justify-center rounded-2xl bg-white/5 text-white hover:bg-accent transition-all">
-                        <i class="fas fa-moon text-xl"></i>
-                    </button>
-                    <button onclick="toggleRTL()"
-                        class="aspect-square flex items-center justify-center rounded-2xl bg-white/5 text-white hover:bg-accent transition-all">
-                        <span class="font-bold text-xs uppercase">RTL</span>
-                    </button>
+                <div class="grid grid-cols-2 gap-4 mb-4">
                     <a href="login.html"
-                        class="aspect-square flex items-center justify-center rounded-2xl bg-white/5 text-white hover:bg-accent transition-all">
-                        <i class="fas fa-user text-xl"></i>
+                        class="flex items-center justify-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-white font-bold uppercase tracking-[0.2em] text-xs hover:bg-accent transition-all">
+                        <i class="fas fa-user text-sm"></i>
+                        <span>Sign In</span>
                     </a>
-                    <a href="dashboard.html"
-                        class="aspect-square flex items-center justify-center rounded-2xl bg-white/5 text-white hover:bg-accent transition-all">
-                        <i class="fas fa-cog text-xl"></i>
+                    <a href="signup.html"
+                        class="flex items-center justify-center gap-3 rounded-2xl bg-accent px-4 py-4 text-white font-black uppercase tracking-[0.2em] text-xs hover:scale-[1.02] transition-all shadow-xl shadow-accent/20">
+                        <i class="fas fa-user-plus text-sm"></i>
+                        <span>Register</span>
                     </a>
                 </div>
-                <a href="signup.html"
-                    class="w-full block text-center py-5 bg-accent text-white rounded-2xl font-black uppercase tracking-[0.2em] text-sm hover:scale-[1.02] transition-all active:scale-95 shadow-xl shadow-accent/20">OPERATIONS
-                    SIGNUP</a>
             </div>
         </div>
     </header>
@@ -188,22 +182,22 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Basic Tier -->
                     <div
-                        class="p-10 bg-white/5 border border-white/10 rounded-[3rem] shadow-2xl reveal-on-scroll text-start flex flex-col group hover:border-accent/40 transition-all">
+                        class="p-10 bg-white/5 border border-white/10 rounded-[3rem] shadow-2xl reveal-on-scroll text-center flex flex-col items-center group hover:border-accent/40 transition-all">
                         <h3 class="font-barlow-condensed text-3xl font-bold uppercase mb-4">Standard Audit</h3>
                         <p class="text-xs opacity-40 uppercase tracking-widest font-black mb-8">Optimal for cell towers
                             & smaller sites</p>
                         <div class="text-5xl font-black mb-8 font-barlow-condensed text-primary dark:text-white">
                             $1,250<span class="text-sm opacity-20 ml-2">/ Mission</span></div>
                         <ul class="space-y-6 mb-12 flex-grow">
-                            <li class="flex items-center gap-3 text-sm opacity-80"><i
+                            <li class="flex items-center justify-center gap-3 text-sm opacity-80"><i
                                     class="fas fa-check text-accent"></i> 4K High-Res Vision</li>
-                            <li class="flex items-center gap-3 text-sm opacity-80"><i
+                            <li class="flex items-center justify-center gap-3 text-sm opacity-80"><i
                                     class="fas fa-check text-accent"></i> Standard PDF Findings Report</li>
-                            <li class="flex items-center gap-3 text-sm opacity-80"><i
+                            <li class="flex items-center justify-center gap-3 text-sm opacity-80"><i
                                     class="fas fa-check text-accent"></i> 48-Hour Turnaround</li>
-                            <li class="flex items-center gap-3 text-sm opacity-80"><i
+                            <li class="flex items-center justify-center gap-3 text-sm opacity-80"><i
                                     class="fas fa-check text-accent"></i> FAA Authorization Filing</li>
-                            <li class="flex items-center gap-3 text-sm opacity-20"><i class="fas fa-times"></i>
+                            <li class="flex items-center justify-center gap-3 text-sm opacity-20"><i class="fas fa-times"></i>
                                 Radiometric Thermal Map</li>
                         </ul>
                         <button
@@ -212,27 +206,27 @@
                     </div>
 
                     <!-- Advanced Tier -->
-                    <div class="p-10 bg-accent rounded-[3rem] shadow-2xl reveal-on-scroll scale-105 z-10 text-start flex flex-col text-white"
+                    <div class="p-10 bg-accent rounded-[3rem] shadow-2xl reveal-on-scroll scale-105 z-10 text-center flex flex-col items-center text-white"
                         style="transition-delay: 0.1s">
-                        <div class="flex justify-between items-start mb-4">
+                        <span
+                            class="mb-4 px-4 py-1 bg-white text-accent rounded-lg text-[10px] font-black uppercase tracking-widest">Recommended</span>
+                        <div class="mb-4">
                             <h3 class="font-barlow-condensed text-3xl font-black uppercase">Technical Pulse</h3>
-                            <span
-                                class="px-3 py-1 bg-white text-accent rounded-lg text-[10px] font-black uppercase tracking-widest">Recommended</span>
                         </div>
                         <p class="text-xs text-white/60 uppercase tracking-widest font-black mb-8">High-fidelity data +
                             Thermal multispectral</p>
                         <div class="text-5xl font-black mb-8 font-barlow-condensed">$2,400<span
                                 class="text-sm text-white/50 ml-2">/ Mission</span></div>
                         <ul class="space-y-6 mb-12 flex-grow">
-                            <li class="flex items-center gap-3 text-sm"><i class="fas fa-check"></i> All Standard
+                            <li class="flex items-center justify-center gap-3 text-sm"><i class="fas fa-check"></i> All Standard
                                 Features</li>
-                            <li class="flex items-center gap-3 text-sm"><i class="fas fa-check"></i> Radiometric Thermal
+                            <li class="flex items-center justify-center gap-3 text-sm"><i class="fas fa-check"></i> Radiometric Thermal
                                 Imagery</li>
-                            <li class="flex items-center gap-3 text-sm"><i class="fas fa-check"></i> interactive 2D
+                            <li class="flex items-center justify-center gap-3 text-sm"><i class="fas fa-check"></i> interactive 2D
                                 Orthomosaic</li>
-                            <li class="flex items-center gap-3 text-sm"><i class="fas fa-check"></i> Board-Ready
+                            <li class="flex items-center justify-center gap-3 text-sm"><i class="fas fa-check"></i> Board-Ready
                                 Presentation Data</li>
-                            <li class="flex items-center gap-3 text-sm"><i class="fas fa-check"></i> 24-Hour Express
+                            <li class="flex items-center justify-center gap-3 text-sm"><i class="fas fa-check"></i> 24-Hour Express
                                 Report</li>
                         </ul>
                         <button
@@ -241,7 +235,7 @@
                     </div>
 
                     <!-- Custom Tier -->
-                    <div class="p-10 bg-white/5 border border-white/10 rounded-[3rem] shadow-2xl reveal-on-scroll text-start flex flex-col group hover:border-accent/40 transition-all"
+                    <div class="p-10 bg-white/5 border border-white/10 rounded-[3rem] shadow-2xl reveal-on-scroll text-center flex flex-col items-center group hover:border-accent/40 transition-all"
                         style="transition-delay: 0.2s">
                         <h3 class="font-barlow-condensed text-3xl font-bold uppercase mb-4">Full Digital Twin</h3>
                         <p class="text-xs opacity-40 uppercase tracking-widest font-black mb-8">LiDAR + Maximum Payload
@@ -249,15 +243,15 @@
                         <div class="text-5xl font-black mb-8 font-barlow-condensed text-primary dark:text-white">
                             $4,800<span class="text-sm opacity-20 ml-2">/ Mission</span></div>
                         <ul class="space-y-6 mb-12 flex-grow">
-                            <li class="flex items-center gap-3 text-sm opacity-80"><i
+                            <li class="flex items-center justify-center gap-3 text-sm opacity-80"><i
                                     class="fas fa-check text-accent"></i> M350 RTK + L2 LiDAR Payload</li>
-                            <li class="flex items-center gap-3 text-sm opacity-80"><i
+                            <li class="flex items-center justify-center gap-3 text-sm opacity-80"><i
                                     class="fas fa-check text-accent"></i> 3D Point Cloud Reconstruction</li>
-                            <li class="flex items-center gap-3 text-sm opacity-80"><i
+                            <li class="flex items-center justify-center gap-3 text-sm opacity-80"><i
                                     class="fas fa-check text-accent"></i> Georeferenced Volumetric Data</li>
-                            <li class="flex items-center gap-3 text-sm opacity-80"><i
+                            <li class="flex items-center justify-center gap-3 text-sm opacity-80"><i
                                     class="fas fa-check text-accent"></i> Direct BIM Integration Export</li>
-                            <li class="flex items-center gap-3 text-sm opacity-80"><i
+                            <li class="flex items-center justify-center gap-3 text-sm opacity-80"><i
                                     class="fas fa-check text-accent"></i> Dedicated Project Analyst</li>
                         </ul>
                         <button
@@ -351,7 +345,7 @@
                             </div>
                         </div>
                         <span
-                            class="font-barlow-condensed text-2xl font-bold tracking-tight uppercase text-white">AerialOps</span>
+                            class="font-barlow-condensed text-2xl font-bold tracking-tight uppercase text-primary dark:text-white">AerialOps</span>
                     </a>
                     <p class="text-secondary/60 leading-relaxed">
                         Precision industrial inspection services led by Senior UAV Pilot Marcus Vane. Specializing in

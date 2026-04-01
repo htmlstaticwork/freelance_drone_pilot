@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
     <title>Industrial Inspection Services — AerialOps</title>
     <meta name="description"
         content="Commercial drone services for cell towers, pipelines, construction monitoring, solar, thermal, and LiDAR.">
@@ -32,7 +33,7 @@
             <!-- LOGO -->
             <a href="index.html" class="flex items-center gap-2 group">
                 <div class="relative w-10 h-10 flex items-center justify-center">
-                    <svg class="w-8 h-8 text-primary dark:text-secondary group-hover:text-accent transition-colors"
+                    <svg class="w-8 h-8 text-accent transition-colors"
                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
                     </svg>
@@ -42,7 +43,7 @@
                         <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-3 bg-accent rounded-full"></div>
                     </div>
                 </div>
-                <span class="font-barlow-condensed text-2xl font-bold tracking-tight uppercase">AerialOps</span>
+                <span class="font-barlow-condensed text-2xl font-bold tracking-tight uppercase text-primary dark:text-white">AerialOps</span>
             </a>
 
             <!-- DESKTOP NAV -->
@@ -60,10 +61,10 @@
             <!-- CTAs & TOGGLES -->
             <div class="flex items-center gap-4">
                 <a href="login.html"
-                    class="hidden sm:inline-block px-4 py-2 border-2 border-primary dark:border-secondary font-semibold rounded hover:bg-primary hover:text-white dark:hover:bg-secondary dark:hover:text-primary transition-all">Sign
+                    class="hidden xl:inline-block px-4 py-2 border-2 border-primary dark:border-secondary font-semibold rounded hover:bg-primary hover:text-white dark:hover:bg-secondary dark:hover:text-primary transition-all">Sign
                     In</a>
                 <a href="signup.html"
-                    class="hidden sm:inline-block bg-accent text-white px-4 py-2 rounded font-bold hover:scale-105 transition-transform active:scale-95">Register</a>
+                    class="hidden xl:inline-block bg-accent text-white px-4 py-2 rounded font-bold hover:scale-105 transition-transform active:scale-95">Register</a>
 
                 <button onclick="toggleTheme()"
                     class="theme-toggle w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 dark:bg-white/5 hover:bg-accent hover:text-white transition-colors">
@@ -128,31 +129,24 @@
                         class="font-barlow-condensed text-4xl font-bold uppercase text-white hover:text-accent tracking-tighter transition-all">Pricing</a>
                     <a href="contact.html"
                         class="font-barlow-condensed text-4xl font-bold uppercase text-white hover:text-accent tracking-tighter transition-all">Contact</a>
+                    <a href="dashboard.html"
+                        class="font-barlow-condensed text-4xl font-bold uppercase text-white hover:text-accent tracking-tighter transition-all">Dashboard</a>
                 </div>
 
                 <!-- Mission Action Deck -->
                 <div class="w-full">
-                    <div class="grid grid-cols-4 gap-4 mb-6">
-                        <button onclick="toggleTheme()"
-                            class="aspect-square flex items-center justify-center rounded-2xl bg-white/5 text-white hover:bg-accent transition-all">
-                            <i class="fas fa-moon text-xl"></i>
-                        </button>
-                        <button onclick="toggleRTL()"
-                            class="aspect-square flex items-center justify-center rounded-2xl bg-white/5 text-white hover:bg-accent transition-all">
-                            <span class="font-bold text-xs uppercase">RTL</span>
-                        </button>
+                    <div class="grid grid-cols-2 gap-4 mb-4">
                         <a href="login.html"
-                            class="aspect-square flex items-center justify-center rounded-2xl bg-white/5 text-white hover:bg-accent transition-all">
-                            <i class="fas fa-user text-xl"></i>
+                            class="flex items-center justify-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-white font-bold uppercase tracking-[0.2em] text-xs hover:bg-accent transition-all">
+                            <i class="fas fa-user text-sm"></i>
+                            <span>Sign In</span>
                         </a>
-                        <a href="dashboard.html"
-                            class="aspect-square flex items-center justify-center rounded-2xl bg-white/5 text-white hover:bg-accent transition-all">
-                            <i class="fas fa-cog text-xl"></i>
+                        <a href="signup.html"
+                            class="flex items-center justify-center gap-3 rounded-2xl bg-accent px-4 py-4 text-white font-black uppercase tracking-[0.2em] text-xs hover:scale-[1.02] transition-all shadow-xl shadow-accent/20">
+                            <i class="fas fa-user-plus text-sm"></i>
+                            <span>Register</span>
                         </a>
                     </div>
-                    <a href="signup.html"
-                        class="w-full block text-center py-5 bg-accent text-white rounded-2xl font-black uppercase tracking-[0.2em] text-sm hover:scale-[1.02] transition-all active:scale-95 shadow-xl shadow-accent/20">OPERATIONS
-                        SIGNUP</a>
                 </div>
             </div>
     </header>
@@ -161,11 +155,80 @@
         <!-- SECTION 1: FILTER BAR + SERVICE CARDS -->
         <section class="py-20">
             <div class="container mx-auto px-4">
-                <div class="text-center mb-16 reveal-on-scroll">
-                    <h1 class="font-barlow-condensed text-5xl md:text-7xl font-bold uppercase tracking-wide">Inspection
-                        Systems</h1>
-                    <p class="text-lg mt-3 max-w-2xl mx-auto opacity-70">Specialized aerial solutions for industrial
-                        data acquisition.</p>
+                <div
+                    class="relative overflow-hidden rounded-[2rem] bg-primary text-white px-6 py-10 md:px-10 md:py-14 lg:px-16 lg:py-16 mb-16 reveal-on-scroll">
+                    <div class="absolute inset-0 grid-overlay opacity-70"></div>
+                    <div class="absolute -top-16 -left-10 h-40 w-40 rounded-full bg-accent/10 blur-3xl animate-altitude-drift">
+                    </div>
+                    <div class="absolute -bottom-10 right-0 h-56 w-56 rounded-full bg-accent/10 blur-3xl animate-float-orbit">
+                    </div>
+
+                    <div class="relative grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
+                        <div class="flex flex-col gap-6">
+                            <span class="text-accent font-bold uppercase tracking-[0.35em] text-sm text-center">Service Command</span>
+                            <h1
+                                class="font-barlow-condensed text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight leading-none text-center">
+                                Mission-Ready
+                                <span class="block text-accent">Inspection Systems</span>
+                            </h1>
+                            <p class="max-w-2xl mx-auto text-lg md:text-xl text-white/75 leading-relaxed text-center">
+                                Built for infrastructure, energy corridors, thermal diagnostics, and mapping missions.
+                                Each service package combines certified pilots, sensor-specific workflows, and
+                                client-ready deliverables.
+                            </p>
+                            <div class="flex flex-wrap justify-center gap-4">
+                                <a href="contact.html"
+                                    class="inline-flex w-full sm:w-[280px] items-center justify-center rounded-xl bg-accent px-8 py-4 font-bold uppercase tracking-[0.15em] text-white transition-all hover:bg-accent/85 animate-glow-pulse">
+                                    Request Mission Plan
+                                </a>
+                                <a href="pricing.html"
+                                    class="inline-flex w-full sm:w-[280px] items-center justify-center rounded-xl border border-white/20 bg-white/5 px-8 py-4 font-bold uppercase tracking-[0.15em] text-white transition-all hover:border-accent hover:text-accent">
+                                    View Rate Cards
+                                </a>
+                            </div>
+                            <div class="grid gap-4 pt-2 sm:grid-cols-3">
+                                <div class="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm">
+                                    <span class="block text-xs font-bold uppercase tracking-[0.3em] text-white/50">Coverage</span>
+                                    <span class="mt-2 block font-barlow-condensed text-3xl font-bold uppercase">6 Core
+                                        Systems</span>
+                                </div>
+                                <div class="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm animate-altitude-drift">
+                                    <span class="block text-xs font-bold uppercase tracking-[0.3em] text-white/50">Turnaround</span>
+                                    <span class="mt-2 block font-barlow-condensed text-3xl font-bold uppercase">48 Hr
+                                        Reports</span>
+                                </div>
+                                <div class="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm">
+                                    <span class="block text-xs font-bold uppercase tracking-[0.3em] text-white/50">Outputs</span>
+                                    <span class="mt-2 block font-barlow-condensed text-3xl font-bold uppercase">LiDAR +
+                                        Thermal</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="relative flex items-center justify-center">
+                            <div class="absolute h-56 w-56 rounded-full border border-accent/20 animate-radar-scan"></div>
+                            <div class="absolute h-72 w-72 rounded-full border border-white/10"></div>
+                            <div class="relative w-full max-w-xl animate-float-orbit">
+                                <div class="overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-3 shadow-2xl shadow-accent/10 backdrop-blur-sm">
+                                    <img src="https://images.unsplash.com/photo-1508614589041-895b88991e3e?w=1200&q=80"
+                                        alt="Drone inspection system in flight"
+                                        class="h-[420px] w-full rounded-[1.5rem] object-cover">
+                                </div>
+                                <div
+                                    class="absolute -left-4 top-8 rounded-2xl border border-white/10 bg-primary/80 px-5 py-4 shadow-xl backdrop-blur-sm md:-left-10">
+                                    <span class="block text-[11px] font-bold uppercase tracking-[0.3em] text-accent">Live Feed</span>
+                                    <span class="mt-2 block font-barlow-condensed text-2xl font-bold uppercase">4K /
+                                        Thermal Sync</span>
+                                </div>
+                                <div
+                                    class="absolute -bottom-6 right-4 rounded-2xl border border-white/10 bg-white px-5 py-4 text-primary shadow-xl md:right-8">
+                                    <span class="block text-[11px] font-bold uppercase tracking-[0.3em] text-accent">Payload Stack</span>
+                                    <span class="mt-2 block font-barlow-condensed text-2xl font-bold uppercase">Sensor
+                                        Calibrated</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- FILTER BAR -->
@@ -190,7 +253,7 @@
                 <!-- SERVICE CARDS GRID -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="services-grid">
                     <!-- S1: Cell Tower -->
-                    <div class="service-card group bg-white dark:bg-white/5 rounded-3xl overflow-hidden shadow-xl reveal-on-scroll"
+                    <div class="service-card group flex flex-col bg-white dark:bg-white/5 rounded-3xl overflow-hidden shadow-xl reveal-on-scroll"
                         data-category="infrastructure">
                         <div class="h-64 overflow-hidden relative">
                             <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=80"
@@ -199,7 +262,7 @@
                             <div class="absolute inset-0 bg-primary/20 group-hover:bg-primary/0 transition-colors">
                             </div>
                         </div>
-                        <div class="p-10">
+                        <div class="p-10 flex flex-1 flex-col">
                             <h3
                                 class="font-barlow-condensed text-3xl font-bold uppercase mb-4 text-primary dark:text-secondary group-hover:text-accent transition-colors">
                                 Cell Tower Audit</h3>
@@ -214,20 +277,20 @@
                                     Structural Integrity Reports</li>
                             </ul>
                             <a href="service-details.html"
-                                class="bg-primary dark:bg-accent text-white w-full py-4 rounded-xl flex items-center justify-center gap-3 font-bold hover:gap-6 transition-all shadow-lg active:scale-95">View
+                                class="mt-auto bg-primary dark:bg-accent text-white w-full py-4 rounded-xl flex items-center justify-center gap-3 font-bold hover:gap-6 transition-all shadow-lg active:scale-95">View
                                 Deliverables <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
 
                     <!-- S2: Pipeline -->
-                    <div class="service-card group bg-white dark:bg-white/5 rounded-3xl overflow-hidden shadow-xl reveal-on-scroll"
+                    <div class="service-card group flex flex-col bg-white dark:bg-white/5 rounded-3xl overflow-hidden shadow-xl reveal-on-scroll"
                         data-category="energy">
                         <div class="h-64 overflow-hidden relative">
                             <img src="https://images.unsplash.com/photo-1563906267088-b029e7101114?w=600&q=80"
                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                                 alt="Pipeline">
                         </div>
-                        <div class="p-10">
+                        <div class="p-10 flex flex-1 flex-col">
                             <h3
                                 class="font-barlow-condensed text-3xl font-bold uppercase mb-4 text-primary dark:text-secondary group-hover:text-accent transition-colors">
                                 Pipeline Survey</h3>
@@ -242,20 +305,20 @@
                                     Right-of-Way Monitoring</li>
                             </ul>
                             <a href="service-details.html"
-                                class="bg-primary dark:bg-accent text-white w-full py-4 rounded-xl flex items-center justify-center gap-3 font-bold hover:gap-6 transition-all shadow-lg active:scale-95">View
+                                class="mt-auto bg-primary dark:bg-accent text-white w-full py-4 rounded-xl flex items-center justify-center gap-3 font-bold hover:gap-6 transition-all shadow-lg active:scale-95">View
                                 Deliverables <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
 
                     <!-- S3: LiDAR Mapping -->
-                    <div class="service-card group bg-white dark:bg-white/5 rounded-3xl overflow-hidden shadow-xl reveal-on-scroll"
+                    <div class="service-card group flex flex-col bg-white dark:bg-white/5 rounded-3xl overflow-hidden shadow-xl reveal-on-scroll"
                         data-category="mapping">
                         <div class="h-64 overflow-hidden relative">
                             <img src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=600&q=80"
                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                                 alt="LiDAR">
                         </div>
-                        <div class="p-10">
+                        <div class="p-10 flex flex-1 flex-col">
                             <h3
                                 class="font-barlow-condensed text-3xl font-bold uppercase mb-4 text-primary dark:text-secondary group-hover:text-accent transition-colors">
                                 LiDAR Point Cloud</h3>
@@ -270,20 +333,20 @@
                                     Contour Generation</li>
                             </ul>
                             <a href="service-details.html"
-                                class="bg-primary dark:bg-accent text-white w-full py-4 rounded-xl flex items-center justify-center gap-3 font-bold hover:gap-6 transition-all shadow-lg active:scale-95">View
+                                class="mt-auto bg-primary dark:bg-accent text-white w-full py-4 rounded-xl flex items-center justify-center gap-3 font-bold hover:gap-6 transition-all shadow-lg active:scale-95">View
                                 Deliverables <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
 
                     <!-- S4: Thermal Leak -->
-                    <div class="service-card group bg-white dark:bg-white/5 rounded-3xl overflow-hidden shadow-xl reveal-on-scroll"
+                    <div class="service-card group flex flex-col bg-white dark:bg-white/5 rounded-3xl overflow-hidden shadow-xl reveal-on-scroll"
                         data-category="thermal">
                         <div class="h-64 overflow-hidden relative">
-                            <img src="https://images.unsplash.com/photo-1620216518903-888989f666b6?w=600&q=80"
+                            <img src="https://thumbs.dreamstime.com/b/efficiency-analyst-using-thermal-imaging-to-detect-heat-loss-outside-416226875.jpg"
                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                                 alt="Thermal">
                         </div>
-                        <div class="p-10">
+                        <div class="p-10 flex flex-1 flex-col">
                             <h3
                                 class="font-barlow-condensed text-3xl font-bold uppercase mb-4 text-primary dark:text-secondary group-hover:text-accent transition-colors">
                                 Thermal Analysis</h3>
@@ -298,20 +361,20 @@
                                     Industrial Heat Mapping</li>
                             </ul>
                             <a href="service-details.html"
-                                class="bg-primary dark:bg-accent text-white w-full py-4 rounded-xl flex items-center justify-center gap-3 font-bold hover:gap-6 transition-all shadow-lg active:scale-95">View
+                                class="mt-auto bg-primary dark:bg-accent text-white w-full py-4 rounded-xl flex items-center justify-center gap-3 font-bold hover:gap-6 transition-all shadow-lg active:scale-95">View
                                 Deliverables <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
 
                     <!-- S5: Solar Farm -->
-                    <div class="service-card group bg-white dark:bg-white/5 rounded-3xl overflow-hidden shadow-xl reveal-on-scroll"
+                    <div class="service-card group flex flex-col bg-white dark:bg-white/5 rounded-3xl overflow-hidden shadow-xl reveal-on-scroll"
                         data-category="energy">
                         <div class="h-64 overflow-hidden relative">
-                            <img src="https://images.unsplash.com/photo-1509391366360-fe5bb60583d0?w=600&q=80"
+                            <img src="https://media.istockphoto.com/id/1170098138/photo/solar-panels-fields-on-the-green-hills.jpg?s=612x612&w=0&k=20&c=xYjwuTPHyIHsRzj8NAABoGfE5ZpLq2zJbfXi-oJrqQo="
                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                                 alt="Solar">
                         </div>
-                        <div class="p-10">
+                        <div class="p-10 flex flex-1 flex-col">
                             <h3
                                 class="font-barlow-condensed text-3xl font-bold uppercase mb-4 text-primary dark:text-secondary group-hover:text-accent transition-colors">
                                 Solar Farm Mapping</h3>
@@ -326,20 +389,20 @@
                                     4K Orthomosaics</li>
                             </ul>
                             <a href="service-details.html"
-                                class="bg-primary dark:bg-accent text-white w-full py-4 rounded-xl flex items-center justify-center gap-3 font-bold hover:gap-6 transition-all shadow-lg active:scale-95">View
+                                class="mt-auto bg-primary dark:bg-accent text-white w-full py-4 rounded-xl flex items-center justify-center gap-3 font-bold hover:gap-6 transition-all shadow-lg active:scale-95">View
                                 Deliverables <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
 
                     <!-- S6: Construction Monitoring -->
-                    <div class="service-card group bg-white dark:bg-white/5 rounded-3xl overflow-hidden shadow-xl reveal-on-scroll"
+                    <div class="service-card group flex flex-col bg-white dark:bg-white/5 rounded-3xl overflow-hidden shadow-xl reveal-on-scroll"
                         data-category="mapping">
                         <div class="h-64 overflow-hidden relative">
                             <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600&q=80"
                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                                 alt="Construction">
                         </div>
-                        <div class="p-10">
+                        <div class="p-10 flex flex-1 flex-col">
                             <h3
                                 class="font-barlow-condensed text-3xl font-bold uppercase mb-4 text-primary dark:text-secondary group-hover:text-accent transition-colors">
                                 Site Monitoring</h3>
@@ -354,7 +417,7 @@
                                     Time-Lapse Visualization</li>
                             </ul>
                             <a href="service-details.html"
-                                class="bg-primary dark:bg-accent text-white w-full py-4 rounded-xl flex items-center justify-center gap-3 font-bold hover:gap-6 transition-all shadow-lg active:scale-95">View
+                                class="mt-auto bg-primary dark:bg-accent text-white w-full py-4 rounded-xl flex items-center justify-center gap-3 font-bold hover:gap-6 transition-all shadow-lg active:scale-95">View
                                 Deliverables <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
@@ -508,7 +571,7 @@
                             </div>
                         </div>
                         <span
-                            class="font-barlow-condensed text-2xl font-bold tracking-tight uppercase text-white">AerialOps</span>
+                            class="font-barlow-condensed text-2xl font-bold tracking-tight uppercase text-primary dark:text-white">AerialOps</span>
                     </a>
                     <p class="text-secondary/60 leading-relaxed">
                         Precision industrial inspection services led by Senior UAV Pilot Marcus Vane. Specializing in

@@ -28,6 +28,23 @@ document.addEventListener('DOMContentLoaded', () => {
     initTheme();
     initRTL();
 
+    const highlightActiveNavLink = () => {
+        const currentPath = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
+
+        document.querySelectorAll('.nav-link[href]').forEach(link => {
+            const linkPath = (link.getAttribute('href') || '').split('/').pop().toLowerCase();
+
+            if (linkPath === currentPath) {
+                link.setAttribute('aria-current', 'page');
+                return;
+            }
+
+            link.removeAttribute('aria-current');
+        });
+    };
+
+    highlightActiveNavLink();
+
     // -------------------------------------------------------------------------
     // TOGGLES
     // -------------------------------------------------------------------------
