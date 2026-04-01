@@ -31,10 +31,12 @@ document.addEventListener('DOMContentLoaded', () => {
             // Update Nav UI
             navBtns.forEach(b => {
                 b.classList.remove('active', 'bg-accent', 'text-white');
-                b.classList.add('hover:bg-white/5', 'text-white/40');
+                b.classList.add('hover:bg-secondary', 'dark:hover:bg-white/5', 'text-primary/60', 'dark:text-white/40');
+                b.classList.remove('text-white/40'); // Remove the old problematic class if it exists
             });
             btn.classList.add('active', 'bg-accent', 'text-white');
-            btn.classList.remove('hover:bg-white/5', 'text-white/40');
+            btn.classList.remove('hover:bg-secondary', 'dark:hover:bg-white/5', 'text-primary/60', 'dark:text-white/40');
+            btn.classList.remove('text-white/40');
 
             // Switch View UI
             views.forEach(view => {
@@ -112,5 +114,24 @@ document.addEventListener('DOMContentLoaded', () => {
     window.closeModal = (id) => {
         const modal = document.getElementById(id);
         if (modal) modal.classList.add('hidden');
+    };
+
+    // RTL STATE & TOGGLE LOGIC
+    const initRTL = () => {
+        const dir = localStorage.getItem('dir') || 'ltr';
+        document.documentElement.setAttribute('dir', dir);
+        const rtlToggleTexts = document.querySelectorAll('.rtl-toggle-text');
+        rtlToggleTexts.forEach(txt => {
+            txt.textContent = dir === 'ltr' ? 'AR' : 'EN';
+        });
+    };
+    initRTL();
+
+    window.toggleRTL = () => {
+        const currentDir = document.documentElement.getAttribute('dir') || 'ltr';
+        const newDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
+        localStorage.setItem('dir', newDir);
+        document.documentElement.setAttribute('dir', newDir);
+        window.location.reload();
     };
 });

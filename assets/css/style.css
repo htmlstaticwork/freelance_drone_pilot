@@ -411,6 +411,11 @@ html[data-theme="light"] footer .block.text-center.py-3.rounded:hover {
   color: #FFFFFF !important;
 }
 
+#mobile-menu a[aria-current="page"] {
+  color: var(--accent) !important;
+}
+
 #mobile-menu a:hover {
   background-color: var(--accent) !important;
+  color: #FFFFFF !important;
 }

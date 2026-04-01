@@ -21,6 +21,7 @@
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/rtl.css">
 </head>
 
 <body class="bg-lightBg text-primary dark:bg-darkBg dark:text-secondary h-screen overflow-hidden font-inter">
@@ -28,12 +29,12 @@
     <div class="flex h-full w-full relative">
         <!-- SIDEBAR NAVIGATION (Desktop Only) -->
         <aside
-            class="hidden xl:flex w-72 bg-white dark:bg-primary border-r border-gray-200 dark:border-white/5 flex-col h-full z-20 transition-all duration-300">
+            class="hidden xl:flex w-72 bg-white dark:bg-primary border-r rtl:border-r-0 rtl:border-l border-gray-200 dark:border-white/5 flex-col h-full z-20 transition-all duration-300">
             <div class="h-20 flex items-center px-8 border-b border-gray-200 dark:border-white/5 mb-8">
                 <a href="index.html" class="flex items-center gap-2 group min-w-0">
                     <div class="relative w-10 h-10 flex items-center justify-center">
-                        <svg class="w-8 h-8 text-accent transition-colors" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2">
+                        <svg class="w-8 h-8 text-accent transition-colors" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
                             <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
                         </svg>
                         <div
@@ -79,24 +80,31 @@
                         <i class="fas fa-moon text-lg"></i>
                         <span>Theme</span>
                     </button>
+                    <button onclick="toggleRTL()"
+                        class="w-full flex items-center justify-center gap-3 p-4 rounded-xl bg-secondary dark:bg-white/5 text-primary dark:text-white hover:bg-accent hover:text-white transition-colors border border-gray-200 dark:border-white/10 font-bold text-xs uppercase tracking-widest mt-2">
+                        <i class="fas fa-globe text-lg"></i>
+                        <span class="rtl-toggle-text">AR</span>
+                    </button>
                 </div>
-                <div class="py-10 border-t border-gray-200 dark:border-white/5 mt-auto"></div>
-                <a href="index.html"
-                    class="w-full flex items-center justify-start gap-4 p-4 rounded-xl hover:bg-secondary dark:hover:bg-white/5 text-primary/60 dark:text-white/40 font-bold text-xs uppercase tracking-widest transition-all">
-                    <span>Logout</span>
-                </a>
+                <div class="border-t border-gray-200 dark:border-white/5 mt-auto pt-6 px-4">
+                    <a href="index.html"
+                        class="w-full flex items-center justify-start gap-4 p-4 rounded-xl hover:bg-secondary dark:hover:bg-white/5 text-primary/60 dark:text-white/40 font-bold text-xs uppercase tracking-widest transition-all">
+                        <i class="fas fa-power-off text-lg"></i>
+                        <span>Logout</span>
+                    </a>
+                </div>
             </nav>
 
-            <div class="h-24 bg-secondary dark:bg-white/5 border-t border-gray-200 dark:border-white/5 flex items-center px-8 gap-4 text-start">
+            <div
+                class="h-24 bg-secondary dark:bg-white/5 border-t border-gray-200 dark:border-white/5 flex items-center px-8 gap-4 text-start">
                 <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80"
                     class="w-10 h-10 rounded-full grayscale border border-accent/40" alt="Avatar">
                 <div>
-                    <h6 class="text-xs font-black uppercase tracking-widest text-primary dark:text-white">Marcus Vane</h6>
+                    <h6 class="text-xs font-black uppercase tracking-widest text-primary dark:text-white">Marcus Vane
+                    </h6>
                     <p class="text-[8px] text-primary/40 dark:text-white/40 uppercase tracking-widest">Global Admin</p>
                 </div>
-                <a href="index.html" class="flex items-center gap-2 ml-auto text-primary/20 dark:text-white/20 hover:text-red-500 transition-colors">
-                    <i class="fas fa-power-off"></i>
-                </a>
+
             </div>
         </aside>
 
@@ -105,11 +113,11 @@
 
             <!-- MOBILE HEADER (Sticky) -->
             <div
-                class="xl:hidden sticky top-0 w-full h-20 bg-primary/95 backdrop-blur-md border-b border-white/5 px-6 flex items-center justify-between z-40">
+                class="xl:hidden sticky top-0 w-full h-20 bg-white/90 dark:bg-primary/95 backdrop-blur-md border-b border-gray-200 dark:border-white/5 px-6 flex items-center justify-between z-40">
                 <a href="index.html" class="flex items-center gap-2 group">
                     <div class="relative w-10 h-10 flex items-center justify-center">
-                        <svg class="w-8 h-8 text-accent transition-colors" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2">
+                        <svg class="w-8 h-8 text-accent transition-colors" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
                             <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
                         </svg>
                         <div
@@ -124,14 +132,18 @@
                 </a>
                 <div class="flex items-center gap-4">
                     <button
-                        class="dashboard-theme-toggle w-10 h-10 flex items-center justify-center rounded-full bg-white/5 text-white hover:bg-accent transition-colors">
+                        class="dashboard-theme-toggle w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 dark:bg-white/5 text-primary dark:text-white hover:bg-accent transition-colors">
                         <i class="fas fa-moon text-lg"></i>
+                    </button>
+                    <button onclick="toggleRTL()"
+                        class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 dark:bg-white/5 text-primary dark:text-white hover:bg-accent hover:text-white transition-colors">
+                        <span class="rtl-toggle-text font-black text-[10px]">AR</span>
                     </button>
                     <button id="hamburger-btn"
                         class="w-10 h-10 flex flex-col justify-center items-center gap-1.5 focus:outline-none">
-                        <span class="w-6 h-0.5 bg-secondary rounded-full"></span>
-                        <span class="w-6 h-0.5 bg-secondary rounded-full"></span>
-                        <span class="w-6 h-0.5 bg-secondary rounded-full"></span>
+                        <span class="w-6 h-0.5 bg-primary dark:bg-secondary rounded-full"></span>
+                        <span class="w-6 h-0.5 bg-primary dark:bg-secondary rounded-full"></span>
+                        <span class="w-6 h-0.5 bg-primary dark:bg-secondary rounded-full"></span>
                     </button>
                 </div>
             </div>
@@ -143,12 +155,16 @@
 
                 <!-- VIEW: OVERVIEW -->
                 <div id="view-overview" class="dashboard-view space-y-12 block relative z-10">
-                    <header class="flex flex-col items-start gap-6 mb-16 animate-hero-reveal sm:flex-row sm:justify-between sm:items-end">
+                    <header
+                        class="flex flex-col items-start gap-6 mb-16 animate-hero-reveal sm:flex-row sm:justify-between sm:items-end">
                         <div>
                             <span
                                 class="text-accent font-bold uppercase text-[10px] tracking-[0.5em] mb-4 block">Command_Center_V4.2</span>
-                            <p class="text-sm uppercase tracking-[0.3em] text-white/40 mb-4">Welcome Back, Pilot.</p>
-                            <h1 class="font-barlow-condensed text-3xl sm:text-4xl lg:text-7xl font-black uppercase leading-none">
+                            <p
+                                class="inline-block bg-accent text-primary px-3 py-1 rounded-sm text-[10px] font-bold uppercase tracking-[0.2em] mb-6">
+                                Welcome To Dashboard</p>
+                            <h1
+                                class="font-barlow-condensed text-3xl sm:text-4xl lg:text-7xl font-black uppercase leading-none">
                                 Global
                                 <br>Overview.
                             </h1>
@@ -168,7 +184,8 @@
                             class="p-8 bg-secondary dark:bg-white/5 border border-primary/5 dark:border-white/10 rounded-3xl hover:border-accent transition-all animate-altitude-drift">
                             <div class="flex justify-between items-start mb-6">
                                 <i class="fas fa-plane text-accent text-2xl"></i>
-                                <span class="text-accent bg-accent/20 px-2 py-1 rounded text-[8px] font-bold">LIVE
+                                <span
+                                    class="bg-accent text-primary px-2 py-1 rounded text-[8px] font-bold uppercase tracking-widest">LIVE
                                     MISSION</span>
                             </div>
                             <h4 class="text-3xl font-barlow-condensed font-black mb-2">SECTOR 7A</h4>
@@ -188,7 +205,7 @@
                             <div class="flex justify-between items-start mb-6">
                                 <i class="fas fa-satellite text-status text-2xl"></i>
                                 <span
-                                    class="text-status bg-status/20 px-2 py-1 rounded text-[8px] font-bold">STANDBY</span>
+                                    class="bg-status text-primary px-2 py-1 rounded text-[8px] font-bold uppercase tracking-widest">STANDBY</span>
                             </div>
                             <h4 class="text-3xl font-barlow-condensed font-black mb-2">GRID BETA</h4>
                             <p class="text-[10px] opacity-40 uppercase font-black tracking-widest">Awaiting Uplink — CA
@@ -305,22 +322,27 @@
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12">
                         <section
                             class="bg-secondary dark:bg-white/5 border border-primary/5 dark:border-white/10 rounded-[2rem] p-6 sm:p-8 text-start">
-                            <span class="block text-accent text-[10px] font-black uppercase tracking-[0.4em] mb-4">Archive
+                            <span
+                                class="block text-accent text-[10px] font-black uppercase tracking-[0.4em] mb-4">Archive
                                 Status</span>
                             <h3 class="font-barlow-condensed text-3xl font-black uppercase mb-4">Recent Vault Sync</h3>
                             <p class="text-sm opacity-60 mb-6">Latest mission files, thermal reports, and mapped outputs
                                 are secured and ready for review.</p>
                             <div class="space-y-4">
-                                <div class="flex items-center justify-between gap-4 border-b border-primary/5 dark:border-white/10 pb-4">
-                                    <span class="text-xs font-bold uppercase tracking-widest opacity-50">Last Upload</span>
+                                <div
+                                    class="flex items-center justify-between gap-4 border-b border-primary/5 dark:border-white/10 pb-4">
+                                    <span class="text-xs font-bold uppercase tracking-widest opacity-50">Last
+                                        Upload</span>
                                     <span class="text-sm font-black uppercase">Sector 7A Package</span>
                                 </div>
-                                <div class="flex items-center justify-between gap-4 border-b border-primary/5 dark:border-white/10 pb-4">
+                                <div
+                                    class="flex items-center justify-between gap-4 border-b border-primary/5 dark:border-white/10 pb-4">
                                     <span class="text-xs font-bold uppercase tracking-widest opacity-50">Format</span>
                                     <span class="text-sm font-black uppercase">PDF + LiDAR + Thermal</span>
                                 </div>
                                 <div class="flex items-center justify-between gap-4">
-                                    <span class="text-xs font-bold uppercase tracking-widest opacity-50">Retention</span>
+                                    <span
+                                        class="text-xs font-bold uppercase tracking-widest opacity-50">Retention</span>
                                     <span class="text-sm font-black uppercase">Encrypted 365 Days</span>
                                 </div>
                             </div>
@@ -329,16 +351,19 @@
                             class="bg-secondary dark:bg-white/5 border border-primary/5 dark:border-white/10 rounded-[2rem] p-6 sm:p-8 text-start">
                             <span class="block text-accent text-[10px] font-black uppercase tracking-[0.4em] mb-4">Quick
                                 Access</span>
-                            <h3 class="font-barlow-condensed text-3xl font-black uppercase mb-4">Pinned Deliverables</h3>
+                            <h3 class="font-barlow-condensed text-3xl font-black uppercase mb-4">Pinned Deliverables
+                            </h3>
                             <p class="text-sm opacity-60 mb-6">Frequently accessed documents remain one click away for
                                 operations, reviews, and client handoff.</p>
                             <div class="space-y-4">
                                 <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
-                                    <span class="block text-[10px] uppercase tracking-[0.3em] opacity-40 mb-2">File</span>
+                                    <span
+                                        class="block text-[10px] uppercase tracking-[0.3em] opacity-40 mb-2">File</span>
                                     <span class="font-black uppercase text-sm">TX_SITE_AUDIT_COMPLETE.PDF</span>
                                 </div>
                                 <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
-                                    <span class="block text-[10px] uppercase tracking-[0.3em] opacity-40 mb-2">File</span>
+                                    <span
+                                        class="block text-[10px] uppercase tracking-[0.3em] opacity-40 mb-2">File</span>
                                     <span class="font-black uppercase text-sm">APEX_SOLAR_THERMAL_MAP.ZIP</span>
                                 </div>
                             </div>
@@ -351,7 +376,8 @@
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12">
                         <section
                             class="bg-secondary dark:bg-white/5 border border-primary/5 dark:border-white/10 rounded-[2rem] p-6 sm:p-8 text-start">
-                            <span class="block text-accent text-[10px] font-black uppercase tracking-[0.4em] mb-4">Hotspot
+                            <span
+                                class="block text-accent text-[10px] font-black uppercase tracking-[0.4em] mb-4">Hotspot
                                 Summary</span>
                             <h3 class="font-barlow-condensed text-3xl font-black uppercase mb-4">Thermal Alerts</h3>
                             <p class="text-sm opacity-60 mb-6">Recent scans highlight detected anomalies and inspection
@@ -364,11 +390,13 @@
                                 </div>
                                 <div
                                     class="flex items-center justify-between gap-4 border-b border-primary/5 dark:border-white/10 pb-4">
-                                    <span class="text-xs font-bold uppercase tracking-widest opacity-50">Last Scan</span>
+                                    <span class="text-xs font-bold uppercase tracking-widest opacity-50">Last
+                                        Scan</span>
                                     <span class="text-sm font-black uppercase">Solar Grid Beta</span>
                                 </div>
                                 <div class="flex items-center justify-between gap-4">
-                                    <span class="text-xs font-bold uppercase tracking-widest opacity-50">Review Cycle</span>
+                                    <span class="text-xs font-bold uppercase tracking-widest opacity-50">Review
+                                        Cycle</span>
                                     <span class="text-sm font-black uppercase">12 Hr Window</span>
                                 </div>
                             </div>
@@ -382,11 +410,13 @@
                                 density, report speed, and repeat inspection trends.</p>
                             <div class="space-y-4">
                                 <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
-                                    <span class="block text-[10px] uppercase tracking-[0.3em] opacity-40 mb-2">Metric</span>
+                                    <span
+                                        class="block text-[10px] uppercase tracking-[0.3em] opacity-40 mb-2">Metric</span>
                                     <span class="font-black uppercase text-sm">Report Accuracy 98.4%</span>
                                 </div>
                                 <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
-                                    <span class="block text-[10px] uppercase tracking-[0.3em] opacity-40 mb-2">Metric</span>
+                                    <span
+                                        class="block text-[10px] uppercase tracking-[0.3em] opacity-40 mb-2">Metric</span>
                                     <span class="font-black uppercase text-sm">Repeat Defects Down 12%</span>
                                 </div>
                             </div>

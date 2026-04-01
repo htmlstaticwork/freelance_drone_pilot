@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const highlightActiveNavLink = () => {
         const currentPath = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
 
-        document.querySelectorAll('.nav-link[href]').forEach(link => {
+        document.querySelectorAll('.nav-link[href], #mobile-menu a[href]').forEach(link => {
             const linkPath = (link.getAttribute('href') || '').split('/').pop().toLowerCase();
 
             if (linkPath === currentPath) {
