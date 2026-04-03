@@ -22,6 +22,15 @@
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        @media (min-width: 1024px) {
+            #blog-grid>.blog-post-card:nth-child(3) {
+                grid-column: 1 / -1;
+                width: calc((100% - 2.5rem) / 2);
+                justify-self: center;
+            }
+        }
+    </style>
 </head>
 
 <body class="bg-lightBg text-primary dark:bg-darkBg dark:text-secondary">

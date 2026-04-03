@@ -22,6 +22,26 @@
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        @media (min-width: 768px) and (max-width: 1023.98px) {
+            #fleet-grid>.group {
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+            }
+
+            #fleet-grid>.group>.p-8 {
+                display: flex;
+                flex-direction: column;
+                flex: 1;
+            }
+
+            #fleet-grid>.group>.p-8>span {
+                margin-top: auto;
+                white-space: nowrap;
+            }
+        }
+    </style>
 </head>
 
 <body class="bg-lightBg text-primary dark:bg-darkBg dark:text-secondary">
@@ -257,7 +277,7 @@
                     <h2 class="font-barlow-condensed text-4xl md:text-5xl font-bold uppercase tracking-wide">The Fleet
                     </h2>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="fleet-grid">
                     <div
                         class="group relative overflow-hidden rounded-3xl bg-white dark:bg-white/5 shadow-xl transition-all hover:-translate-y-2 reveal-on-scroll">
                         <img src="https://images.unsplash.com/photo-1508614589041-895b88991e3e?w=600&q=80"
