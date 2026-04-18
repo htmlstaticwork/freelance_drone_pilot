@@ -257,6 +257,19 @@ body {
   border-radius: 999px;
 }
 
+/* Keep desktop header auth CTAs at identical height across pages */
+@media (min-width: 1280px) {
+  header nav a.hidden.xl\:inline-block[href="login.html"],
+  header nav a.hidden.xl\:inline-block[href="signup.html"] {
+    box-sizing: border-box;
+    height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+}
+
 /* LIGHT MODE FOOTER */
 html[data-theme="light"] footer {
   background-color: var(--bg-light) !important;

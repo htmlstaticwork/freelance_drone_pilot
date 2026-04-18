@@ -74,7 +74,7 @@
                     <i class="fas fa-chart-area text-lg"></i>
                     <span>Analytics</span>
                 </button>
-                <div class="px-4 pt-4">
+                <div class="hidden">
                     <button
                         class="dashboard-theme-toggle w-full flex items-center justify-center gap-3 p-4 rounded-xl bg-secondary dark:bg-white/5 text-primary dark:text-white hover:bg-accent hover:text-white transition-colors border border-gray-200 dark:border-white/10 font-bold text-xs uppercase tracking-widest">
                         <i class="fas fa-moon text-lg"></i>
@@ -96,7 +96,7 @@
             </nav>
 
             <div
-                class="h-24 bg-secondary dark:bg-white/5 border-t border-gray-200 dark:border-white/5 flex items-center px-8 gap-4 text-start">
+                class="hidden h-24 bg-secondary dark:bg-white/5 border-t border-gray-200 dark:border-white/5 flex items-center px-8 gap-4 text-start">
                 <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80"
                     class="w-10 h-10 rounded-full grayscale border border-accent/40" alt="Avatar">
                 <div>
@@ -152,6 +152,23 @@
                 <div class="absolute inset-0 pointer-events-none z-0">
                     <div class="absolute inset-0 grid-overlay opacity-5 animate-pulse"></div>
                 </div>
+                <div class="hidden xl:flex items-center gap-3 absolute top-6 right-8 z-20">
+                    <button
+                        class="w-10 h-10 flex items-center justify-center rounded-full bg-secondary dark:bg-white/5 text-primary dark:text-white hover:bg-accent hover:text-white transition-colors border border-gray-200 dark:border-white/10"
+                        aria-label="Profile">
+                        <i class="fas fa-user text-base"></i>
+                    </button>
+                    <button
+                        class="dashboard-theme-toggle w-10 h-10 flex items-center justify-center rounded-full bg-secondary dark:bg-white/5 text-primary dark:text-white hover:bg-accent hover:text-white transition-colors border border-gray-200 dark:border-white/10"
+                        aria-label="Toggle Theme">
+                        <i class="fas fa-moon text-base"></i>
+                    </button>
+                    <button onclick="toggleRTL()"
+                        class="w-10 h-10 flex items-center justify-center rounded-full bg-secondary dark:bg-white/5 text-primary dark:text-white hover:bg-accent hover:text-white transition-colors border border-gray-200 dark:border-white/10"
+                        aria-label="Toggle RTL">
+                        <span class="rtl-toggle-text font-black text-[10px]">AR</span>
+                    </button>
+                </div>
 
                 <!-- VIEW: OVERVIEW -->
                 <div id="view-overview" class="dashboard-view space-y-12 block relative z-10">
@@ -164,9 +181,8 @@
                                 class="inline-block bg-accent text-primary px-3 py-1 rounded-sm text-[10px] font-bold uppercase tracking-[0.2em] mb-6">
                                 Welcome To Dashboard</p>
                             <h1
-                                class="font-barlow-condensed text-3xl sm:text-4xl lg:text-7xl font-black uppercase leading-none">
-                                Global
-                                <br>Overview.
+                                class="font-barlow-condensed text-3xl sm:text-4xl lg:text-6xl font-black uppercase leading-none lg:whitespace-nowrap">
+                                Global Overview.
                             </h1>
                         </div>
                         <div class="flex items-center gap-4 self-start sm:gap-6">
@@ -223,7 +239,7 @@
                     </div>
 
                     <!-- MAIN DISPLAY -->
-                    <div class="flex flex-col lg:flex-row gap-8 stagger-reveal text-start">
+                    <div class="flex flex-col lg:flex-row gap-8 stagger-reveal text-start mb-6">
                         <div
                             class="lg:w-8/12 bg-white/5 border border-white/10 rounded-[3rem] h-[500px] relative overflow-hidden group shadow-2xl">
                             <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1200&q=80"

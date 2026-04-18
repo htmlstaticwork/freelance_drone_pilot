@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
-    <title>Operational Access — AerialOps Login</title>
-    <meta name="description" content="Access your mission dashboard, flight data, and technical reports securely.">
+    <title>AerialOps Login</title>
+    <meta name="description" content="Access your dashboard and reports securely.">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -39,7 +39,7 @@
         </button>
         <button onclick="toggleRTL()"
             class="rtl-toggle w-10 h-10 flex items-center justify-center rounded-full bg-white border border-gray-200 text-primary hover:bg-accent hover:text-white dark:bg-white/5 dark:border-white/10 dark:text-white transition-colors">
-            <span class="rtl-toggle-text font-bold text-sm">AR</span>
+            <i class="fas fa-right-left text-sm" aria-hidden="true"></i>
         </button>
     </div>
 
@@ -67,94 +67,74 @@
             <div class="mb-8 text-center">
                 <h1
                     class="font-barlow-condensed text-4xl lg:text-5xl font-black uppercase mb-4 text-primary dark:text-white stagger-reveal">
-                    Operational Login</h1>
-                <p class="text-sm text-primary/50 dark:text-secondary/40">Enter your mission-assigned credentials below.
-                </p>
+                    Login</h1>
+                <p class="text-sm text-primary/70 dark:text-secondary/80">Enter your email and password.</p>
             </div>
 
             <form class="space-y-8 stagger-reveal" action="dashboard.html">
                 <div class="space-y-3">
                     <label
-                        class="block text-[10px] font-black uppercase tracking-[0.3em] text-primary/40 dark:text-secondary/40 ml-1">Uplink
-                        Address</label>
+                        class="block text-[10px] font-black uppercase tracking-[0.3em] text-primary/60 dark:text-secondary/80 ml-1">Email</label>
                     <div class="relative group">
-                        <input type="email" placeholder="ops@company.com"
-                            class="w-full bg-secondary/70 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl px-6 py-5 text-primary dark:text-white outline-none focus:border-accent transition-all pl-14">
+                        <input type="email" placeholder="you@example.com"
+                            class="w-full bg-secondary/70 dark:bg-white/10 border border-gray-200 dark:border-white/20 rounded-2xl px-6 py-5 text-primary dark:text-secondary placeholder:text-primary/40 dark:placeholder:text-secondary/70 outline-none focus:border-accent transition-all pl-14">
                         <i
-                            class="fas fa-envelope absolute left-6 top-1/2 -translate-y-1/2 text-primary/20 dark:text-white/20 text-lg group-hover:text-accent transition-all"></i>
+                            class="fas fa-envelope absolute left-6 top-1/2 -translate-y-1/2 text-primary/35 dark:text-secondary/60 text-lg group-hover:text-accent transition-all"></i>
                     </div>
                 </div>
 
                 <div class="space-y-3">
                     <label
-                        class="block text-[10px] font-black uppercase tracking-[0.3em] text-primary/40 dark:text-secondary/40 ml-1">Access
-                        Key</label>
+                        class="block text-[10px] font-black uppercase tracking-[0.3em] text-primary/60 dark:text-secondary/80 ml-1">Password</label>
                     <div class="relative group">
-                        <input type="password" placeholder="••••••••••••"
-                            class="w-full bg-secondary/70 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl px-6 py-5 text-primary dark:text-white outline-none focus:border-accent transition-all pl-14">
+                        <input type="password" placeholder="Enter your password"
+                            class="w-full bg-secondary/70 dark:bg-white/10 border border-gray-200 dark:border-white/20 rounded-2xl px-6 py-5 text-primary dark:text-secondary placeholder:text-primary/40 dark:placeholder:text-secondary/70 outline-none focus:border-accent transition-all pl-14">
                         <i
-                            class="fas fa-lock absolute left-6 top-1/2 -translate-y-1/2 text-primary/20 dark:text-white/20 text-lg group-hover:text-accent transition-all"></i>
+                            class="fas fa-lock absolute left-6 top-1/2 -translate-y-1/2 text-primary/35 dark:text-secondary/60 text-lg group-hover:text-accent transition-all"></i>
                     </div>
                     <div class="flex justify-between items-center px-1">
                         <label class="flex items-center gap-2 cursor-pointer group">
                             <input type="checkbox"
                                 class="w-4 h-4 bg-white dark:bg-white/5 border border-gray-300 dark:border-white/10 rounded focus:ring-accent accent-accent">
                             <span
-                                class="text-[10px] text-primary/40 dark:text-secondary/40 uppercase font-bold tracking-widest group-hover:opacity-100 transition-all">Persistent
-                                Link</span>
+                                class="text-[10px] text-primary/60 dark:text-secondary/75 uppercase font-bold tracking-widest group-hover:opacity-100 transition-all">Remember
+                                Me</span>
                         </label>
                         <a href="#"
-                            class="text-[10px] text-accent font-bold uppercase tracking-widest hover:underline">Reset
-                            Key?</a>
+                            class="text-[10px] text-accent font-bold uppercase tracking-widest hover:underline">Forgot
+                            Password?</a>
                     </div>
                 </div>
 
                 <button
-                    class="w-full py-6 bg-accent text-white rounded-2xl font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-xl shadow-accent/20">Establish
-                    Secure Connection</button>
+                    class="w-full py-6 bg-accent text-white rounded-2xl font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-xl shadow-accent/20">Login</button>
 
                 <div class="relative py-4 text-center">
                     <div class="absolute top-1/2 border-t border-gray-200 dark:border-white/5 w-full"></div>
                     <span
-                        class="relative z-10 inline-block bg-white dark:bg-primary px-4 text-[10px] font-bold uppercase tracking-[0.4em] text-primary/40 dark:text-secondary/40">Connect
-                        via Socials</span>
+                        class="relative z-10 inline-block bg-white dark:bg-primary px-4 text-[10px] font-bold uppercase tracking-[0.4em] text-primary/60 dark:text-secondary/75">Or
+                        Continue With</span>
                 </div>
 
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 gap-4">
                     <a href="#"
                         class="flex items-center justify-center gap-3 py-4 bg-secondary/70 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl hover:bg-secondary dark:hover:bg-white/10 transition-all group">
                         <i
-                            class="fab fa-linkedin-in text-[#0077b5] text-lg group-hover:scale-110 transition-transform"></i>
-                        <span
-                            class="text-[10px] font-black uppercase tracking-widest text-primary dark:text-white">LinkedIn</span>
+                            class="fab fa-apple text-primary dark:text-white text-lg group-hover:scale-110 transition-transform"></i>
+                        <span class="text-sm font-bold text-primary dark:text-white">Continue with Apple</span>
                     </a>
                     <a href="#"
                         class="flex items-center justify-center gap-3 py-4 bg-secondary/70 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl hover:bg-secondary dark:hover:bg-white/10 transition-all group">
                         <i
-                            class="fab fa-x-twitter text-primary dark:text-white text-lg group-hover:scale-110 transition-transform"></i>
-                        <span class="text-[10px] font-black uppercase tracking-widest text-primary dark:text-white">X
-                            Profile</span>
-                    </a>
-                    <a href="#"
-                        class="flex items-center justify-center gap-3 py-4 bg-secondary/70 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl hover:bg-secondary dark:hover:bg-white/10 transition-all group">
-                        <i
-                            class="fab fa-instagram text-[#E4405F] text-lg group-hover:scale-110 transition-transform"></i>
-                        <span
-                            class="text-[10px] font-black uppercase tracking-widest text-primary dark:text-white">Instagram</span>
-                    </a>
-                    <a href="#"
-                        class="flex items-center justify-center gap-3 py-4 bg-secondary/70 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl hover:bg-secondary dark:hover:bg-white/10 transition-all group">
-                        <i class="fab fa-discord text-[#5865F2] text-lg group-hover:scale-110 transition-transform"></i>
-                        <span
-                            class="text-[10px] font-black uppercase tracking-widest text-primary dark:text-white">Discord</span>
+                            class="fab fa-google text-[#EA4335] text-lg group-hover:scale-110 transition-transform"></i>
+                        <span class="text-sm font-bold text-primary dark:text-white">Continue with Google</span>
                     </a>
                 </div>
 
                 <p
-                    class="text-center text-[10px] text-primary/20 dark:text-secondary/20 uppercase font-black tracking-widest mt-12">
-                    No active
-                    profile? <a href="signup.html" class="text-accent hover:underline decoration-2">Request
-                        Authorization</a></p>
+                    class="text-center text-[10px] text-primary/45 dark:text-secondary/70 uppercase font-black tracking-widest mt-12">
+                    Need an account? <a href="signup.html" class="text-accent hover:underline decoration-2">Sign
+                        Up</a></p>
             </form>
         </div>
     </main>
