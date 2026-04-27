@@ -82,8 +82,8 @@
                     </button>
                     <button onclick="toggleRTL()"
                         class="w-full flex items-center justify-center gap-3 p-4 rounded-xl bg-secondary dark:bg-white/5 text-primary dark:text-white hover:bg-accent hover:text-white transition-colors border border-gray-200 dark:border-white/10 font-bold text-xs uppercase tracking-widest mt-2">
-                        <i class="fas fa-globe text-lg"></i>
-                        <span class="rtl-toggle-text">AR</span>
+                        <i class="fas fa-right-left text-lg"></i>
+                        <span class="font-bold text-xs ml-1">RTL Toggle</span>
                     </button>
                 </div>
                 <div class="border-t border-gray-200 dark:border-white/5 mt-auto pt-6 px-4">
@@ -137,7 +137,7 @@
                     </button>
                     <button onclick="toggleRTL()"
                         class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 dark:bg-white/5 text-primary dark:text-white hover:bg-accent hover:text-white transition-colors">
-                        <span class="rtl-toggle-text font-black text-[10px]">AR</span>
+                        <i class="fas fa-right-left text-sm" aria-hidden="true"></i>
                     </button>
                     <button id="hamburger-btn"
                         class="w-10 h-10 flex flex-col justify-center items-center gap-1.5 focus:outline-none">
@@ -148,15 +148,16 @@
                 </div>
             </div>
 
-            <div class="p-4 sm:p-8 xl:p-12 relative h-full">
+            <div class="p-4 sm:p-8 xl:p-12 relative min-h-full">
                 <div class="absolute inset-0 pointer-events-none z-0">
                     <div class="absolute inset-0 grid-overlay opacity-5 animate-pulse"></div>
                 </div>
                 <div class="hidden xl:flex items-center gap-3 absolute top-6 right-8 z-20">
                     <button
-                        class="w-10 h-10 flex items-center justify-center rounded-full bg-secondary dark:bg-white/5 text-primary dark:text-white hover:bg-accent hover:text-white transition-colors border border-gray-200 dark:border-white/10"
+                        class="w-10 h-10 flex items-center justify-center rounded-full overflow-hidden bg-secondary dark:bg-white/5 text-primary dark:text-white hover:bg-accent hover:text-white transition-colors border border-gray-200 dark:border-white/10"
                         aria-label="Profile">
-                        <i class="fas fa-user text-base"></i>
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80"
+                            class="w-full h-full object-cover grayscale" alt="Profile Avatar">
                     </button>
                     <button
                         class="dashboard-theme-toggle w-10 h-10 flex items-center justify-center rounded-full bg-secondary dark:bg-white/5 text-primary dark:text-white hover:bg-accent hover:text-white transition-colors border border-gray-200 dark:border-white/10"
@@ -166,7 +167,7 @@
                     <button onclick="toggleRTL()"
                         class="w-10 h-10 flex items-center justify-center rounded-full bg-secondary dark:bg-white/5 text-primary dark:text-white hover:bg-accent hover:text-white transition-colors border border-gray-200 dark:border-white/10"
                         aria-label="Toggle RTL">
-                        <span class="rtl-toggle-text font-black text-[10px]">AR</span>
+                        <i class="fas fa-right-left text-sm" aria-hidden="true"></i>
                     </button>
                 </div>
 
@@ -186,11 +187,7 @@
                             </h1>
                         </div>
                         <div class="flex items-center gap-4 self-start sm:gap-6">
-                            <div class="text-right">
-                                <span class="block text-[8px] font-black uppercase opacity-20 tracking-widest">Local
-                                    Signal</span>
-                                <span class="text-green-500 font-mono text-sm">ENCRYPTED_99%</span>
-                            </div>
+
                         </div>
                     </header>
 
@@ -252,7 +249,8 @@
                                     <h4 class="font-barlow-condensed text-2xl font-black uppercase mb-2">Satellite
                                         Uplink
                                         Offline</h4>
-                                    <p class="text-xs text-secondary/80 dark:text-white/50 uppercase tracking-widest">Select mission sector to
+                                    <p class="text-xs text-secondary/80 dark:text-white/50 uppercase tracking-widest">
+                                        Select mission sector to
                                         initiate live visual</p>
                                 </div>
                             </div>
@@ -487,16 +485,13 @@
                     </a>
                 </nav>
 
-                <div class="mt-auto border-t border-white/5 pt-8 flex items-center gap-4 text-start">
-                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80"
-                        class="w-12 h-12 rounded-full grayscale border border-accent/40" alt="Avatar">
-                    <div>
-                        <h6 class="text-sm font-black uppercase tracking-widest text-white">Marcus Vane</h6>
-                        <p class="text-[10px] opacity-40 uppercase tracking-widest">Global Admin</p>
-                    </div>
-                    <a href="index.html" class="flex items-center gap-2 ml-auto text-white/20 hover:text-red-500">
-                        <i class="fas fa-power-off text-xl"></i>
-                    </a>
+                <div class="mt-auto border-t border-white/5 pt-8 flex items-center text-start">
+                    <button
+                        class="w-10 h-10 flex items-center justify-center rounded-full overflow-hidden bg-white/5 text-white hover:bg-accent hover:text-white transition-colors border border-white/10"
+                        aria-label="Profile">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80"
+                            class="w-full h-full object-cover grayscale" alt="Profile Avatar">
+                    </button>
                 </div>
             </div>
         </div>
